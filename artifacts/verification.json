@@ -1,0 +1,127 @@
+{
+  "origin": "0x26000",
+  "family": "0xada52840",
+  "binary_bytes": 138696,
+  "uf2_bytes": 277504,
+  "blocks": 542,
+  "initial_sp": "0x20040000",
+  "reset_vector": "0x35389",
+  "arm_smoke": [
+    {
+      "initial_out": 0,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 0,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    }
+  ],
+  "scope": "Linked ARM GPIO/SPI instructions with memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
+  "sha256": {
+    "eink-ble-bw-s140v6.bin": "83a77ecbf581920dbebef6cd4997fba39ca6ba8658fd71be9678c3fed1cea8f1",
+    "eink-ble-bw-s140v6.elf": "46ca1bccf30ea8460b635f43ebc12952106c59a3191c0c0f53895e448537ef2a",
+    "eink-ble-bw-s140v6.hex": "98c0dcdb96f5bdf5429d179d58c7221d33801b98f9a8f700a663bd02c957dd1f",
+    "eink-ble-bw-s140v6.uf2": "cbbd3b34411a91aef9a1c1b0075aa1fe88d4da1554e32c3723ebfee25d621ee0",
+    "eink-ble-bw-s140v6.zip": "8f2820c2c0732b98f264cae041cbed41022e67265f4fddb1e5d9be6c8e6d96b3"
+  }
+}

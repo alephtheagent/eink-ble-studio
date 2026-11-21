@@ -1,0 +1,20 @@
+{
+  "build": {
+    "arduino": {"ldscript": "nrf52840_s140_v6.ld"},
+    "core": "nRF5",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DARDUINO_PROMICRO_NRF52840 -DNRF52840_XXAA -DCONFIG_NFCT_PINS_AS_GPIOS",
+    "f_cpu": "64000000L",
+    "mcu": "nrf52840",
+    "variant": "promicro_nrf52840",
+    "variants_dir": "variants",
+    "bsp": {"name": "adafruit"},
+    "softdevice": {"sd_flags": "-DS140", "sd_name": "s140", "sd_version": "6.1.1", "sd_fwid": "0x00B6"},
+    "bootloader": {"settings_addr": "0xFF000"}
+  },
+  "frameworks": ["arduino"],
+  "name": "Pro Micro nice!nano v2 pinout, S140 v6 application only",
+  "upload": {"maximum_ram_size": 237568, "maximum_size": 815104, "protocol": "nrfutil", "protocols": ["nrfutil"], "require_upload_port": true},
+  "url": "https://nicekeyboards.com/docs/nice-nano/pinout-schematic/",
+  "vendor": "Local explicit pinout profile"
+}
