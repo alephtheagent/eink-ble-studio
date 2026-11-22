@@ -15,6 +15,26 @@ export function renderGray(sourceRGBA, sw, sh, options = {}) {
   if (!Number.isInteger(sw) || !Number.isInteger(sh) || sw < 1 || sh < 1 || sourceRGBA.length < sw * sh * 4) throw new Error('Invalid source image');
   const { mode = 'cover', zoom = 1, x = 0, y = 0, rotation = 0, tileSize = 61 } = options;
   if (!(zoom > 0) || !Number.isFinite(zoom) || !Number.isFinite(x) || !Number.isFinite(y) || !(tileSize > 0) || !Number.isFinite(tileSize)) throw new Error('Invalid geometry');
+  const normalized = ((rotation % 360) + 360) % 360;
+  if (normalized % 90 !== 0) {
+    const radians = normalized * Math.PI / 180, cos = Math.cos(radians), sin = Math.sin(radians);
+    const rw = Math.abs(cos) * sw + Math.abs(sin) * sh, rh = Math.abs(sin) * sw + Math.abs(cos) * sh;
+    const tiled = mode === 'tile' || mode === 'vertical';
+    let scale = (mode === 'fit' ? Math.min(WIDTH / rw, HEIGHT / rh) : Math.max(WIDTH / rw, HEIGHT / rh)) * zoom;
+    if (tiled) scale = (mode === 'vertical' ? Math.max(WIDTH, tileSize * zoom) : tileSize * zoom) / rw;
+    const scaleX = mode === 'fill' ? WIDTH / rw * zoom : scale, scaleY = mode === 'fill' ? HEIGHT / rh * zoom : scale;
+    const dw = rw * scale, left = mode === 'vertical' ? Math.max(WIDTH - dw, Math.min(0, (WIDTH - dw) / 2 + x)) : (WIDTH - rw * scaleX) / 2 + x, top = (HEIGHT - rh * scaleY) / 2 + y;
+    const mod = (v, n) => ((v % n) + n) % n, gray = new Uint8Array(WIDTH * HEIGHT);
+    for (let py = 0; py < HEIGHT; py++) for (let px = 0; px < WIDTH; px++) {
+      let u = (px + 0.5 - left) / scaleX, v = (py + 0.5 - top) / scaleY;
+      if (mode === 'tile') u = mod(u, rw); if (tiled) v = mod(v, rh);
+      const dx = u - rw / 2, dy = v - rh / 2, sx = Math.floor(cos * dx + sin * dy + sw / 2), sy = Math.floor(-sin * dx + cos * dy + sh / 2);
+      if (u < 0 || v < 0 || u >= rw || v >= rh || sx < 0 || sy < 0 || sx >= sw || sy >= sh) { gray[py * WIDTH + px] = 255; continue; }
+      const i = (sy * sw + sx) * 4, a = sourceRGBA[i + 3] / 255;
+      gray[py * WIDTH + px] = Math.round((0.299 * sourceRGBA[i] + 0.587 * sourceRGBA[i + 1] + 0.114 * sourceRGBA[i + 2]) * a + 255 * (1 - a));
+    }
+    return gray;
+  }
   const turn = ((Math.round(rotation / 90) % 4) + 4) % 4;
   const rw = turn % 2 ? sh : sw, rh = turn % 2 ? sw : sh;
   const tiled = mode === 'tile' || mode === 'vertical';

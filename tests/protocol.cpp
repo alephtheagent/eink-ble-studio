@@ -20,6 +20,55 @@ static void fill(Protocol& p,const uint8_t* frame,uint32_t expected){
  send(p,start(7,expected));
  for(uint16_t i=0;i<4000;i+=13)send(p,data(i,frame+i,(4000-i<13)?4000-i:13));
 }
+static void testActions() {
+  Protocol p;
+  uint8_t reset[] = {0x06};
+  p.command(reset, sizeof reset, 10, 0);
+  uint8_t status[20];
+  p.status(status);
+  assert(status[3] == ACTION_RESET_WELCOME && p.action() == ACTION_RESET_WELCOME);
+  assert(p.state() == IDLE && p.error() == NONE);
+  assert(p.consumeAction() == ACTION_RESET_WELCOME);
+  assert(p.consumeAction() == ACTION_NONE && p.action() == ACTION_NONE);
+
+  uint8_t enter[] = {0x05};
+  p.command(enter, sizeof enter, 11, 0);
+  p.status2(status);
+  assert(status[3] == ACTION_ENTER_DFU && p.consumeAction() == ACTION_ENTER_DFU);
+
+  uint8_t reset2[] = {0x16};
+  p.command2(reset2, sizeof reset2, 12, 0);
+  p.status2(status);
+  assert(status[3] == ACTION_RESET_WELCOME && p.action() == ACTION_RESET_WELCOME);
+  assert(p.consumeAction() == ACTION_RESET_WELCOME);
+  uint8_t enter2[] = {0x15};
+  p.command2(enter2, sizeof enter2, 13, 0);
+  p.status2(status);
+  assert(status[3] == ACTION_ENTER_DFU && p.consumeAction() == ACTION_ENTER_DFU);
+  assert(p.consumeAction() == ACTION_NONE);
+  Protocol receiving;
+  const std::vector<uint8_t> begin = start(9, 0);
+  send(receiving, begin);
+  const uint8_t blockedDfu[] = {0x05};
+  receiving.command(blockedDfu, sizeof blockedDfu, 14, 0);
+  receiving.status(status);
+  assert(receiving.state() == RECEIVING && receiving.error() == BUSY &&
+         receiving.action() == ACTION_NONE && status[3] == ACTION_NONE);
+
+
+  uint8_t malformed[] = {0x05, 0};
+  p.command(malformed, sizeof malformed, 14, 0);
+  assert(p.error() == MALFORMED && p.action() == ACTION_NONE && p.state() == IDLE);
+  p.command(nullptr, 0, 15, 0);
+  assert(p.error() == MALFORMED && p.action() == ACTION_NONE && p.state() == IDLE);
+  uint8_t malformed2[] = {0x16, 0};
+  p.command2(malformed2, sizeof malformed2, 16, 0);
+  assert(p.error() == MALFORMED && p.action() == ACTION_NONE && p.state() == IDLE);
+  uint8_t unknown2[] = {0x17};
+  p.command2(unknown2, sizeof unknown2, 17, 0);
+  assert(p.error() == MALFORMED && p.action() == ACTION_NONE && p.state() == IDLE);
+}
+
 int main(){
  for(const auto& v:CRC_VECTORS)assert(crc32(v.bytes,v.size)==v.expected);
  for(const auto& v:PIXEL_VECTORS){
@@ -30,6 +79,7 @@ int main(){
    if(v.width%8)assert((v.packed[(y+1)*stride-1]&((1<<(8-v.width%8))-1))==0);
   }
  }
+ testActions();
  Protocol p; uint8_t white[4000]={};
  send(p,start(7,crc32(white,4000),3999));assert(p.error()==LENGTH && p.state()==IDLE);
  send(p,start(7,crc32(white,4000)));assert(p.state()==RECEIVING);
@@ -59,5 +109,5 @@ int main(){
  send(p,start(7,0),101);assert(p.state()==RECEIVING && received(p)==0);
  p.tick(15100);assert(p.state()==RECEIVING);p.tick(15101);assert(p.state()==ERROR && p.error()==TIMEOUT);
  send(p,start(7,0),0xfffffff0);p.tick(0x00003a88);assert(p.state()==ERROR && p.error()==TIMEOUT);
- std::puts("C++: shared CRC/pixel vectors, approved frame, bounds, ordering, duplicates, CRC/padding, commit, disconnect/retry and timer wrap PASS");
+ std::puts("C++: shared vectors, protocol bounds/CRC/duplicates/recovery, v1/v2 reset/DFU actions and status PASS");
 }

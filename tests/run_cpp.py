@@ -25,3 +25,6 @@ lines.append('static const uint32_t APPROVED_CRC = %du;'%vectors['approved']['cr
 command = ['g++','-std=c++11','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-fsanitize=address,undefined','-fno-omit-frame-pointer','-g','-I'+str(ROOT/'firmware/include'),'-I'+str(SCRATCH),str(ROOT/'tests/protocol.cpp'),'-o',str(SCRATCH/'protocol-tests')]
 subprocess.run(command,check=True)
 subprocess.run([str(SCRATCH/'protocol-tests')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
+boot_state = ['g++','-std=c++11','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-omit-frame-pointer','-g','-I'+str(ROOT/'firmware/include'),str(ROOT/'tests/boot_state.cpp'),'-o',str(SCRATCH/'boot-state-tests')]
+subprocess.run(boot_state,check=True)
+subprocess.run([str(SCRATCH/'boot-state-tests')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})

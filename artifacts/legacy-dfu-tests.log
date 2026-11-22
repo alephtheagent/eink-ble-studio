@@ -1,0 +1,145 @@
+
+> eink-ble-studio@1.0.0 test
+> node --test tests/*.test.js && python3 tests/run_cpp.py
+
+Bluetooth error: Error: read ack DATA offset 0: Device error: offset
+    at BleTransport.writeAck (file:///home/aleph/eink-studio-additive/web/ble.js:240:28)
+    at async file:///home/aleph/eink-studio-additive/web/ble.js:260:11
+    at async BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:71:62)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: write DATA offset 13: Disconnected
+    at BleTransport.operation (file:///home/aleph/eink-studio-additive/web/ble.js:117:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-studio-additive/web/ble.js:238:9)
+    at async file:///home/aleph/eink-studio-additive/web/ble.js:260:11
+    at async BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:75:56)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: Disconnected
+      at Object.writeValueWithResponse (file:///home/aleph/eink-studio-additive/tests/ble.test.js:53:61)
+      at BleTransport.writeWithResponse (file:///home/aleph/eink-studio-additive/web/ble.js:181:92)
+      at file:///home/aleph/eink-studio-additive/web/ble.js:238:68
+      at file:///home/aleph/eink-studio-additive/web/ble.js:101:157
+}
+✔ v2 GATT negotiation and both codecs deliver exact frames (221.401194ms)
+✔ connection without GATT capabilities falls back to v1 callbacks and transfer (112.517196ms)
+✔ MTU23 approved frame acknowledged end-to-end with exact duplicate after lost ACK (86.122202ms)
+✔ explicit rejection never commits or reports success (10.47114ms)
+✔ disconnect fails incomplete transfer; fresh reconnect restarts and succeeds (108.264632ms)
+Bluetooth error: Error: write START: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-studio-additive/web/ble.js:117:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-studio-additive/web/ble.js:238:9)
+    at async file:///home/aleph/eink-studio-additive/web/ble.js:255:13
+    at async BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:80:66)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-studio-additive/web/ble.js:111:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+✔ operation timeout disconnects uncertain GATT and does not retry concurrently (18.915994ms)
+Bluetooth error: Error: refresh: Display refresh timed out; check device status before retrying
+    at file:///home/aleph/eink-studio-additive/web/ble.js:266:41
+    at async BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:84:73)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Invalid frame padding
+    at file:///home/aleph/eink-studio-additive/web/ble.js:252:70
+    at BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:24)
+    at BleTransport.send (file:///home/aleph/eink-studio-additive/web/ble.js:250:92)
+    at TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:88:25)
+    at Test.runInAsyncScope (node:async_hooks:226:14)
+    at Test.run (node:internal/test_runner/test:1402:25)
+    at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    at Test.postRun (node:internal/test_runner/test:1542:19)
+    at Test.run (node:internal/test_runner/test:1467:12)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Invalid frame length
+    at file:///home/aleph/eink-studio-additive/web/ble.js:251:79
+    at BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:24)
+    at BleTransport.send (file:///home/aleph/eink-studio-additive/web/ble.js:250:92)
+    at TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:88:71)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Web Bluetooth is unavailable in this browser. Use supported Chromium on HTTPS or localhost; iOS Safari is not supported.
+    at file:///home/aleph/eink-studio-additive/web/ble.js:124:32
+    at BleTransport.run (file:///home/aleph/eink-studio-additive/web/ble.js:89:24)
+    at BleTransport.connect (file:///home/aleph/eink-studio-additive/web/ble.js:123:27)
+    at TestContext.<anonymous> (file:///home/aleph/eink-studio-additive/tests/ble.test.js:92:68)
+    at Test.runInAsyncScope (node:async_hooks:226:14)
+    at Test.run (node:internal/test_runner/test:1402:25)
+    at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    at Test.postRun (node:internal/test_runner/test:1542:19)
+    at Test.run (node:internal/test_runner/test:1467:12)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+✔ display refresh has finite timeout distinct from transfer completion (444.030616ms)
+✔ corrupt local padding and invalid lengths never reach GATT (12.835317ms)
+✔ missing Web Bluetooth produces actionable error (1.688588ms)
+✔ shared CRC vector 0 (4.063448ms)
+✔ shared CRC vector 1 (0.88572ms)
+✔ shared CRC vector 2 (0.650679ms)
+✔ shared packing 1×1: black polarity, stride and padding (2.996414ms)
+✔ shared packing 7×2: black polarity, stride and padding (0.844127ms)
+✔ shared packing 8×2: black polarity, stride and padding (1.425912ms)
+✔ shared packing 9×2: black polarity, stride and padding (0.527827ms)
+✔ shared packing 122×2: black polarity, stride and padding (0.901623ms)
+✔ shared packing 122×250: black polarity, stride and padding (42.817654ms)
+✔ approved reference pixel-for-pixel survives conversion (155.603128ms)
+✔ threshold boundary, inversion, brightness and contrast (1.540732ms)
+✔ Floyd–Steinberg diffusion and Bayer use real spatial patterns (2.197265ms)
+✔ transparent pixels composite white; fit has margins; cover and tiles have none (93.003275ms)
+✔ rotation and position map source axes without mirroring (45.248789ms)
+✔ invalid sizes and unknown algorithms fail explicitly (2.689063ms)
+✔ real firmware completes with strict state machine and paced Nordic PRNs (2850.775085ms)
+✔ synchronous response notifications and legacy PRN response form are not lost (854.601031ms)
+✔ exact PRN multiple accepts final receive response without an extra receipt (7.779807ms)
+✔ corrupted firmware is rejected by bootloader CRC validation (737.258785ms)
+✔ non-success control response stops the transfer (10.416858ms)
+✔ unexpected disconnect rejects the transfer (3.447248ms)
+✔ missing notification times out (27.391122ms)
+✔ abort cancels an update waiting for a notification (39.390098ms)
+✔ parseRelease rejects invalid payloads with NO_PACKAGE (12.417276ms)
+✔ parseRelease provides tag and selectable asset fields from a GitHub release (3.32439ms)
+✔ selectDfuAsset prefers -dfu.zip, ignores .uf2, and is case-insensitive (1.86435ms)
+✔ selectDfuAsset throws NO_PACKAGE for a release without a DFU zip (1.145245ms)
+✔ refresh without a DFU package disables flash and says no package (670.830383ms)
+✔ latest release without DFU is not replaced by an older packaged release (113.902763ms)
+✔ invalid ZIP is rejected even when a DFU implementation is injected (173.819595ms)
+✔ legacy application manifest is accepted and distinguished from Secure DFU (166.456492ms)
+✔ unsupported legacy version and mixed images cannot be flashed (160.938583ms)
+✔ confirmation gates chooser and DFU; confirmed click chooses a fresh Secure DFU device (293.39816ms)
+✔ 404 on latest reports no release instead of silently installing an older release (136.344048ms)
+✔ network failure shows NETWORK, re-enables check, and retry works (86.578059ms)
+✔ enter DFU: write resolves and gattserverdisconnected produces success (70.232775ms)
+✔ enter DFU: write rejection mentions manual double RESET (105.760932ms)
+✔ enter DFU: no disconnect times out with ENTER_DFU_TIMEOUT (203.840943ms)
+✔ DFU failure reports DFU_FAILED, re-enables flash and resets progress (103.043075ms)
+✔ cancel remains busy until in-flight DFU settles and ignores late success (189.28356ms)
+✔ missing navigator.bluetooth disables controls and explains Chromium/Android (114.880973ms)
+✔ editor surface: approved PNG→native pixels→download, menus, keyboard, pointer, filters and local file (1770.232162ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6449.366268
+C++: shared CRC/pixel vectors, approved frame, bounds, ordering, duplicates, CRC/padding, commit, disconnect/retry and timer wrap PASS

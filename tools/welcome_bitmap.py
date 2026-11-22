@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""Generate the welcome header or verify the linked ELF against the approved PNGs.
+
+Usage: python3 tools/welcome_bitmap.py generate
+       python3 tools/welcome_bitmap.py check path/to/firmware.elf
+The check requires pyelftools, as does package_firmware.py. Packaging can call
+verify_elf(elf) with an open elftools ELFFile and include its result in its log.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import struct
+import zlib
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / 'assets/approved-welcome.png'
+PREVIEW = ROOT / 'assets/approved-welcome-preview.png'
+HEADER = ROOT / 'firmware/include/welcome.h'
+WIDTH, HEIGHT, STRIDE = 122, 250, 16
+SYMBOL = 'eink_welcome_bitmap'
+
+
+def png_pixels(path):
+    """Read a non-interlaced, one-bit grayscale PNG, validating chunk CRCs."""
+    data = path.read_bytes()
+    if data[:8] != b'\x89PNG\r\n\x1a\n':
+        raise ValueError(f'{path}: not a PNG')
+    pos, compressed, dimensions, ended = 8, bytearray(), None, False
+    while pos < len(data):
+        if pos + 12 > len(data):
+            raise ValueError(f'{path}: truncated chunk')
+        length = struct.unpack_from('>I', data, pos)[0]
+        kind = data[pos + 4:pos + 8]
+        end = pos + 12 + length
+        if end > len(data):
+            raise ValueError(f'{path}: truncated chunk data')
+        payload = data[pos + 8:pos + 8 + length]
+        crc = struct.unpack_from('>I', data, pos + 8 + length)[0]
+        if zlib.crc32(kind + payload) != crc:
+            raise ValueError(f'{path}: invalid {kind!r} CRC')
+        if kind == b'IHDR':
+            if dimensions is not None or length != 13:
+                raise ValueError(f'{path}: invalid IHDR')
+            width, height, depth, color, compression, filtering, interlace = struct.unpack('>IIBBBBB', payload)
+            if not width or not height or (depth, color, compression, filtering, interlace) != (1, 0, 0, 0, 0):
+                raise ValueError(f'{path}: expected non-interlaced 1-bit grayscale PNG')
+            dimensions = (width, height)
+        elif kind == b'IDAT':
+            compressed.extend(payload)
+        elif kind == b'IEND':
+            ended = True
+            pos = end
+            break
+        elif kind[0] & 0x20 == 0:
+            raise ValueError(f'{path}: unsupported critical chunk {kind!r}')
+        pos = end
+    if dimensions is None or not ended or pos != len(data):
+        raise ValueError(f'{path}: incomplete PNG')
+    width, height = dimensions
+    stride = (width + 7) // 8
+    raw = zlib.decompress(compressed)
+    if len(raw) != height * (stride + 1):
+        raise ValueError(f'{path}: unexpected decompressed size')
+    rows, previous = [], bytearray(stride)
+    for y in range(height):
+        start = y * (stride + 1)
+        filter_type = raw[start]
+        row = bytearray(raw[start + 1:start + 1 + stride])
+        for x in range(stride):
+            left = row[x - 1] if x else 0
+            above = previous[x]
+            upper_left = previous[x - 1] if x else 0
+            if filter_type == 0:
+                predictor = 0
+            elif filter_type == 1:
+                predictor = left
+            elif filter_type == 2:
+                predictor = above
+            elif filter_type == 3:
+                predictor = (left + above) // 2
+            elif filter_type == 4:
+                p = left + above - upper_left
+                a, b, c = abs(p - left), abs(p - above), abs(p - upper_left)
+                predictor = left if a <= b and a <= c else above if b <= c else upper_left
+            else:
+                raise ValueError(f'{path}: invalid PNG filter {filter_type}')
+            row[x] = (row[x] + predictor) & 255
+        rows.append(row)
+        previous = row
+    # PNG grayscale 0 is black; the frame uses black=1, MSB first.
+    return width, height, [[1 - ((row[x // 8] >> (7 - x % 8)) & 1)
+                            for x in range(width)] for row in rows]
+
+
+def approved_frame():
+    width, height, pixels = png_pixels(SOURCE)
+    if (width, height) != (WIDTH, HEIGHT):
+        raise ValueError(f'{SOURCE}: expected {WIDTH}x{HEIGHT}, got {width}x{height}')
+    pw, ph, preview = png_pixels(PREVIEW)
+    if (pw, ph) != (WIDTH * 5, HEIGHT * 5):
+        raise ValueError(f'{PREVIEW}: expected 610x1250, got {pw}x{ph}')
+    for y in range(ph):
+        for x in range(pw):
+            if preview[y][x] != pixels[y // 5][x // 5]:
+                raise ValueError(f'preview differs at ({x}, {y})')
+    frame = bytearray(STRIDE * HEIGHT)
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            frame[y * STRIDE + x // 8] |= pixels[y][x] << (7 - x % 8)
+    return bytes(frame), pixels
+
+
+def header_text(frame):
+    rows = [', '.join(f'0x{b:02x}' for b in frame[i:i + STRIDE]) + ','
+            for i in range(0, len(frame), STRIDE)]
+    return ('#ifndef EINK_WELCOME_H\n#define EINK_WELCOME_H\n\n#include <stdint.h>\n\n'
+            '// Generated by tools/welcome_bitmap.py from assets/approved-welcome.png.\n'
+            '// 122x250, 16 bytes per row, MSB first, black=1; six zero padding bits.\n'
+            '// Include in exactly one translation unit.\n'
+            'extern "C" {\nextern const uint8_t eink_welcome_bitmap[4000] = {\n' +
+            ''.join('  ' + row + '\n' for row in rows) +
+            '};\n}\n\n#endif\n')
+
+
+def verify_elf(elf):
+    """Return a comparison log, or raise ValueError for any mismatch."""
+    frame, pixels = approved_frame()
+    if HEADER.read_text() != header_text(frame):
+        raise ValueError('welcome.h differs from generated approved PNG')
+    symtab = elf.get_section_by_name('.symtab')
+    if symtab is None:
+        raise ValueError('ELF has no symbol table')
+    matches = symtab.get_symbol_by_name(SYMBOL) or []
+    if len(matches) != 1:
+        raise ValueError(f'ELF must contain exactly one {SYMBOL} symbol')
+    symbol = matches[0]
+    index = symbol['st_shndx']
+    if not isinstance(index, int) or symbol['st_size'] != len(frame):
+        raise ValueError(f'{SYMBOL} must be a defined 4000-byte object')
+    section = elf.get_section(index)
+    offset = symbol['st_value'] - section['sh_addr']
+    if offset < 0 or offset + len(frame) > section['sh_size'] or section['sh_type'] == 'SHT_NOBITS':
+        raise ValueError(f'{SYMBOL} is outside file-backed section')
+    actual = section.data()[offset:offset + len(frame)]
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            bit = (actual[y * STRIDE + x // 8] >> (7 - x % 8)) & 1
+            if bit != pixels[y][x]:
+                raise ValueError(f'ELF bitmap differs at ({x}, {y})')
+        if actual[y * STRIDE + STRIDE - 1] & 0x3f:
+            raise ValueError(f'ELF bitmap has nonzero padding on row {y}')
+    if actual != frame:
+        raise ValueError('ELF bitmap differs from generated frame')
+    return {'source': 'assets/approved-welcome.png', 'source_size': [WIDTH, HEIGHT],
+            'preview': 'assets/approved-welcome-preview.png', 'preview_size': [610, 1250],
+            'preview_scale': 5, 'source_pixels_compared': WIDTH * HEIGHT,
+            'preview_pixels_compared': 610 * 1250, 'elf_symbol': SYMBOL,
+            'frame_bytes': len(frame), 'frame_sha256': hashlib.sha256(frame).hexdigest(),
+            'layout': 'MSB-first, black=1, stride=16, zero padding', 'match': True}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest='command', required=True)
+    sub.add_parser('generate')
+    check = sub.add_parser('check')
+    check.add_argument('elf', type=Path)
+    args = parser.parse_args()
+    if args.command == 'generate':
+        frame, _ = approved_frame()
+        HEADER.write_text(header_text(frame))
+        print(f'Generated {HEADER.relative_to(ROOT)}: {len(frame)} bytes, sha256 {hashlib.sha256(frame).hexdigest()}')
+    else:
+        from elftools.elf.elffile import ELFFile
+        with args.elf.open('rb') as stream:
+            print(json.dumps(verify_elf(ELFFile(stream)), indent=2))
+
+
+if __name__ == '__main__':
+    main()

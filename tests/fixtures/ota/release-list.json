@@ -1,0 +1,91 @@
+[
+  {
+    "url": "https://api.github.com/repos/eink/ble-bw/releases/48300221",
+    "html_url": "https://github.com/eink/ble-bw/releases/tag/v2.3.0",
+    "id": 48300221,
+    "node_id": "RE_kwDOJq7c1s4B4QDd",
+    "tag_name": "v2.3.0",
+    "target_commitish": "main",
+    "name": "v2.3.0 (draft)",
+    "draft": true,
+    "prerelease": false,
+    "created_at": "2026-11-18T11:02:00Z",
+    "published_at": null,
+    "assets": [
+      {
+        "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/274990001",
+        "id": 274990001,
+        "name": "eink-ble-bw-s140v6-dfu.zip",
+        "label": "Draft DFU package",
+        "content_type": "application/zip",
+        "state": "uploaded",
+        "size": 103936,
+        "download_count": 0,
+        "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.3.0/eink-ble-bw-s140v6-dfu.zip"
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/eink/ble-bw/releases/48299007",
+    "html_url": "https://github.com/eink/ble-bw/releases/tag/v2.2.0-rc1",
+    "id": 48299007,
+    "node_id": "RE_kwDOJq7c1s4B4Pm_",
+    "tag_name": "v2.2.0-rc1",
+    "target_commitish": "release/2.2",
+    "name": "v2.2.0-rc1",
+    "draft": false,
+    "prerelease": true,
+    "created_at": "2026-11-15T08:20:31Z",
+    "published_at": "2026-11-15T08:41:12Z",
+    "assets": [
+      {
+        "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/274812230",
+        "id": 274812230,
+        "name": "eink-ble-bw-s140v6-dfu.zip",
+        "label": "Release candidate DFU package",
+        "content_type": "application/zip",
+        "state": "uploaded",
+        "size": 103680,
+        "download_count": 24,
+        "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.2.0-rc1/eink-ble-bw-s140v6-dfu.zip"
+      }
+    ]
+  },
+  {
+    "url": "https://api.github.com/repos/eink/ble-bw/releases/48211933",
+    "html_url": "https://github.com/eink/ble-bw/releases/tag/v2.1.0",
+    "id": 48211933,
+    "node_id": "RE_kwDOJq7c1s4B3rUd",
+    "tag_name": "v2.1.0",
+    "target_commitish": "main",
+    "name": "v2.1.0",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-10-14T09:12:44Z",
+    "published_at": "2026-10-14T09:31:07Z",
+    "assets": [
+      {
+        "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/271004411",
+        "id": 271004411,
+        "name": "eink-ble-bw-s140v6-dfu.zip",
+        "label": "DFU package (recommended)",
+        "content_type": "application/zip",
+        "state": "uploaded",
+        "size": 103424,
+        "download_count": 512,
+        "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.1.0/eink-ble-bw-s140v6-dfu.zip"
+      },
+      {
+        "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/271004410",
+        "id": 271004410,
+        "name": "eink-ble-bw-s140v6.uf2",
+        "label": null,
+        "content_type": "application/octet-stream",
+        "state": "uploaded",
+        "size": 52992,
+        "download_count": 1337,
+        "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.1.0/eink-ble-bw-s140v6.uf2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "url": "https://api.github.com/repos/eink/ble-bw/releases/48211933",
+  "assets_url": "https://api.github.com/repos/eink/ble-bw/releases/48211933/assets",
+  "upload_url": "https://uploads.github.com/repos/eink/ble-bw/releases/48211933/assets{?name,label}",
+  "html_url": "https://github.com/eink/ble-bw/releases/tag/v2.1.0",
+  "id": 48211933,
+  "node_id": "RE_kwDOJq7c1s4B3rUd",
+  "tag_name": "v2.1.0",
+  "target_commitish": "main",
+  "name": "v2.1.0",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2026-10-14T09:12:44Z",
+  "published_at": "2026-10-14T09:31:07Z",
+  "author": {
+    "login": "eink-ci",
+    "id": 118900241,
+    "node_id": "U_kgDOBxaS8Q",
+    "avatar_url": "https://avatars.githubusercontent.com/u/118900241?v=4",
+    "type": "User"
+  },
+  "assets": [
+    {
+      "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/271004411",
+      "id": 271004411,
+      "node_id": "RA_kwDOJq7c1s4QJfd7",
+      "name": "eink-ble-bw-s140v6-dfu.zip",
+      "label": "DFU package (recommended)",
+      "uploader": {
+        "login": "eink-ci",
+        "id": 118900241,
+        "type": "User"
+      },
+      "content_type": "application/zip",
+      "state": "uploaded",
+      "size": 103424,
+      "download_count": 512,
+      "created_at": "2026-10-14T09:30:02Z",
+      "updated_at": "2026-10-14T09:30:05Z",
+      "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.1.0/eink-ble-bw-s140v6-dfu.zip"
+    },
+    {
+      "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/271004410",
+      "id": 271004410,
+      "node_id": "RA_kwDOJq7c1s4QJfd6",
+      "name": "eink-ble-bw-s140v6.uf2",
+      "label": null,
+      "uploader": {
+        "login": "eink-ci",
+        "id": 118900241,
+        "type": "User"
+      },
+      "content_type": "application/octet-stream",
+      "state": "uploaded",
+      "size": 52992,
+      "download_count": 1337,
+      "created_at": "2026-10-14T09:30:04Z",
+      "updated_at": "2026-10-14T09:30:06Z",
+      "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.1.0/eink-ble-bw-s140v6.uf2"
+    }
+  ],
+  "tarball_url": "https://api.github.com/repos/eink/ble-bw/tarball/v2.1.0",
+  "zipball_url": "https://api.github.com/repos/eink/ble-bw/zipball/v2.1.0",
+  "body": "Fixes display refresh timing and lowers idle current."
+}

@@ -1,0 +1,185 @@
+{
+  "origin": "0x26000",
+  "limit_exclusive": "0xec000",
+  "family": "0xada52840",
+  "binary_bytes": 146712,
+  "image_end_exclusive": "0x49d18",
+  "layout_margin_bytes": 664296,
+  "embedded_build_id": "0x4087967",
+  "state_sector": {
+    "address": "0xec000",
+    "size_bytes": 4096,
+    "excluded_from_application": true
+  },
+  "uf2_bytes": 293888,
+  "blocks": 574,
+  "initial_sp": "0x20040000",
+  "reset_vector": "0x36549",
+  "arm_smoke": [
+    {
+      "initial_out": 0,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 0,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    }
+  ],
+  "linked_action_smoke": [
+    {
+      "linked_actions": {
+        "reset_status": "01000001000000000000a00f0000000000000000",
+        "enter_dfu_status": "01000002000000000000a00f0000000000000000",
+        "dfu_while_receiving_status": "010102001f0000000000a00fbe938b3a00000000",
+        "action_armed_before_svc": false
+      }
+    },
+    {
+      "linked_deferred_action": {
+        "successful_att_authorization_arms": true,
+        "failed_att_authorization_clears": [
+          2,
+          2,
+          0,
+          0
+        ],
+        "failed_status_publication_att_error": 270,
+        "failed_status_publication_clears": [
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "welcome": {
+    "source": "assets/approved-welcome.png",
+    "source_size": [
+      122,
+      250
+    ],
+    "preview": "assets/approved-welcome-preview.png",
+    "preview_size": [
+      610,
+      1250
+    ],
+    "preview_scale": 5,
+    "source_pixels_compared": 30500,
+    "preview_pixels_compared": 762500,
+    "elf_symbol": "eink_welcome_bitmap",
+    "frame_bytes": 4000,
+    "frame_sha256": "dc6e05e5f09d7df9b32d3952472577744d534723f11f60ed1204370180169733",
+    "layout": "MSB-first, black=1, stride=16, zero padding",
+    "match": true
+  },
+  "authorize_contract": "PASS: linked ARM v1/v2 callback/receiver and core PREP/EXEC/capabilities to SVC boundary; injected SVC returns verify deferred action success/failure",
+  "scope": "Linked ARM protocol/authorization with injected SVC outcomes, plus GPIO/SPI memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
+  "sha256": {
+    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "dcd5f83824d8f2c7434dd66676802fafd7532c14decaf38799f00c70f2c10676",
+    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "eae6cb26cd8b32f7ad49ff7cb04ecf51ae24b8f37f15af7a4938b60ce7b0a1cb",
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "104ba61c59ec7cd0802e0c8292200b49a616f4364c9ae34821b3d77c3382648a",
+    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "7b676b300abd8080e48d79111fdf3309d244f9442b6ea4b8d749410b89dc8605",
+    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "0004facb12d78de0ab46d092e40b189bb3422d8a62ba15ac4b0a96fa72a809c6"
+  }
+}

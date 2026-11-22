@@ -1,0 +1,25 @@
+✔ parseRelease rejects invalid payloads with NO_PACKAGE (10.627241ms)
+✔ parseRelease provides tag and selectable asset fields from a GitHub release (4.94059ms)
+✔ selectDfuAsset prefers -dfu.zip, ignores .uf2, and is case-insensitive (1.963751ms)
+✔ selectDfuAsset throws NO_PACKAGE for a release without a DFU zip (0.827535ms)
+✔ refresh without a DFU package disables flash and says no package (927.390242ms)
+✔ latest release without DFU is not replaced by an older packaged release (369.174796ms)
+✔ invalid ZIP is rejected even when a DFU implementation is injected (210.86684ms)
+✔ legacy DFU v0.5 CRC16 manifest is rejected as incompatible (164.739757ms)
+✔ confirmation gates chooser and DFU; confirmed click chooses a fresh Secure DFU device (276.451475ms)
+✔ 404 on latest reports no release instead of silently installing an older release (220.612095ms)
+✔ network failure shows NETWORK, re-enables check, and retry works (130.333624ms)
+✔ enter DFU: write resolves and gattserverdisconnected produces success (96.838396ms)
+✔ enter DFU: write rejection mentions manual double RESET (104.431061ms)
+✔ enter DFU: no disconnect times out with ENTER_DFU_TIMEOUT (98.870016ms)
+✔ DFU failure reports DFU_FAILED, re-enables flash and resets progress (122.178053ms)
+✔ cancel remains busy until in-flight DFU settles and ignores late success (206.259024ms)
+✔ missing navigator.bluetooth disables controls and explains Chromium/Android (185.639945ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4857.901957

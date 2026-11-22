@@ -1,0 +1,60 @@
+{
+  "transport": "legacy",
+  "firmwareBytes": 146712,
+  "controls": [
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      8,
+      8,
+      0
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "prnReceipts": 916,
+  "bootloaderState": "done",
+  "chooser": [
+    {
+      "filters": [
+        {
+          "services": [
+            "00001530-1212-efde-1523-785feabcd123"
+          ]
+        },
+        {
+          "services": [
+            65113
+          ]
+        }
+      ],
+      "optionalServices": [
+        "00001530-1212-efde-1523-785feabcd123",
+        65113
+      ]
+    }
+  ],
+  "progress": 100,
+  "status": "Firmware update finished. The device restarts into the application; reconnect to send frames again.",
+  "busy": false,
+  "overflow": false,
+  "simulatedGatt": true,
+  "physicalFlash": false
+}

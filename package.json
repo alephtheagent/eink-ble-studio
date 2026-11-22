@@ -7,6 +7,7 @@
     "test": "node --test tests/*.test.js && python3 tests/run_cpp.py",
     "build:firmware": "pio run -d firmware -e repin_bw",
     "package:firmware": "python3 tools/package_firmware.py",
+    "package:dfu": "python3 tools/dfu_package.py artifacts/eink-ble-welcome-once-dfu-bw-s140v6.hex --application-version 1 --output artifacts/eink-ble-welcome-once-dfu-bw-s140v6.dfu.zip --result artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.json",
     "serve": "python3 -m http.server 8080 --directory web --bind 127.0.0.1"
   },
   "devDependencies": {

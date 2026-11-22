@@ -1,0 +1,8 @@
+{
+  "approvedFrame": "exact",
+  "tileAndThreshold": "changed frame",
+  "fineRotationUndo": "pass",
+  "textOnlySend": "4000-byte frame exactly matches exported frame through mocked v1 GATT",
+  "touchPinch": "equal-distance no-op; pinch increases size one step",
+  "pageErrors": []
+}

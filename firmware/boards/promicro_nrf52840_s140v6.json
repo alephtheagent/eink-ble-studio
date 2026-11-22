@@ -14,7 +14,7 @@
   },
   "frameworks": ["arduino"],
   "name": "Pro Micro nice!nano v2 pinout, S140 v6 application only",
-  "upload": {"maximum_ram_size": 237568, "maximum_size": 815104, "protocol": "nrfutil", "protocols": ["nrfutil"], "require_upload_port": true},
+  "upload": {"maximum_ram_size": 237568, "maximum_size": 811008, "protocol": "nrfutil", "protocols": ["nrfutil"], "require_upload_port": true},
   "url": "https://nicekeyboards.com/docs/nice-nano/pinout-schematic/",
   "vendor": "Local explicit pinout profile"
 }

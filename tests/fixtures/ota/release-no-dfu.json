@@ -1,0 +1,42 @@
+{
+  "url": "https://api.github.com/repos/eink/ble-bw/releases/48211940",
+  "html_url": "https://github.com/eink/ble-bw/releases/tag/v2.1.1",
+  "id": 48211940,
+  "node_id": "RE_kwDOJq7c1s4B3rUs",
+  "tag_name": "v2.1.1",
+  "target_commitish": "main",
+  "name": "v2.1.1",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2026-11-02T18:40:11Z",
+  "published_at": "2026-11-02T18:44:29Z",
+  "author": {
+    "login": "eink-ci",
+    "id": 118900241,
+    "type": "User"
+  },
+  "assets": [
+    {
+      "url": "https://api.github.com/repos/eink/ble-bw/releases/assets/272881004",
+      "id": 272881004,
+      "node_id": "RA_kwDOJq7c1s4QQZLc",
+      "name": "eink-ble-bw-s140v6.uf2",
+      "label": null,
+      "uploader": {
+        "login": "eink-ci",
+        "id": 118900241,
+        "type": "User"
+      },
+      "content_type": "application/octet-stream",
+      "state": "uploaded",
+      "size": 53248,
+      "download_count": 88,
+      "created_at": "2026-11-02T18:43:58Z",
+      "updated_at": "2026-11-02T18:44:01Z",
+      "browser_download_url": "https://github.com/eink/ble-bw/releases/download/v2.1.1/eink-ble-bw-s140v6.uf2"
+    }
+  ],
+  "tarball_url": "https://api.github.com/repos/eink/ble-bw/tarball/v2.1.1",
+  "zipball_url": "https://api.github.com/repos/eink/ble-bw/zipball/v2.1.1",
+  "body": "Signing build only; no packaged DFU artifact was uploaded for this tag."
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "Chromium localhost, real web/ota.js and local JSZip 3.10.1, CRC-32 1.2.2, web-bluetooth-dfu 1.2.1; simulated GATT only; no device flashed",
+  "package": "Generated ZIP with Nordic Secure DFU application manifest, 3-byte init packet and 90-byte application image",
+  "success": {
+    "chooser_service": 65113,
+    "packet_writes_at_settlement": 6,
+    "packet_writes_after_650ms": 6,
+    "firmware_progress_percent": [0, 0, 22, 44, 67, 89, 100, 100],
+    "disconnects": 1,
+    "busy_after_settlement": false,
+    "status": "Firmware update finished. The device restarts into the application; reconnect to send frames again."
+  },
+  "cancel_during_firmware": {
+    "packet_writes_at_settlement": 2,
+    "packet_writes_after_650ms": 2,
+    "disconnects": 1,
+    "connected_after_settlement": false,
+    "busy_after_settlement": false,
+    "status": "Cancellation requested. Close the device chooser if it is open; the device may remain in the bootloader and need another update."
+  },
+  "resume_crc_retry_smoke": {
+    "scope": "Same local libraries and simulated GATT; 3-byte init and 60-byte firmware; 20-byte objects",
+    "init_select_full_length_wrong_crc": "Init retransmitted and update completed",
+    "firmware_select_offset_20": "Resumed with two 20-byte firmware writes and update completed",
+    "firmware_object_checksum_mismatch": "DFU failed: DFU checksum mismatch.; busy cleared",
+    "retry_after_checksum_failure": "Fresh chooser and new DFU instance; three 20-byte firmware writes; update completed",
+    "vendor_limitation": "Firmware SELECT does not call checkCrc, so the vendor library does not validate the reported resume prefix CRC at selection."
+  },
+  "network_probe": {
+    "target_latest_url": "https://api.github.com/repos/alephtheagent/eink-ble-studio/releases/latest",
+    "target_latest_status": 404,
+    "target_latest_message": "Not Found",
+    "public_control_api": "https://api.github.com/repos/cli/cli/releases/latest",
+    "public_control_api_status": 200,
+    "public_control_asset": "gh_2.105.0_linux_386.deb",
+    "public_control_browser_download": "TypeError: Failed to fetch",
+    "public_control_asset_api_accept_octet_stream": "TypeError: Failed to fetch",
+    "public_control_curl_headers": "302 github.com to release-assets.githubusercontent.com, then 200; observed responses lacked Access-Control-Allow-Origin",
+    "limitation": "No target asset was available for its own download or CORS probe; public control demonstrates that metadata API access does not guarantee browser binary access."
+  }
+}

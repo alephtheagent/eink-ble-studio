@@ -1,0 +1,32 @@
+{
+  "package": "/home/aleph/eink-release/artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip",
+  "sha256": "728958afbec525b69945c3f3c4be635b92736852e04b7717e8ce77896c3ddfde",
+  "application_version": 1,
+  "dfu_version": 0.5,
+  "device_type": "0x52",
+  "sd_req": [
+    "0xb6"
+  ],
+  "hex_bounds": {
+    "min": "0x26000",
+    "max_exclusive": "0x49d18"
+  },
+  "application_bin_bytes": 146712,
+  "firmware_sha256": "104ba61c59ec7cd0802e0c8292200b49a616f4364c9ae34821b3d77c3382648a",
+  "signature": "none: DFU 0.5 legacy init packet (CRC16 metadata only)",
+  "files": {
+    "manifest.json": {
+      "bytes": 510,
+      "sha256": "fae88ea90edf96aa4d32b2675af05127f40fdcec13f10853466fb0f1a57f5956"
+    },
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": {
+      "bytes": 146712,
+      "sha256": "104ba61c59ec7cd0802e0c8292200b49a616f4364c9ae34821b3d77c3382648a"
+    },
+    "eink-ble-welcome-once-dfu-bw-s140v6.dat": {
+      "bytes": 14,
+      "sha256": "4989b9d7d32df22b78f2cc079ad65dbb242b3361600e152c966fe1e6a54a1953"
+    }
+  },
+  "zip_bytes": 147668
+}

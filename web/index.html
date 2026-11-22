@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>E-Ink Studio</title><link rel="stylesheet" href="style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>E-Ink Studio</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="text.css"></head>
 <body>
 <header class="menubar"><strong>▣ E-Ink Studio</strong><nav aria-label="Editor menus">
-<details><summary>File</summary><div class="menu"><button data-action="open">Open image…</button><button data-action="reference">Open approved reference</button><button data-action="png">Save PNG</button><button data-action="frame">Save frame</button></div></details>
-<details><summary>Edit</summary><div class="menu"><button data-action="reset">Reset view</button><button data-action="rotate">Rotate 90°</button><button data-action="invert">Invert image</button></div></details>
+<details><summary>File</summary><div class="menu"><button data-action="open">Open image…</button><button data-action="reference">Open approved reference</button><button data-action="text-only">Text only</button><button data-action="png">Save PNG</button><button data-action="frame">Save frame</button><button data-action="firmware">Firmware update…</button></div></details>
+<details><summary>Edit</summary><div class="menu"><button data-action="add-text">Add text</button><button data-action="text-undo">Undo</button><button data-action="text-redo">Redo</button><button data-action="image-fine">Fine image rotation…</button><button data-action="reset">Reset view</button><button data-action="rotate">Rotate 90°</button><button data-action="invert">Invert image</button></div></details>
 <details><summary>Display</summary><div class="menu"><button data-action="connect">Connect…</button><button data-action="send">Send frame</button><button data-action="disconnect">Disconnect</button></div></details>
 </nav></header>
 <main class="workspace">
@@ -14,7 +14,7 @@
 <div class="toolbar"><button id="open" type="button">Open image…</button><input id="file" type="file" accept="image/*" tabindex="-1" aria-label="Select local image"><button id="reset" type="button">Reset view</button><button id="rotate" type="button">Rotate 90°</button></div>
 <p id="image-name">No image selected</p>
 <div class="previews"><div><div class="canvas-wrap"><canvas id="preview" width="122" height="250" tabindex="0" aria-label="Image crop preview. Drag to move; arrow keys move one pixel, Shift plus arrow ten pixels; plus and minus zoom."></canvas></div><p>Drag to position · arrows move · +/− zoom</p></div><div class="native"><canvas id="native" width="122" height="250" aria-label="Actual size 122 by 250 pixel preview"></canvas><p>Actual size<br>122 × 250</p></div></div>
-<div class="toolbar"><button id="png" type="button">Save PNG</button><button id="frame" type="button">Save frame</button><button id="reference" type="button">Approved reference</button></div>
+<div class="toolbar"><button id="png" type="button">Save PNG</button><button id="frame" type="button">Save frame</button><button id="reference" type="button">Approved reference</button><button id="toolbar-add-text" type="button">Add text</button></div>
 </div></section>
 <section class="window controls-window" aria-labelledby="controls-title"><h2 id="controls-title" class="titlebar"><span>Adjustments</span></h2><div class="window-body">
 <fieldset><legend>Layout</legend>
@@ -22,17 +22,53 @@
 <label>Zoom <input id="zoom" type="number" min="0.1" max="10" step="0.05" value="1"> ×</label>
 <label>Position X <input id="x" type="number" step="1" value="0"> px</label><label>Position Y <input id="y" type="number" step="1" value="0"> px</label>
 <label>Tile width <input id="tileSize" type="number" min="1" max="1000" step="1" value="61"> px</label><p>Tile position shifts the repeat. Vertical tiles fill the width.</p>
+<details id="image-fine-panel" hidden><summary>Fine rotation</summary><label>Rotation <input id="image-rotation" type="number" step="1" value="0"> °</label></details>
 </fieldset><fieldset><legend>Image</legend>
 <label>Brightness <input id="brightness" type="range" min="-255" max="255" value="0"><output id="brightness-value">0</output></label>
 <label>Contrast <input id="contrast" type="range" min="-255" max="255" value="0"><output id="contrast-value">0</output></label>
 <label>Threshold <input id="threshold" type="range" min="0" max="255" value="128"><output id="threshold-value">128</output></label>
 <label>Dither <select id="dither"><option value="none">None</option><option value="floyd-steinberg">Floyd–Steinberg</option><option value="bayer">Ordered / Bayer</option></select></label>
 <label class="check"><input id="invert" type="checkbox"> Invert</label>
-</fieldset></div></section>
+</fieldset><details id="text-panel" hidden><summary>Text layers</summary>
+<div class="text-controls">
+<label>Layer <select id="text-layer" aria-label="Selected layer"></select></label>
+<div class="toolbar"><button id="text-image" type="button">Select image</button><button id="text-up" type="button">Move up</button><button id="text-down" type="button">Move down</button><button id="text-delete" type="button">Delete</button></div>
+<div class="toolbar"><button id="text-undo" type="button">Undo</button><button id="text-redo" type="button">Redo</button></div>
+<div id="text-properties">
+<label>Text <textarea id="text-content" rows="3"></textarea></label>
+<div class="font-picker"><button id="font-toggle" type="button" aria-expanded="false" aria-controls="font-list"></button><div id="font-list" hidden></div></div>
+<div class="text-pair"><label>X <input id="text-x" type="number" step="1"></label><label>Y <input id="text-y" type="number" step="1"></label></div>
+<div class="text-pair"><label>Width <input id="text-width" type="number" min="1" max="500" step="1"></label><label>Height <input id="text-height" type="number" min="1" max="500" step="1"></label></div>
+<div class="text-pair"><label>Size <input id="text-scale" type="number" min="1" max="20" step="1" aria-label="Size multiplier"></label><label>Rotation <input id="text-rotation" type="number" step="1" aria-label="Rotation in degrees"></label></div>
+<label>Alignment <select id="text-align"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></label>
+<div class="text-pair"><label>Color <select id="text-color"><option value="black">Black</option><option value="white">White</option></select></label>
+<label>Background <select id="text-background"><option value="transparent">Transparent</option><option value="white">White</option><option value="black">Black</option></select></label></div>
+<label>Opacity <input id="text-opacity" type="range" min="0" max="100" value="100"><output id="text-opacity-value">100%</output></label>
+</div><p id="text-warnings" role="status"></p></div></details>
+<button id="add-text" type="button" hidden>Add text</button><button id="text-only" type="button" hidden>Text only</button><button id="image-fine" type="button" hidden>Fine image rotation</button>
+</div></section>
 <section class="window device-window" aria-labelledby="device-title"><h2 id="device-title" class="titlebar"><span>Display connection</span></h2><div class="window-body">
-<div class="toolbar"><button id="connect" type="button">Connect…</button><button id="send" type="button" disabled>Send to display</button><button id="disconnect" type="button" disabled>Disconnect</button></div>
+<div class="toolbar"><button id="connect" type="button">Connect…</button><button id="send" type="button" disabled>Send to display</button><button id="disconnect" type="button" disabled>Disconnect</button><button id="fw-open" type="button">Firmware update…</button></div>
 <label for="progress">Transfer progress</label><progress id="progress" max="4000" value="0"></progress><p id="status" role="status" aria-live="polite">Not connected.</p>
 <p>Images stay on this device. Bluetooth requires HTTPS or localhost and a supported Chromium browser. iOS/Safari and Firefox cannot send via Web Bluetooth; editing and downloads still work. No BLE authentication or encryption is required: nearby clients can replace the screen.</p>
 </div></section>
-</main><script type="module" src="app.js"></script>
+<details id="firmware" class="window firmware-window" hidden>
+<summary class="titlebar"><span>Firmware update</span></summary>
+<div class="window-body">
+<fieldset><legend>Release</legend>
+<p id="fw-version">Latest release: not checked yet.</p>
+<p id="fw-size">Package size: unknown.</p>
+<p id="fw-installed">Installed version: unknown (firmware does not report one).</p>
+<div class="toolbar"><button id="fw-check" type="button">Update to latest</button><button id="fw-enter-dfu" type="button" disabled>Enter DFU mode</button></div>
+</fieldset>
+<fieldset><legend>Flash</legend>
+<label class="check"><input id="fw-confirm" type="checkbox"> I understand that this firmware has no fallback bank.</label>
+<div class="toolbar"><button id="fw-flash" type="button" disabled>Flash firmware</button><button id="fw-cancel" type="button" disabled>Cancel</button></div>
+<label for="fw-progress">DFU progress</label><progress id="fw-progress" max="100" value="0"></progress>
+</fieldset>
+<p id="fw-status" role="status" aria-live="polite">Check for the latest firmware release to begin. Entering DFU mode restarts the display into its bootloader.</p>
+<p id="fw-warning">This device has a single firmware bank and no fallback. If the transfer is interrupted, the display may stay in the bootloader until you reconnect and repeat the update; do not disconnect, close the tab or let the device sleep during the transfer. Recovery requires a compatible bootloader and package.</p>
+<p id="fw-support">Works in Chrome and Edge on desktop, and Chrome on Android. Firefox and Safari cannot run Web Bluetooth; use the .uf2 or a Chromium browser. Anything that is not Chromium cannot flash over Bluetooth. After entering DFU the device appears as a Nordic bootloader, and the browser requires you to choose the device again in its picker.</p>
+</div></details>
+</main><script src="vendor/jszip.min.js"></script><script src="vendor/crc32.js"></script><script src="vendor/secure-dfu.js"></script><script src="legacy-dfu.js"></script><script type="module" src="app.js"></script>
 </body></html>
