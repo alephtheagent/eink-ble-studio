@@ -1,6 +1,6 @@
 # E-Ink Studio
 
-Локальный редактор 122×250 и BLE-прошивка для nRF52840 Pro Micro / nice!nano v2-совместимой платы с WeAct 2.13 **BW GxEPD2_213_BN**. Текущая версия приложения — **1.1.0** (`package.json`). Legacy DFU `application_version: 1` — отдельное целочисленное поле формата uint32, не отображающее SemVer. Никаких серверных загрузок изображений, внешних CDN, аккаунтов или runtime-зависимостей сайта.
+Локальный редактор 122×250 и BLE-прошивка для nRF52840 Pro Micro / nice!nano v2-совместимой платы с WeAct 2.13 **BW GxEPD2_213_BN**. Текущая версия приложения — **1.1.1** (`package.json`). Программный BLE connection/advertising LED отключён; аппаратные LED загрузчика и зарядки не менялись. Экономия батареи не измерялась. Плата не прошивалась. Legacy DFU `application_version: 1` — отдельное целочисленное поле формата uint32, не отображающее SemVer. Никаких серверных загрузок изображений, внешних CDN, аккаунтов или runtime-зависимостей сайта.
 
 ## Редактор
 
@@ -58,6 +58,7 @@ Enter DFU отправляет `0x05` и ждёт отключения; одно
 `CONFIG_NFCT_PINS_AS_GPIOS` сохранён в board JSON: используемые NFC-совместимые выводы должны работать как GPIO. Ядро может изменить UICR NFCPINS и выполнить reset при первом запуске. Это постоянная настройка MCU; смена bootloader для неё не нужна.
 
 BLE реализован встроенной в **Adafruit nRF52 Arduino** библиотекой Bluefruit52Lib, не заглушкой UART/Serial. Зафиксированы platform `nordicnrf52@11.0.0`, framework package `1.10601.0` (разрешённая версия `1.10601.0+sha.0fd295f1`), GxEPD2 `1.6.9`, Adafruit GFX `1.12.4`, BusIO `1.17.4`. Подробности проверки API: [docs/core-compatibility.md](docs/core-compatibility.md). Формат/UUID/команды/ACK/ошибки: [docs/protocol.md](docs/protocol.md).
+Управление программным BLE LED описано в [docs/led-power.md](docs/led-power.md).
 
 Добавлен [v2: MTU и PackBits/raw fallback](docs/protocol-v2.md), не заменяющий v1. Firmware разрешает MTU до247; Web Bluetooth использует динамические firmware capabilities (`safeWrite20..244`), а не вымышленный JS MTU API. При отсутствии capabilities старой firmware — v1. При ошибке расширенной записи — disconnect/reconnect, новый ID и `force20: true`. Итог интеграции и ограничения: [REPORT-V2.md](REPORT-V2.md).
 

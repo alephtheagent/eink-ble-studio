@@ -307,6 +307,10 @@ void setup() {
   Bluefruit.configPrphConn(247, BLE_GAP_EVENT_LENGTH_DEFAULT,
                           BLE_GATTS_HVN_TX_QUEUE_SIZE_DEFAULT, BLE_GATTC_WRITE_CMD_TX_QUEUE_SIZE_DEFAULT);
   Bluefruit.configUuid128Count(3);
+  // Bluefruit blinks LED_BLUE while advertising and lights it while connected.
+  // disable that software LED driver: nothing here needs it, and it costs battery.
+  // initVariant left the pin driven LOW (inactive), so the LED stays off.
+  Bluefruit.autoConnLed(false);
   if (!Bluefruit.begin()) while (true) delay(1000);
   Bluefruit.setName("Eink Studio");
   Bluefruit.Periph.setDisconnectCallback(disconnected);
