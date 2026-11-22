@@ -1,0 +1,588 @@
+
+> eink-ble-studio@1.1.0 test
+> node --test tests/*.test.js && python3 tests/run_cpp.py
+
+Bluetooth error: Error: discovery capabilities: discovery failed
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:173:28
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:67:40
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:67:5)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error [NetworkError]: discovery failed
+      at Object.getCharacteristic (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:35:81)
+      at file:///home/aleph/eink-notebook/web/ble.js:173:98
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+Bluetooth error: Error: Invalid device capabilities
+    at decodeCapabilities (file:///home/aleph/eink-notebook/web/ble.js:41:372)
+    at file:///home/aleph/eink-notebook/web/ble.js:180:9
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:67:40
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:67:5)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: DATA2 offset 0: Unexpected device acknowledgement; reconnect and restart the transfer
+    at ack (file:///home/aleph/eink-notebook/web/ble.js:233:15)
+    at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+    ... 5 lines matching cause stack trace ...
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  [cause]: Error: Unexpected device acknowledgement
+      at check (file:///home/aleph/eink-notebook/web/ble.js:224:160)
+      at ack (file:///home/aleph/eink-notebook/web/ble.js:230:16)
+      at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+      at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+      at async waitForActual (node:assert:615:5)
+      at async strict.rejects (node:assert:738:25)
+      at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:76:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+}
+Bluetooth error: Error: DATA2 offset 0: write DATA2 offset 0: link lost; reconnect and restart the transfer
+    at ack (file:///home/aleph/eink-notebook/web/ble.js:233:15)
+    at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+    ... 5 lines matching cause stack trace ...
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  [cause]: Error: write DATA2 offset 0: link lost
+      at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+      at async ack (file:///home/aleph/eink-notebook/web/ble.js:229:9)
+      at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+      at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+      at async waitForActual (node:assert:615:5)
+      at async strict.rejects (node:assert:738:25)
+      at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:76:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    timeout: false,
+    [cause]: Error: link lost
+        at Object.writeValueWithResponse (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:19:124)
+        at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:203:92)
+        at file:///home/aleph/eink-notebook/web/ble.js:229:68
+        at file:///home/aleph/eink-notebook/web/ble.js:123:128
+  }
+}
+Bluetooth error: Error: refresh: Display refresh timed out; check device status before retrying
+    at BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:248:43)
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:86:5)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+✔ v2 discovery and negotiated ceilings are reread for each transfer (95.53069ms)
+✔ capability absence falls back, discovery and corrupt capabilities do not (192.502207ms)
+✔ bad v2 acknowledgement or disconnect never produces a successful commit (13.553283ms)
+Bluetooth error: Error: DATA2 offset 0: write DATA2 offset 0: timed out; reconnect and restart the transfer; reconnect and restart the transfer
+    at ack (file:///home/aleph/eink-notebook/web/ble.js:233:15)
+    at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+    ... 5 lines matching cause stack trace ...
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  [cause]: Error: write DATA2 offset 0: timed out; reconnect and restart the transfer
+      at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+      at async ack (file:///home/aleph/eink-notebook/web/ble.js:229:9)
+      at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:241:11)
+      at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+      at async waitForActual (node:assert:615:5)
+      at async strict.rejects (node:assert:738:25)
+      at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:86:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    timeout: true,
+    [cause]: Error: timed out; reconnect and restart the transfer
+        at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+        at listOnTimeout (node:internal/timers:685:17)
+        at process.processTimers (node:internal/timers:618:7) {
+      timeout: true
+    }
+  }
+}
+Bluetooth error: Error: START2: write START2: No response-confirmed write API; reconnect and restart the transfer
+    at ack (file:///home/aleph/eink-notebook/web/ble.js:233:15)
+    at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:236:13)
+    ... 5 lines matching cause stack trace ...
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  [cause]: Error: write START2: No response-confirmed write API
+      at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+      at async ack (file:///home/aleph/eink-notebook/web/ble.js:229:9)
+      at async BleTransport.send2 (file:///home/aleph/eink-notebook/web/ble.js:236:13)
+      at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+      at async waitForActual (node:assert:615:5)
+      at async strict.rejects (node:assert:738:25)
+      at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble-v2-client.test.js:115:7)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    timeout: false,
+    [cause]: Error: No response-confirmed write API
+        at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:205:11)
+        at file:///home/aleph/eink-notebook/web/ble.js:229:68
+        at file:///home/aleph/eink-notebook/web/ble.js:123:128
+  }
+}
+✔ queued COMMIT is not display success and uncertain DATA is not retried (50.687446ms)
+✔ reconnect discards previous ceiling and explicit force20 bounds a restarted attempt (20.730444ms)
+✔ legacy write API is allowed only with unambiguous response-only properties (14.709187ms)
+✔ v2 codec, capabilities and framing wire contract (33.672875ms)
+✔ JS packets round trip through C++ receiver at MTU 23 (861.378619ms)
+✔ JS packets round trip through C++ receiver at MTU 128 (236.30851ms)
+✔ JS packets round trip through C++ receiver at MTU 247 (217.770868ms)
+✔ compressed tokens split at every byte and exact output length (155.876567ms)
+✔ START and COMMIT are idempotent without decoding or refreshing twice (45.220513ms)
+✔ malformed headers and excessive encoded lengths are rejected before input is consumed (41.824086ms)
+✔ v2 bounds, ownership, duplicate and recovery rules (48.141771ms)
+✔ disconnect, timeout, restart and shared v1 ownership (68.625225ms)
+✔ malformed compressed streams, CRC and padding cannot refresh (218.896217ms)
+✔ every truncated run stream prefix and trailing token is rejected (2587.10787ms)
+Bluetooth error: Error: read ack DATA offset 0: Device error: offset
+    at BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:262:38)
+    at async file:///home/aleph/eink-notebook/web/ble.js:282:11
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:71:62)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  deviceError: true
+}
+Bluetooth error: Error: write DATA offset 13: Disconnected
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:282:11
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:75:56)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: Disconnected
+      at Object.writeValueWithResponse (file:///home/aleph/eink-notebook/tests/ble.test.js:53:61)
+      at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:203:92)
+      at file:///home/aleph/eink-notebook/web/ble.js:260:68
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+✔ v2 GATT negotiation and both codecs deliver exact frames (253.462731ms)
+✔ connection without GATT capabilities falls back to v1 callbacks and transfer (151.096445ms)
+✔ MTU23 approved frame acknowledged end-to-end with exact duplicate after lost ACK (85.558319ms)
+✔ explicit rejection never commits or reports success (5.345234ms)
+✔ disconnect fails incomplete transfer; fresh reconnect restarts and succeeds (94.585335ms)
+Bluetooth error: Error: write START: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:80:66)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+✔ operation timeout disconnects uncertain GATT and does not retry concurrently (34.953653ms)
+Bluetooth error: Error: refresh: Display refresh timed out; check device status before retrying
+    at file:///home/aleph/eink-notebook/web/ble.js:288:41
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:84:73)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Invalid frame padding
+    at file:///home/aleph/eink-notebook/web/ble.js:274:70
+    at BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:24)
+    at BleTransport.send (file:///home/aleph/eink-notebook/web/ble.js:272:92)
+    at TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:88:25)
+    at Test.runInAsyncScope (node:async_hooks:226:14)
+    at Test.run (node:internal/test_runner/test:1402:25)
+    at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    at Test.postRun (node:internal/test_runner/test:1542:19)
+    at Test.run (node:internal/test_runner/test:1467:12)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Invalid frame length
+    at file:///home/aleph/eink-notebook/web/ble.js:273:79
+    at BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:24)
+    at BleTransport.send (file:///home/aleph/eink-notebook/web/ble.js:272:92)
+    at TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:88:61)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: Web Bluetooth is unavailable in this browser. Use supported Chromium on HTTPS or localhost; iOS Safari is not supported.
+    at file:///home/aleph/eink-notebook/web/ble.js:146:32
+    at BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:24)
+    at BleTransport.connect (file:///home/aleph/eink-notebook/web/ble.js:145:27)
+    at TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:92:68)
+    at Test.runInAsyncScope (node:async_hooks:226:14)
+    at Test.run (node:internal/test_runner/test:1402:25)
+    at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    at Test.postRun (node:internal/test_runner/test:1542:19)
+    at Test.run (node:internal/test_runner/test:1467:12)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+✔ display refresh has finite timeout distinct from transfer completion (380.516071ms)
+✔ corrupt local padding and invalid lengths never reach GATT (9.87656ms)
+✔ missing Web Bluetooth produces actionable error (3.398102ms)
+Bluetooth error: Error: connect: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:155:20
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:112:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: discovery service: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:160:21
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:112:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: discovery command: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:161:21
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:112:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: discovery status: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:162:20
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:112:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: discovery service: service denied
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:160:21
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:118:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: service denied
+      at service (file:///home/aleph/eink-notebook/tests/ble.test.js:117:48)
+      at Object.getPrimaryService (file:///home/aleph/eink-notebook/tests/ble.test.js:103:47)
+      at file:///home/aleph/eink-notebook/web/ble.js:160:85
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+Bluetooth error: Error: write START: write failed
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:128:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: write failed
+      at f.command.writeValueWithResponse (file:///home/aleph/eink-notebook/tests/ble.test.js:125:58)
+      at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:203:92)
+      at file:///home/aleph/eink-notebook/web/ble.js:260:68
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+Bluetooth error: Error: write DATA offset 13: write failed
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:282:11
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:128:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: write failed
+      at f.command.writeValueWithResponse (file:///home/aleph/eink-notebook/tests/ble.test.js:125:58)
+      at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:203:92)
+      at file:///home/aleph/eink-notebook/web/ble.js:260:68
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+Bluetooth error: Error: write COMMIT: write failed
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:285:9
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:128:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: write failed
+      at f.command.writeValueWithResponse (file:///home/aleph/eink-notebook/tests/ble.test.js:125:58)
+      at BleTransport.writeWithResponse (file:///home/aleph/eink-notebook/web/ble.js:203:92)
+      at file:///home/aleph/eink-notebook/web/ble.js:260:68
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+Bluetooth error: Error: read ack DATA offset 0: read failed
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.readStatusInternal (file:///home/aleph/eink-notebook/web/ble.js:195:19)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:261:19)
+    at async file:///home/aleph/eink-notebook/web/ble.js:282:11
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:132:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: Error: read failed
+      at f.status.readValue (file:///home/aleph/eink-notebook/tests/ble.test.js:131:62)
+      at file:///home/aleph/eink-notebook/web/ble.js:195:74
+      at file:///home/aleph/eink-notebook/web/ble.js:123:128
+}
+✔ discovery failures and timeouts identify the exact stage (38.264788ms)
+✔ write and acknowledgement errors identify packet and DATA offset (171.237427ms)
+Bluetooth error: Error: write START: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:141:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: read ack START: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.readStatusInternal (file:///home/aleph/eink-notebook/web/ble.js:195:19)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:261:19)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:141:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: refresh read status: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.readStatusInternal (file:///home/aleph/eink-notebook/web/ble.js:195:19)
+    at async file:///home/aleph/eink-notebook/web/ble.js:290:11
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:141:3)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: write START: Disconnected; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:154:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: 'Disconnected; reconnect and restart the transfer'
+}
+✔ timeouts identify write, ack and refresh reads without concurrent retry (426.212325ms)
+✔ connect, send and status reject re-entry and disconnect cancels pending work (7.683262ms)
+Bluetooth error: Error: connect: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:155:20
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:164:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: connect: previous connection attempt or GATT operation is still pending
+    at file:///home/aleph/eink-notebook/web/ble.js:152:57
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:165:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+Bluetooth error: Error: discovery status: Disconnected; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async file:///home/aleph/eink-notebook/web/ble.js:162:20
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:175:17)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: false,
+  [cause]: 'Disconnected; reconnect and restart the transfer'
+}
+✔ late connection cannot restore stale characteristics or disconnect a new attempt (52.598524ms)
+✔ late discovery result after disconnect cannot publish characteristics (4.265995ms)
+Bluetooth error: Error: write START: timed out; reconnect and restart the transfer
+    at BleTransport.operation (file:///home/aleph/eink-notebook/web/ble.js:139:21)
+    at async BleTransport.writeAck (file:///home/aleph/eink-notebook/web/ble.js:260:9)
+    at async file:///home/aleph/eink-notebook/web/ble.js:277:13
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:184:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+  timeout: true,
+  [cause]: Error: timed out; reconnect and restart the transfer
+      at Timeout.<anonymous> (file:///home/aleph/eink-notebook/web/ble.js:133:75)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7) {
+    timeout: true
+  }
+}
+Bluetooth error: Error: connect: previous connection attempt or GATT operation is still pending
+    at file:///home/aleph/eink-notebook/web/ble.js:152:57
+    at async BleTransport.run (file:///home/aleph/eink-notebook/web/ble.js:111:18)
+    at async waitForActual (node:assert:615:5)
+    at async strict.rejects (node:assert:738:25)
+    at async TestContext.<anonymous> (file:///home/aleph/eink-notebook/tests/ble.test.js:185:2)
+    at async Test.run (node:internal/test_runner/test:1409:7)
+    at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+✔ pending timed-out GATT write prevents reconnecting the same device (16.551451ms)
+(node:1016060) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ English and Russian catalogs are complete and use identical interpolation parameters (12.874606ms)
+✔ browser preference, switching, subscription, persistence and fallback (524.293971ms)
+✔ shared CRC vector 0 (5.078399ms)
+✔ shared CRC vector 1 (1.114438ms)
+✔ shared CRC vector 2 (1.116683ms)
+✔ shared packing 1×1: black polarity, stride and padding (4.086115ms)
+✔ shared packing 7×2: black polarity, stride and padding (0.774823ms)
+✔ shared packing 8×2: black polarity, stride and padding (0.631379ms)
+✔ shared packing 9×2: black polarity, stride and padding (0.611311ms)
+✔ shared packing 122×2: black polarity, stride and padding (4.27499ms)
+✔ shared packing 122×250: black polarity, stride and padding (34.409861ms)
+✔ approved reference pixel-for-pixel survives conversion (114.567081ms)
+✔ threshold boundary, inversion, brightness and contrast (1.551607ms)
+✔ Floyd–Steinberg diffusion and Bayer use real spatial patterns (0.926259ms)
+✔ transparent pixels composite white; fit has margins; cover and tiles have none (78.598674ms)
+✔ rotation and position map source axes without mirroring (47.679795ms)
+✔ invalid sizes and unknown algorithms fail explicitly (5.826331ms)
+✔ real firmware completes with strict state machine and paced Nordic PRNs (3183.524423ms)
+✔ synchronous response notifications and legacy PRN response form are not lost (1012.89444ms)
+✔ exact PRN multiple accepts final receive response without an extra receipt (14.376822ms)
+✔ corrupted firmware is rejected by bootloader CRC validation (751.825814ms)
+✔ non-success control response stops the transfer (6.102484ms)
+✔ unexpected disconnect rejects the transfer (7.59347ms)
+✔ missing notification times out (22.903858ms)
+✔ abort cancels an update waiting for a notification (40.975004ms)
+✔ parseRelease rejects invalid payloads with NO_PACKAGE (40.668056ms)
+✔ parseRelease provides tag and selectable asset fields from a GitHub release (7.267664ms)
+✔ selectDfuAsset prefers -dfu.zip, ignores .uf2, and is case-insensitive (4.455273ms)
+✔ selectDfuAsset throws NO_PACKAGE for a release without a DFU zip (2.625955ms)
+✔ refresh without a DFU package disables flash and says no package (831.514404ms)
+✔ latest release without DFU is not replaced by an older packaged release (304.845463ms)
+✔ invalid ZIP is rejected even when a DFU implementation is injected (200.570671ms)
+✔ legacy application manifest is accepted and distinguished from Secure DFU (281.968311ms)
+✔ unsupported legacy version and mixed images cannot be flashed (253.279657ms)
+✔ confirmation gates chooser and DFU; confirmed click chooses a fresh Secure DFU device (293.376163ms)
+✔ 404 on latest reports no release instead of silently installing an older release (97.354111ms)
+✔ network failure shows NETWORK, re-enables check, and retry works (138.605496ms)
+✔ enter DFU: write resolves and gattserverdisconnected produces success (189.883572ms)
+✔ enter DFU: write rejection re-enables entry (150.743925ms)
+✔ enter DFU: no disconnect times out with ENTER_DFU_TIMEOUT (190.747126ms)
+✔ DFU failure reports DFU_FAILED, re-enables flash and resets progress (254.833706ms)
+✔ cancel remains busy until in-flight DFU settles and ignores late success (212.417221ms)
+✔ missing navigator.bluetooth disables controls and explains Chromium/Android (249.967909ms)
+✔ production web page client talks to C++ firmware endpoint, survives reboot and reconciles conflict (8645.884551ms)
+(node:1016228) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ editor surface: approved PNG→native pixels→download, menus, keyboard, pointer, filters and local file (1944.159273ms)
+ℹ tests 78
+ℹ suites 0
+ℹ pass 78
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17190.824153
+C++: shared vectors, protocol bounds/CRC/duplicates/recovery, v1/v2 reset/DFU actions and status PASS
+C++ boot state: record validation, first/repeat boot, changed build, corruption/read failure, reset-state and persistence retry PASS
+operation 0: 167 interruption points including torn program/erase
+operation 1: 69 interruption points including torn program/erase
+operation 2: 101 interruption points including torn program/erase
+operation 3: 199 interruption points including torn program/erase
+invalid newest metadata and corrupted newest frame recover previous bank
+full, conflict, update with spare, delete and reuse passed
+pending display copy rejects new reads and uploads without corrupting its frame

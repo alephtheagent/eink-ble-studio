@@ -5,6 +5,7 @@
 #include "protocol.h"
 #include "welcome.h"
 #include "boot_state.h"
+#include "page_wire.h"
 #include <InternalFileSystem.h>
 #include <flash/flash_nrf5x.h>
 #include <nrf_nvmc.h>
@@ -25,6 +26,58 @@ BLECharacteristic statusCharacteristic("7b1e0003-6ba2-4f25-8ac7-1d54e91a1000");
 BLECharacteristic command2Characteristic("7b1e0004-6ba2-4f25-8ac7-1d54e91a1000");
 BLECharacteristic status2Characteristic("7b1e0005-6ba2-4f25-8ac7-1d54e91a1000");
 BLECharacteristic capsCharacteristic("7b1e0006-6ba2-4f25-8ac7-1d54e91a1000");
+BLECharacteristic pageCommand("7b1e0007-6ba2-4f25-8ac7-1d54e91a1000");
+BLECharacteristic pageStatus("7b1e0008-6ba2-4f25-8ac7-1d54e91a1000");
+BLECharacteristic pageData("7b1e0009-6ba2-4f25-8ac7-1d54e91a1000");
+SemaphoreHandle_t pageFlashEvent;
+volatile uint32_t pageFlashResult;
+enum PageFlashOwner : uint8_t { FLASH_OTHER, FLASH_PAGE, FLASH_WAIT_OTHER };
+volatile PageFlashOwner pageFlashOwner = FLASH_OTHER;
+extern "C" void __real_flash_nrf5x_event_cb(uint32_t event);
+extern "C" void __wrap_flash_nrf5x_event_cb(uint32_t event) {
+  PageFlashOwner owner = pageFlashOwner;
+  if (owner != FLASH_PAGE) __real_flash_nrf5x_event_cb(event);
+  if (owner != FLASH_OTHER) {
+    pageFlashResult = event;
+    pageFlashOwner = FLASH_OTHER;
+    xSemaphoreGive(pageFlashEvent);
+  }
+}
+struct PageFlash {
+  bool read(uint32_t addr, void* out, size_t len) { memcpy(out, reinterpret_cast<const void*>(addr), len); return true; }
+  bool erase(uint32_t addr) { return flash_nrf5x_erase(addr); }
+  bool program(uint32_t addr, const void* data, size_t len) {
+    if ((addr & 3) || (len & 3) || (reinterpret_cast<uintptr_t>(data) & 3)) return false;
+    const uint32_t* src = static_cast<const uint32_t*>(data);
+    while (len) {
+      size_t bytes = len > 1024 ? 1024 : len;
+      uint32_t err;
+      // SOC completion is dispatched by a FreeRTOS task. Suspend scheduling
+      // across acceptance and ownership publication, not SoftDevice interrupts.
+      // BUSY belongs to the previous flash operation: deliver its completion to
+      // the core before retrying, never count it as our write acknowledgement.
+      do {
+        vTaskSuspendAll();
+        err = sd_flash_write(reinterpret_cast<uint32_t*>(addr), src, bytes / 4);
+        if (err == NRF_SUCCESS) pageFlashOwner = FLASH_PAGE;
+        else if (err == NRF_ERROR_BUSY) pageFlashOwner = FLASH_WAIT_OTHER;
+        xTaskResumeAll();
+        if (err == NRF_SUCCESS || err == NRF_ERROR_BUSY)
+          xSemaphoreTake(pageFlashEvent, portMAX_DELAY);
+      } while (err == NRF_ERROR_BUSY);
+      if (err != NRF_SUCCESS || pageFlashResult != NRF_EVT_FLASH_OPERATION_SUCCESS) return false;
+      addr += bytes; src += bytes / 4; len -= bytes;
+    }
+    return true;
+  }
+};
+PageFlash pageFlash;
+eink::pages::Storage<PageFlash> pageStore(pageFlash);
+eink::pages::Endpoint<decltype(pageStore)> pages(pageStore);
+volatile bool pageWorking = false;
+volatile bool pageDisconnected = false;
+volatile bool pageDisplaying = false;
+uint16_t pageOwner = BLE_CONN_HANDLE_INVALID;
 eink::Protocol protocol;
 SemaphoreHandle_t protocolMutex;
 uint16_t transferConnection = BLE_CONN_HANDLE_INVALID;
@@ -118,6 +171,39 @@ bool publishStatus() {
   bool second = status2Characteristic.write(status, sizeof(status)) == sizeof(status);
   return first && second;
 }
+bool publishPages() {
+  uint8_t data[20];
+  pages.status(data);
+  if (pageStatus.write(data, sizeof(data)) != sizeof(data)) return false;
+  size_t len = pages.data(data);
+  return !len || pageData.write(data, len) == len;
+}
+
+void authorizePages(uint16_t conn, BLECharacteristic*, ble_gatts_evt_write_t* request) {
+  ble_gatts_rw_authorize_reply_params_t reply = {};
+  reply.type = BLE_GATTS_AUTHORIZE_TYPE_WRITE;
+  if (request->op != BLE_GATTS_OP_WRITE_REQ || request->offset || pageWorking || pageDisplaying ||
+      xSemaphoreTake(protocolMutex, 0) != pdTRUE) {
+    reply.params.write.gatt_status = BLE_GATT_STATUS_ATTERR_INSUF_RESOURCES;
+  } else {
+    eink::State state = protocol.state();
+    if (actionArmed || state == eink::RECEIVING || state == eink::QUEUED || state == eink::REFRESHING) {
+      reply.params.write.gatt_status = BLE_GATT_STATUS_ATTERR_INSUF_RESOURCES;
+    } else {
+      bool wasBusy = pages.busy();
+      pages.command(request->data, request->len, conn);
+      if (!wasBusy && pages.busy()) pageOwner = conn;
+      bool ok = publishPages();
+      reply.params.write.gatt_status = ok ? BLE_GATT_STATUS_SUCCESS : BLE_GATT_STATUS_ATTERR_UNLIKELY_ERROR;
+      reply.params.write.update = 1;
+      reply.params.write.offset = request->offset;
+      reply.params.write.len = request->len;
+      reply.params.write.p_data = request->data;
+    }
+    xSemaphoreGive(protocolMutex);
+  }
+  if (sd_ble_gatts_rw_authorize_reply(conn, &reply) != NRF_SUCCESS) Bluefruit.disconnect(conn);
+}
 
 // Run synchronously on Bluefruit's BLE event task: a successful Write Response
 // must not precede the status update that acknowledges the command.
@@ -131,7 +217,7 @@ void authorizeCommand(uint16_t conn, BLECharacteristic* characteristic, ble_gatt
     if (xSemaphoreTake(protocolMutex, pdMS_TO_TICKS(50)) != pdTRUE) {
       reply.params.write.gatt_status = BLE_GATT_STATUS_ATTERR_INSUF_RESOURCES;
     } else {
-      if (actionArmed) {
+      if (actionArmed || pageWorking || pageDisplaying || pages.busy()) {
         reply.params.write.gatt_status = BLE_GATT_STATUS_ATTERR_INSUF_RESOURCES;
         xSemaphoreGive(protocolMutex);
         sd_ble_gatts_rw_authorize_reply(conn, &reply);
@@ -171,7 +257,9 @@ void authorizeCommand(uint16_t conn, BLECharacteristic* characteristic, ble_gatt
 }
 
 void disconnected(uint16_t conn, uint8_t) {
+  if (pageWorking) { if (conn == pageOwner) pageDisconnected = true; return; }
   xSemaphoreTake(protocolMutex, portMAX_DELAY);
+  pages.disconnect(conn);
   if (conn == transferConnection) {
     protocol.disconnect(conn);
     transferConnection = BLE_CONN_HANDLE_INVALID;
@@ -212,7 +300,9 @@ void setup() {
     Serial.println("Welcome state flash write failed; will retry on next boot");
   protocolMutex = xSemaphoreCreateMutex();
   diagnostics = xQueueCreate(16, sizeof(Diagnostic));
-  if (!protocolMutex || !diagnostics) while (true) delay(1000);
+  pageFlashEvent = xSemaphoreCreateBinary();
+  if (!protocolMutex || !diagnostics || !pageFlashEvent) while (true) delay(1000);
+  if (!pageStore.begin()) Serial.println("Page storage recovery failed");
 
   Bluefruit.configPrphConn(247, BLE_GAP_EVENT_LENGTH_DEFAULT,
                           BLE_GATTS_HVN_TX_QUEUE_SIZE_DEFAULT, BLE_GATTC_WRITE_CMD_TX_QUEUE_SIZE_DEFAULT);
@@ -244,6 +334,19 @@ void setup() {
   capsCharacteristic.setFixedLen(20);
   capsCharacteristic.setReadAuthorizeCallback(authorizeCaps, false);
   if (capsCharacteristic.begin() != ERROR_NONE || !publishStatus()) while (true) delay(1000);
+  pageCommand.setProperties(CHR_PROPS_WRITE);
+  pageCommand.setPermission(SECMODE_NO_ACCESS, SECMODE_OPEN);
+  pageCommand.setMaxLen(244);
+  pageCommand.setWriteAuthorizeCallback(authorizePages, false);
+  if (pageCommand.begin() != ERROR_NONE) while (true) delay(1000);
+  pageStatus.setProperties(CHR_PROPS_READ);
+  pageStatus.setPermission(SECMODE_OPEN, SECMODE_NO_ACCESS);
+  pageStatus.setFixedLen(20);
+  if (pageStatus.begin() != ERROR_NONE) while (true) delay(1000);
+  pageData.setProperties(CHR_PROPS_READ);
+  pageData.setPermission(SECMODE_OPEN, SECMODE_NO_ACCESS);
+  pageData.setMaxLen(20);
+  if (pageData.begin() != ERROR_NONE || !publishPages()) while (true) delay(1000);
   if (!Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE) ||
       !Bluefruit.Advertising.addService(service) || !Bluefruit.ScanResponse.addName()) while (true) delay(1000);
   Bluefruit.Advertising.restartOnDisconnect(true);
@@ -258,6 +361,31 @@ void loop() {
     if (Serial) Serial.printf("BLE t=%lu stage=%u conn=%u op=%u offset=%u len=%u state=%u error=%u sdk=0x%08lx\n",
                              (unsigned long)d.at, d.stage, d.conn, d.op, d.offset, d.length,
                              d.state, d.error, (unsigned long)d.result);
+  }
+  xSemaphoreTake(protocolMutex, portMAX_DELAY);
+  bool doPageWork = pages.pending();
+  if (doPageWork) pageWorking = true;
+  xSemaphoreGive(protocolMutex);
+  if (doPageWork) {
+    pages.poll();
+    xSemaphoreTake(protocolMutex, portMAX_DELAY);
+    if (pageDisconnected) { pages.disconnect(pageOwner); pageDisconnected = false; }
+    bool showPage = pages.takeShow();
+    if (showPage) pageDisplaying = true;
+    publishPages();
+    pageWorking = false;
+    xSemaphoreGive(protocolMutex);
+    if (showPage) {
+      initPanel();
+      display.setFullWindow();
+      display.firstPage();
+      do {
+        display.fillScreen(GxEPD_WHITE);
+        display.drawBitmap(0, 0, pages.frame(), eink::WIDTH, eink::HEIGHT, GxEPD_BLACK);
+      } while (display.nextPage());
+      display.hibernate();
+      pageDisplaying = false;
+    }
   }
   xSemaphoreTake(protocolMutex, portMAX_DELAY);
   eink::State oldState = protocol.state();

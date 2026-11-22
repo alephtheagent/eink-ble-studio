@@ -1,0 +1,8 @@
+67e9ca1fed23295836e00e732c29e200ad86b4a6febca243f973422b60ef55db  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.elf
+e00a7ae598ce8c7891cb5709ad108126fdc4cc316732dc890d360965a601afc2  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.hex
+c96345dba4346e484cb1b20e500992e0f90538ff668adc80765992133861fca3  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.bin
+c4b56736450c4a8738f9adad06635262d90e87d1d2fc091b6ed5d6362c08fbc4  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.uf2
+2c19811f6c474f690ef69a56fff6a71fbcbe7cc5116509167f81a83211f0a716  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.zip
+428ac2e629a47b64902185fe863ad3f453fd286de2e80f76595e2de6118507e2  artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip
+732d3e3893ac9a103c99f4c8a56547a4e1f8985be6b1b569a4f252a64a558802  artifacts/task-verification/verification-welcome-once-dfu.json
+98e051fe0fa829bf6d29c1ba5a5f8de79bca50e97f5fc6b1a95e4ecadbe8ef94  artifacts/task-verification/dfu-verification.json

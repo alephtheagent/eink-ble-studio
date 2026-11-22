@@ -1,0 +1,74 @@
+
+firmware/.pio/build/repin_bw/firmware.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00034670 <_Z17adafruit_soc_taskPv>:
+   34670:	b530      	push	{r4, r5, lr}
+   34672:	4c2c      	ldr	r4, [pc, #176]	; (34724 <_Z17adafruit_soc_taskPv+0xb4>)
+   34674:	4d2c      	ldr	r5, [pc, #176]	; (34728 <_Z17adafruit_soc_taskPv+0xb8>)
+   34676:	b083      	sub	sp, #12
+   34678:	f04f 31ff 	mov.w	r1, #4294967295	; 0xffffffff
+   3467c:	f8d4 0730 	ldr.w	r0, [r4, #1840]	; 0x730
+   34680:	f002 f990 	bl	369a4 <xQueueSemaphoreTake>
+   34684:	2800      	cmp	r0, #0
+   34686:	d0f7      	beq.n	34678 <_Z17adafruit_soc_taskPv+0x8>
+   34688:	b36d      	cbz	r5, 346e6 <_Z17adafruit_soc_taskPv+0x76>
+   3468a:	a801      	add	r0, sp, #4
+   3468c:	f7ff ffd8 	bl	34640 <sd_evt_get>
+   34690:	2805      	cmp	r0, #5
+   34692:	4603      	mov	r3, r0
+   34694:	d0f0      	beq.n	34678 <_Z17adafruit_soc_taskPv+0x8>
+   34696:	2800      	cmp	r0, #0
+   34698:	d1f7      	bne.n	3468a <_Z17adafruit_soc_taskPv+0x1a>
+   3469a:	9a01      	ldr	r2, [sp, #4]
+   3469c:	1e91      	subs	r1, r2, #2
+   3469e:	4610      	mov	r0, r2
+   346a0:	2909      	cmp	r1, #9
+   346a2:	d8f2      	bhi.n	3468a <_Z17adafruit_soc_taskPv+0x1a>
+   346a4:	f20f 0c04 	addw	ip, pc, #4
+   346a8:	f85c f021 	ldr.w	pc, [ip, r1, lsl #2]
+   346ac:	00034717 	.word	0x00034717
+   346b0:	00034717 	.word	0x00034717
+   346b4:	0003468b 	.word	0x0003468b
+   346b8:	0003468b 	.word	0x0003468b
+   346bc:	0003468b 	.word	0x0003468b
+   346c0:	0003468b 	.word	0x0003468b
+   346c4:	0003468b 	.word	0x0003468b
+   346c8:	00034701 	.word	0x00034701
+   346cc:	00034701 	.word	0x00034701
+   346d0:	00034701 	.word	0x00034701
+   346d4:	2b0a      	cmp	r3, #10
+   346d6:	d004      	beq.n	346e2 <_Z17adafruit_soc_taskPv+0x72>
+   346d8:	2b09      	cmp	r3, #9
+   346da:	d021      	beq.n	34720 <_Z17adafruit_soc_taskPv+0xb0>
+   346dc:	2b0b      	cmp	r3, #11
+   346de:	d102      	bne.n	346e6 <_Z17adafruit_soc_taskPv+0x76>
+   346e0:	2001      	movs	r0, #1
+   346e2:	f7f7 f8ad 	bl	2b840 <tusb_hal_nrf_power_event>
+   346e6:	a801      	add	r0, sp, #4
+   346e8:	f7ff ffaa 	bl	34640 <sd_evt_get>
+   346ec:	2805      	cmp	r0, #5
+   346ee:	d0c3      	beq.n	34678 <_Z17adafruit_soc_taskPv+0x8>
+   346f0:	2800      	cmp	r0, #0
+   346f2:	d1f8      	bne.n	346e6 <_Z17adafruit_soc_taskPv+0x76>
+   346f4:	9b01      	ldr	r3, [sp, #4]
+   346f6:	f1a3 0209 	sub.w	r2, r3, #9
+   346fa:	2a02      	cmp	r2, #2
+   346fc:	d8f3      	bhi.n	346e6 <_Z17adafruit_soc_taskPv+0x76>
+   346fe:	e7e9      	b.n	346d4 <_Z17adafruit_soc_taskPv+0x64>
+   34700:	2a0a      	cmp	r2, #10
+   34702:	d004      	beq.n	3470e <_Z17adafruit_soc_taskPv+0x9e>
+   34704:	2a09      	cmp	r2, #9
+   34706:	d009      	beq.n	3471c <_Z17adafruit_soc_taskPv+0xac>
+   34708:	2a0b      	cmp	r2, #11
+   3470a:	d1be      	bne.n	3468a <_Z17adafruit_soc_taskPv+0x1a>
+   3470c:	2301      	movs	r3, #1
+   3470e:	4618      	mov	r0, r3
+   34710:	f7f7 f896 	bl	2b840 <tusb_hal_nrf_power_event>
+   34714:	e7b9      	b.n	3468a <_Z17adafruit_soc_taskPv+0x1a>
+   34716:	f7f7 fe57 	bl	2c3c8 <__wrap_flash_nrf5x_event_cb>
+   3471a:	e7b6      	b.n	3468a <_Z17adafruit_soc_taskPv+0x1a>
+   3471c:	2302      	movs	r3, #2
+   3471e:	e7f6      	b.n	3470e <_Z17adafruit_soc_taskPv+0x9e>

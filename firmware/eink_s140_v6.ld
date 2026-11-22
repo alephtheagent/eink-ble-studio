@@ -1,9 +1,9 @@
-/* S140 v6 application layout; 0xEC000-0xECFFF is boot state. */
+/* S140 v6 application; pages start at 0xCC000, boot state at 0xEC000. */
 SEARCH_DIR(.)
 GROUP(-lgcc -lc -lnosys)
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x26000, LENGTH = 0xEC000 - 0x26000
+  FLASH (rx) : ORIGIN = 0x26000, LENGTH = 0xCC000 - 0x26000
   RAM (rwx) : ORIGIN = 0x20006000, LENGTH = 0x20040000 - 0x20006000
 }
 SECTIONS

@@ -7,22 +7,52 @@
   const SERVICE = '00001530-1212-efde-1523-785feabcd123';
   const CONTROL = '00001531-1212-efde-1523-785feabcd123';
   const PACKET = '00001532-1212-efde-1523-785feabcd123';
-  const statuses = { 2: 'Invalid state', 3: 'Not supported', 4: 'Data size exceeds limit', 5: 'CRC error', 6: 'Operation failed' };
+  const statusKeys = { 2: 'legacy.status.invalidState', 3: 'legacy.status.notSupported', 4: 'legacy.status.dataSize', 5: 'legacy.status.crc', 6: 'legacy.status.operationFailed' };
+  const english = {
+    'legacy.invalidPrn':'Legacy DFU PRN must be between 1 and 8.', 'legacy.invalidChunk':'Legacy DFU chunks must be between 1 and 20 bytes.',
+    'legacy.invalidTimeout':'Legacy DFU timeout must be positive.', 'legacy.cancelled':'Legacy DFU cancelled.',
+    'legacy.timeout':'Legacy DFU timeout: {stage}.', 'legacy.status.invalidState':'Invalid state',
+    'legacy.status.notSupported':'Not supported', 'legacy.status.dataSize':'Data size exceeds limit',
+    'legacy.status.crc':'CRC error', 'legacy.status.operationFailed':'Operation failed',
+    'legacy.status.unknown':'Unknown status', 'legacy.opcodeFailure':'Legacy DFU opcode 0x{opcode}: {status} ({code}).',
+    'legacy.alreadyRunning':'Legacy DFU update already running.', 'legacy.emptyFiles':'Legacy DFU requires nonempty init and firmware.',
+    'legacy.disconnected':'Legacy DFU connection was lost (disconnected).',
+    'legacy.starting':'Legacy DFU 0.5 (Adafruit), PRN {prn}', 'legacy.validated':'Legacy DFU validated; activating firmware.',
+    'legacy.operationFailed':'{stage}: {error}', 'legacy.stage.gattConnect':'GATT connect',
+    'legacy.stage.gattWrite':'GATT write','legacy.stage.service':'DFU service discovery',
+    'legacy.stage.control':'control discovery','legacy.stage.packet':'packet discovery',
+    'legacy.stage.notifications':'start notifications','legacy.stage.activation':'firmware activation',
+    'legacy.stage.response':'response for opcode 0x{opcode}'
+  };
+  const format = (template, vars = {}) => template.replace(/\{([A-Za-z0-9_.-]+)\}/g, (token, key) =>
+    Object.hasOwn(vars, key) ? String(vars[key]) : token);
+  const englishTranslator = (key, vars) => format(english[key] || key, vars);
   const bytes = value => ArrayBuffer.isView(value)
     ? new Uint8Array(value.buffer, value.byteOffset, value.byteLength) : new Uint8Array(value);
 
   class LegacyDfu {
-    constructor({ bluetooth, prn = 8, chunk = 20, onLog = () => {}, onProgress = () => {}, timeout = 10000 } = {}) {
-      if (!Number.isInteger(prn) || prn < 1 || prn > 8) throw new RangeError('Legacy DFU PRN must be between 1 and 8.');
-      if (!Number.isInteger(chunk) || chunk < 1 || chunk > 20) throw new RangeError('Legacy DFU chunks must be between 1 and 20 bytes.');
-      if (!Number.isFinite(timeout) || timeout <= 0) throw new RangeError('Legacy DFU timeout must be positive.');
+    constructor({ bluetooth, prn = 8, chunk = 20, onLog = () => {}, onProgress = () => {}, timeout = 10000, translate = englishTranslator } = {}) {
+      this.translate = typeof translate === 'function' ? translate : englishTranslator;
+      if (!Number.isInteger(prn) || prn < 1 || prn > 8) throw new RangeError(this.t('legacy.invalidPrn'));
+      if (!Number.isInteger(chunk) || chunk < 1 || chunk > 20) throw new RangeError(this.t('legacy.invalidChunk'));
+      if (!Number.isFinite(timeout) || timeout <= 0) throw new RangeError(this.t('legacy.invalidTimeout'));
       Object.assign(this, { bluetooth, prn, chunk, onLog, onProgress, timeout });
       this.running = false;
+    }
+    t(key, vars) { return this.translate(key, vars); }
+    stage(label) {
+      const exact = { 'GATT connect':'gattConnect','GATT write':'gattWrite','DFU service discovery':'service','control discovery':'control','packet discovery':'packet','start notifications':'notifications','firmware activation':'activation' };
+      if (exact[label]) return this.t(`legacy.stage.${exact[label]}`);
+      const match = /^response for opcode 0x([0-9a-f]+)$/i.exec(label);
+      return match ? this.t('legacy.stage.response', { opcode: match[1] }) : label;
+    }
+    operationError(label, error) {
+      return new Error(this.t('legacy.operationFailed', { stage: this.stage(label), error: error?.message || error }), { cause: error });
     }
 
     abort() {
       if (!this.running) return;
-      this.fail(new Error('Legacy DFU cancelled.'));
+      this.fail(new Error(this.t('legacy.cancelled')));
       this.device.gatt.disconnect();
     }
 
@@ -46,9 +76,9 @@
           resolve: value => finish(resolve, value),
           reject: error => finish(reject, error),
         };
-        pending.timer = setTimeout(() => this.fail(new Error(`Legacy DFU timeout: ${label}.`)), this.timeout);
+        pending.timer = setTimeout(() => this.fail(new Error(this.t('legacy.timeout', { stage: this.stage(label) }))), this.timeout);
         this.pending.add(pending);
-        if (start) Promise.resolve().then(start).then(pending.resolve, pending.reject);
+        if (start) Promise.resolve().then(start).then(pending.resolve, error => pending.reject(this.operationError(label, error)));
       });
       // A synchronous notification may reject before its triggering write settles.
       promise.catch(() => {});
@@ -68,7 +98,8 @@
       if (data[0] === 0x10 && data.length >= 3) {
         const opcode = data[1];
         if (data[2] !== 1) {
-          this.fail(new Error(`Legacy DFU opcode 0x${opcode.toString(16)}: ${statuses[data[2]] || 'Unknown status'} (${data[2]}).`));
+          const status = statusKeys[data[2]] ? this.t(statusKeys[data[2]]) : this.t('legacy.status.unknown');
+          this.fail(new Error(this.t('legacy.opcodeFailure', { opcode: opcode.toString(16), status, code: data[2] })));
           return;
         }
         const queue = this.responses.get(opcode);
@@ -82,10 +113,10 @@
     }
 
     async update(device, { init, firmware }) {
-      if (this.running) throw new Error('Legacy DFU update already running.');
+      if (this.running) throw new Error(this.t('legacy.alreadyRunning'));
       const initBytes = bytes(init);
       const image = bytes(firmware);
-      if (!initBytes.length || !image.length) throw new Error('Legacy DFU requires nonempty init and firmware.');
+      if (!initBytes.length || !image.length) throw new Error(this.t('legacy.emptyFiles'));
       this.running = true;
       this.device = device;
       this.error = null;
@@ -96,7 +127,7 @@
       let activation;
       const disconnected = () => {
         if (activating) activation?.resolve();
-        else this.fail(new Error('Legacy DFU connection was lost (disconnected).'));
+        else this.fail(new Error(this.t('legacy.disconnected')));
       };
       const notified = event => this.notify(event);
       const call = (label, fn) => this.wait(label, fn).promise;
@@ -108,8 +139,9 @@
       });
       device.addEventListener('gattserverdisconnected', disconnected);
       try {
-        this.onLog('Legacy DFU 0.5 (Adafruit), PRN ' + this.prn);
-        const connection = device.gatt.connect();
+        this.onLog(this.t('legacy.starting', { prn: this.prn }));
+        let connection;
+        try { connection = device.gatt.connect(); } catch (error) { throw this.operationError('GATT connect', error); }
         // A connection may finish after cancellation or timeout.
         Promise.resolve(connection).then(() => { if (this.error) device.gatt.disconnect(); }, () => {});
         const server = await call('GATT connect', () => connection);
@@ -146,7 +178,7 @@
         const validated = this.response(4);
         await write(control, Uint8Array.of(4));
         await validated;
-        this.onLog('Legacy DFU validated; activating firmware.');
+        this.onLog(this.t('legacy.validated'));
         const reset = this.wait('firmware activation');
         activation = reset.pending;
         activating = true;
@@ -157,7 +189,7 @@
         }).then(activation.resolve, error => {
           // The reset can disconnect GATT before the ATT write acknowledgement.
           if (!device.gatt.connected) activation.resolve();
-          else activation.reject(error);
+          else activation.reject(this.operationError('firmware activation', error));
         });
         await reset.promise;
         if (this.error) throw this.error;

@@ -1,6 +1,7 @@
 # BLE frame protocol v2
 
 V1 remains available unchanged at command `7b1e0002-6ba2-4f25-8ac7-1d54e91a1000` and status `…0003…`; see [protocol.md](protocol.md). The shared service is `7b1e0001-6ba2-4f25-8ac7-1d54e91a1000`.
+Persistent multi-page synchronization uses separate endpoints and does not change this protocol; see [pages protocol](protocol-pages.md) and [storage map](storage.md). Back up pages before firmware updates because update retention is not verified.
 
 | Endpoint | UUID suffix | Properties / maximum value |
 | --- | --- | --- |
@@ -62,6 +63,6 @@ Pinned Bluefruit intercepts PREP before the application authorizer and normally 
 
 ## Client integration and compatibility
 
-Copy only `web/ble.js` into another editor whose sibling `image.js` exports `FRAME_BYTES=4000` and `crc32(Uint8Array)`. Preserve ES modules and secure-context/user-gesture connection flow. Existing `new BleTransport({onProgress,onStatus,onDiagnostic})`, `connect()`, `send(frame)`, `readStatus()`, `disconnect()` remain available. `onProgress(offset,total)` counts encoded bytes in v2, raw bytes in v1. Status version and codec distinguish dialects. Diagnostic `{stage:'transfer',event:'info',codec,rawBytes,wireBytes,serverCeiling,writeCeiling}` supplies honest transfer metadata to UI. No changes to the other editor are made by this project.
+To integrate into another editor, copy `web/ble.js`, `web/image.js`, `web/i18n.js`, and `web/locales/en.js` plus `web/locales/ru.js`, preserving their relative paths and ES module imports. `image.js` supplies `FRAME_BYTES=4000` and `crc32(Uint8Array)`; `i18n.js` and the two catalogs supply localized transport errors. Preserve the secure-context/user-gesture connection flow. Existing `new BleTransport({onProgress,onStatus,onDiagnostic})`, `connect()`, `send(frame)`, `readStatus()`, `disconnect()` remain available. `onProgress(offset,total)` counts encoded bytes in v2, raw bytes in v1. Status version and codec distinguish dialects. Diagnostic `{stage:'transfer',event:'info',codec,rawBytes,wireBytes,serverCeiling,writeCeiling}` supplies honest transfer metadata to UI. No changes to the other editor are made by this project.
 
 New web chooses v1 only when capabilities discovery reports `NotFoundError`. Discovery transport errors, malformed/unknown capabilities or a partial v2 service fail explicitly; they do not silently fall back. Old web/new firmware uses original v1 endpoints. New web cannot repair the old firmware's WRITE authorization defect. No authentication/pairing/encryption is added; CRC detects corruption, not hostile access. Boot welcome is the exact approved asset, drawn before advertising only for a new build or invalid/reset state; see [persistence](protocol.md#security-and-persistence).

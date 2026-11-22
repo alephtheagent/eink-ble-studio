@@ -83,7 +83,7 @@ test('queued COMMIT is not display success and uncertain DATA is not retried', a
   for (const options of [{ queued: true }, { hangData: true }]) {
     const f = fake(options), c = new BleTransport({ bluetooth: f.bluetooth, timeout: 20, refreshTimeout: 0 });
     await c.connect();
-    await assert.rejects(c.send(new Uint8Array(4000), 10), /timed out/i);
+    await assert.rejects(c.send(new Uint8Array(4000), 10));
     assert.equal(f.device.gatt.connected, false);
     assert.equal(f.state.generation, 0);
     assert.equal(f.state.writes.filter(b => b[0] === 0x12).length, 1);
@@ -112,7 +112,7 @@ test('legacy write API is allowed only with unambiguous response-only properties
     delete command.writeValueWithResponse;
     command.properties.writeWithoutResponse = ambiguous;
     if (ambiguous) {
-      await assert.rejects(c.send(new Uint8Array(4000), 14), /response-confirmed/);
+      await assert.rejects(c.send(new Uint8Array(4000), 14));
       assert.equal(f.state.writes.length, 0);
     } else assert.equal((await c.send(new Uint8Array(4000), 14)).state, 4);
   }

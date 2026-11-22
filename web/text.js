@@ -1,5 +1,6 @@
 import { FONTS } from './fonts.js';
 import { WIDTH, HEIGHT, STRIDE } from './image.js';
+import { t, subscribeLanguage } from './i18n.js';
 
 const $ = id => document.getElementById(id);
 const fields = ['content','x','y','width','height','scale','rotation','align','color','background','opacity'];
@@ -31,8 +32,8 @@ function bitmap(layer, warnings) {
   const font = FONTS.find(f => f.id === layer.fontId), w = layer.width, h = layer.height, scale = layer.scale;
   const pixels = new Int8Array(w * h); pixels.fill(layer.background === 'black' ? 1 : layer.background === 'white' ? 0 : -1);
   const cw = font.width * scale, ch = font.height * scale, columns = Math.floor(w / cw), lines = wrap(layer.content, columns), missing = new Set();
-  if (columns < 1 && layer.content) warnings.push(`${layer.name}: text block too narrow for a glyph`);
-  if (lines.length * ch > h) warnings.push(`${layer.name}: text height overflow`);
+  if (columns < 1 && layer.content) warnings.push(`${layer.name}: ${t('text.tooNarrow')}`);
+  if (lines.length * ch > h) warnings.push(`${layer.name}: ${t('text.heightOverflow')}`);
   lines.forEach((line, row) => {
     const offset = layer.align === 'right' ? w - line.length * cw : layer.align === 'center' ? Math.floor((w - line.length * cw) / 2) : 0;
     line.forEach((char, column) => {
@@ -46,7 +47,7 @@ function bitmap(layer, warnings) {
       }
     });
   });
-  if (missing.size) warnings.push(`${layer.name}: missing glyphs: ${[...missing].join(' ')}`);
+  if (missing.size) warnings.push(`${layer.name}: ${t('text.missingGlyphs', { glyphs: [...missing].join(' ') })}`);
   return pixels;
 }
 
@@ -59,7 +60,7 @@ export function createTextEditor({ preview, render, getImage, setImage, clearIma
   function sync() {
     $('text-undo').disabled = index <= 0; $('text-redo').disabled = index >= states.length - 1;
     $('text-panel').hidden = !layers.length; const layer = current(); $('text-properties').hidden = !layer;
-    const imageOption = document.createElement('option'); imageOption.value = ''; imageOption.textContent = 'Image (bottom)';
+    const imageOption = document.createElement('option'); imageOption.value = ''; imageOption.textContent = t('text.imageBottom');
     $('text-layer').replaceChildren(imageOption, ...[...layers].reverse().map(l => { const option = document.createElement('option'); option.value = l.id; option.textContent = l.name; return option; }));
     $('text-layer').value = selected || '';
     for (const id of ['text-up','text-down','text-delete']) $(id).disabled = !layer;
@@ -70,7 +71,7 @@ export function createTextEditor({ preview, render, getImage, setImage, clearIma
     for (const button of $('font-list').querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.font === layer.fontId));
   }
   const defaultId = field => `text-${field}`;
-  function add() { const n = ++sequence; layers.push({ id: `text-${n}`, name: `Text ${n}`, content: 'Привет, мир!', fontId: FONTS[0].id, x: 0, y: 0, width: WIDTH, height: 52, scale: 1, rotation: 0, align: 'left', color: 'black', background: 'transparent', opacity: 100 }); selected = layers.at(-1).id; $('text-panel').open = true; commit(); render(); $('text-content').focus(); }
+  function add({ screen = false } = {}) { const n = ++sequence; layers.push({ id: `text-${n}`, name: screen ? t('text.screenLayerName') : t('text.layerName', { number: n }), content: screen ? '' : t('text.sampleContent'), fontId: FONTS[0].id, x: 0, y: 0, width: WIDTH, height: screen ? HEIGHT : 52, scale: 1, rotation: 0, align: 'left', color: 'black', background: 'transparent', opacity: 100 }); selected = layers.at(-1).id; $('text-panel').open = true; commit(); render(); $('text-content').focus(); }
   $('add-text').onclick = add;
   $('toolbar-add-text').onclick = add;
   $('text-only').onclick = () => { clearImage(); layers = []; selected = null; add(); };
@@ -82,19 +83,33 @@ export function createTextEditor({ preview, render, getImage, setImage, clearIma
   for (const field of fields) $(defaultId(field)).addEventListener('input', e => { const layer = current(); if (!layer) return; let value = e.target.value; if (numeric.has(field)) { if (value === '' || !Number.isFinite(Number(value))) return; value = Number(value); if (['width','height'].includes(field)) value = Math.max(1, Math.min(500, Math.floor(value))); if (field === 'scale') value = Math.max(1, Math.min(20, Math.floor(value))); } layer[field] = value; commit(); render(); });
   let lastHeight = 0;
   for (const font of [...FONTS].sort((a,b) => a.height-b.height)) {
-    if (font.height !== lastHeight) { const heading = document.createElement('strong'); heading.textContent = `${font.height} px native height`; $('font-list').append(heading); lastHeight = font.height; }
+    if (font.height !== lastHeight) { const heading = document.createElement('strong'); heading.dataset.height = font.height; heading.textContent = t('text.fontHeight', { height: font.height }); $('font-list').append(heading); lastHeight = font.height; }
     const button = document.createElement('button'), canvas = document.createElement('canvas'), label = font.name;
-    button.type = 'button'; button.dataset.font = font.id; button.setAttribute('aria-label', `${font.name}, ${font.width} by ${font.height} pixels`);
+    button.type = 'button'; button.dataset.font = font.id; button.setAttribute('aria-label', t('text.fontAria', { name: font.name, width: font.width, height: font.height }));
     canvas.width = Array.from(label).length * font.width; canvas.height = font.height; canvas.setAttribute('aria-hidden','true');
     const ctx = canvas.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = '#000';
     Array.from(label).forEach((char,i) => font.glyphs[char]?.forEach((row,y) => Array.from(row).forEach((bit,x) => { if (bit === '1') ctx.fillRect(i*font.width+x,y,1,1); })));
     const size = document.createElement('small'); size.textContent = `${font.width}×${font.height} px`; button.append(canvas,size); button.onclick = () => { if (!current()) return; current().fontId = font.id; $('font-list').hidden = true; $('font-toggle').setAttribute('aria-expanded','false'); commit(); render(); $('font-toggle').focus(); }; $('font-list').append(button);
   }
   $('font-toggle').onclick = () => { const open = $('font-list').hidden; $('font-list').hidden = !open; $('font-toggle').setAttribute('aria-expanded', String(open)); };
+  subscribeLanguage(() => {
+    if (!$('font-list').childNodes.length) return;
+    let height = 0;
+    for (const font of [...FONTS].sort((a,b) => a.height-b.height)) {
+      if (font.height !== height) { const heading = $('font-list').querySelector(`strong[data-height="${font.height}"]`); if (heading) heading.textContent = t('text.fontHeight', { height: font.height }); height = font.height; }
+      const button = $('font-list').querySelector(`button[data-font="${font.id}"]`);
+      if (button) button.setAttribute('aria-label', t('text.fontAria', { name: font.name, width: font.width, height: font.height }));
+    }
+    sync(); render();
+  });
   document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z' && !['INPUT','TEXTAREA'].includes(e.target.tagName)) { e.preventDefault(); restore(index + (e.shiftKey ? 1 : -1)); } });
   commit();
   return {
     checkpoint: commit,
+    exportState: () => ({ layers: layers.map(layer => ({ ...layer })), selected, sequence }),
+    importState(state) { layers = (state?.layers || []).map(layer => ({ ...layer })); selected = state?.selected || null; sequence = state?.sequence || layers.length; states = []; index = -1; commit(); render(); },
+    current: () => current(),
+    add,
     selected: () => !!current(),
     move(dx,dy) { const layer = current(); if (!layer) return false; layer.x = Math.round((layer.x + dx)*100)/100; layer.y = Math.round((layer.y + dy)*100)/100; sync(); render(); return true; },
     resize(factor, continuous = false) { const layer = current(); if (!layer) return false; if (factor === 1) return true; let steps = factor > 1 ? 1 : -1; if (continuous) { pinchScale *= factor; steps = 0; while (pinchScale >= 1.1) { steps++; pinchScale /= 1.1; } while (pinchScale <= 1 / 1.1) { steps--; pinchScale *= 1.1; } } if (steps) { layer.scale = Math.max(1, Math.min(20, layer.scale + steps)); sync(); render(); } return true; },
@@ -103,7 +118,7 @@ export function createTextEditor({ preview, render, getImage, setImage, clearIma
       const warnings = [];
       for (const layer of layers) {
         const w = layer.width, h = layer.height, pixels = bitmap(layer, warnings), angle = layer.rotation * Math.PI / 180, cos = Math.cos(angle), sin = Math.sin(angle), cx = layer.x + w / 2, cy = layer.y + h / 2, hw = (Math.abs(cos)*w + Math.abs(sin)*h)/2, hh = (Math.abs(sin)*w + Math.abs(cos)*h)/2;
-        if (cx-hw < -1e-9 || cy-hh < -1e-9 || cx+hw > WIDTH+1e-9 || cy+hh > HEIGHT+1e-9) warnings.push(`${layer.name}: layer clipped by canvas`);
+        if (cx-hw < -1e-9 || cy-hh < -1e-9 || cx+hw > WIDTH+1e-9 || cy+hh > HEIGHT+1e-9) warnings.push(`${layer.name}: ${t('text.layerClipped')}`);
         for (let y = Math.max(0, Math.floor(cy-hh)); y < Math.min(HEIGHT, Math.ceil(cy+hh)); y++) for (let x = Math.max(0, Math.floor(cx-hw)); x < Math.min(WIDTH, Math.ceil(cx+hw)); x++) {
           const dx = x+0.5-cx, dy = y+0.5-cy, u = cos*dx+sin*dy+w/2, v = -sin*dx+cos*dy+h/2;
           if (u < 0 || v < 0 || u >= w || v >= h) continue;

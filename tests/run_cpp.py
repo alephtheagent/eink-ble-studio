@@ -28,3 +28,6 @@ subprocess.run([str(SCRATCH/'protocol-tests')],check=True,env={**os.environ,'ASA
 boot_state = ['g++','-std=c++11','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-omit-frame-pointer','-g','-I'+str(ROOT/'firmware/include'),str(ROOT/'tests/boot_state.cpp'),'-o',str(SCRATCH/'boot-state-tests')]
 subprocess.run(boot_state,check=True)
 subprocess.run([str(SCRATCH/'boot-state-tests')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
+pages = ['g++','-std=c++11','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-fsanitize=address,undefined','-fno-omit-frame-pointer','-no-pie','-g','-I'+str(ROOT/'firmware/include'),str(ROOT/'tests/page_storage.cpp'),'-o',str(SCRATCH/'page-storage-tests')]
+subprocess.run(pages,check=True)
+subprocess.run([str(SCRATCH/'page-storage-tests')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
