@@ -4,7 +4,7 @@
 
 ## Редактор
 
-Статический сайт находится в `web/`; этот каталог является корнем будущего GitHub Pages сайта. Все ссылки относительные, поэтому поддерживается публикация в подкаталоге. Публикация здесь не выполнялась.
+Статический сайт находится в `web/`; этот каталог является корнем GitHub Pages сайта. Все ссылки относительные, поэтому поддерживается публикация в подкаталоге. Сайт публикуется workflow **Pages** через GitHub Actions на <https://alephtheagent.github.io/eink-ble-studio/> при push в `main` с изменениями `web/**`; [подробности публикации](docs/site-deployment.md).
 
 ```sh
 npm run serve
@@ -87,7 +87,7 @@ node tools/task-sync.mjs
 ```
 
 Node.js 22+; Python 3; g++; PlatformIO. Runtime сайта не требует npm. npm-пакеты — только dev-зависимости проверки, версии разрешены lockfile. Общие JS/C++ vectors — `tests/vectors.json`, утверждённый PNG/4000-byte frame — `tests/fixtures/`. Native canvas/DOM тест не эквивалентен визуальной проверке браузера. Актуальные результаты и ограничения — [TASK-REPORT.md](TASK-REPORT.md), свежие логи и скриншоты — `artifacts/task-verification/`; `ADDITIVE-REPORT.md`, `REPORT.md` и `REPORT-V2.md` — исторические отчёты.
-Подробности: [редактор](docs/editor.md), [локализация](docs/localization.md), [протокол страниц](docs/protocol-pages.md), [flash-хранилище](docs/storage.md).
+Подробности: [редактор](docs/editor.md), [локализация](docs/localization.md), [протокол страниц](docs/protocol-pages.md), [flash-хранилище](docs/storage.md), [публикация сайта](docs/site-deployment.md).
 
 Свежая проверенная сборка этого задания находится в `artifacts/task-verification/`: ELF, HEX, BIN, UF2, ZIP и `verification-welcome-once-dfu.json`, а также `*-dfu.zip` и `dfu-verification.json`. `npm run package:firmware` и `npm run package:dfu` по умолчанию пишут в `artifacts/`; для отдельного каталога используйте `ARTIFACTS_DIR` для UF2 и явные пути `--output`/`--result` для `tools/dfu_package.py`. Legacy DFU 0.5 содержит CRC16, но **не криптографическую подпись**. Старые `artifacts/eink-ble-v2-*` и `artifacts/eink-ble-welcome-once-*` не являются результатами текущего прогона. Workflow и версия DFU описаны в [docs/ci.md](docs/ci.md).
 
