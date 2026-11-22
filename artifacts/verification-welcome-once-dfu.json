@@ -2,10 +2,10 @@
   "origin": "0x26000",
   "limit_exclusive": "0xec000",
   "family": "0xada52840",
-  "binary_bytes": 146712,
-  "image_end_exclusive": "0x49d18",
-  "layout_margin_bytes": 664296,
-  "embedded_build_id": "0x4087967",
+  "binary_bytes": 146936,
+  "image_end_exclusive": "0x49df8",
+  "layout_margin_bytes": 664072,
+  "embedded_build_id": "0xb2d92516",
   "state_sector": {
     "address": "0xec000",
     "size_bytes": 4096,
@@ -14,7 +14,7 @@
   "uf2_bytes": 293888,
   "blocks": 574,
   "initial_sp": "0x20040000",
-  "reset_vector": "0x36549",
+  "reset_vector": "0x365dd",
   "arm_smoke": [
     {
       "initial_out": 0,
@@ -176,10 +176,10 @@
   "authorize_contract": "PASS: linked ARM v1/v2 callback/receiver and core PREP/EXEC/capabilities to SVC boundary; injected SVC returns verify deferred action success/failure",
   "scope": "Linked ARM protocol/authorization with injected SVC outcomes, plus GPIO/SPI memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
   "sha256": {
-    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "dcd5f83824d8f2c7434dd66676802fafd7532c14decaf38799f00c70f2c10676",
-    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "eae6cb26cd8b32f7ad49ff7cb04ecf51ae24b8f37f15af7a4938b60ce7b0a1cb",
-    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "104ba61c59ec7cd0802e0c8292200b49a616f4364c9ae34821b3d77c3382648a",
-    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "7b676b300abd8080e48d79111fdf3309d244f9442b6ea4b8d749410b89dc8605",
-    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "0004facb12d78de0ab46d092e40b189bb3422d8a62ba15ac4b0a96fa72a809c6"
+    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "579dea764838fec94371bc98dd6078ffb6951c2aeacd3c09227365cbffbaa671",
+    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "723bd1e1bdcbcc7cfae7edecd00ee55035091b88770e8227ac814c49ba2ab8a6",
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "f3d876344ac52ad452b501e71e72d0a9d2b4444a0ac7e1b6e807b538fead6093",
+    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "1fe79b5b41272557a4443de7a9a98a36877c97e01bd5d3ef5ad65f1d9f935881",
+    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "2a5aea289d3f78c8eaa21dc3b9b31c39b22c51b0c6b6c16014593b5eb25192fa"
   }
 }

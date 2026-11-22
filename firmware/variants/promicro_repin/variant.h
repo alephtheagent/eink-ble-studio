@@ -9,6 +9,10 @@
 #define PIN_LED1 13
 #define LED_BUILTIN PIN_LED1
 #define LED_CONN PIN_LED1
+// The Adafruit Bluefruit library references LED_BLUE directly; some package
+// revisions compile that reference without an #ifdef guard. The board has a
+// single blue status LED, so reuse it.
+#define LED_BLUE LED_CONN
 #define LED_STATE_ON 1
 #define PIN_SERIAL1_RX 0
 #define PIN_SERIAL1_TX 1
