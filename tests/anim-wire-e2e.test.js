@@ -253,3 +253,11 @@ test('a truncated DATA stream is an offset error, not silent acceptance', () => 
 });
 
 process.on('exit', () => rmSync(dir, { recursive: true, force: true }));
+
+// The fast-partial switch is stored in BEGIN bit 1; bit 0 keeps meaning "loop".
+test('BEGIN carries loop and fast-partial flags', () => {
+  const view = bytes => new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength).getUint16(7, true);
+  assert.equal(view(packetBegin(0, 2, 0, 0)), 0);
+  assert.equal(view(packetBegin(0, 2, 1, 0)), 1);
+  assert.equal(view(packetBegin(0, 2, 3, 0)), 3);
+});

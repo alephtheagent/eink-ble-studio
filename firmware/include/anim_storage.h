@@ -21,6 +21,10 @@ static constexpr uint32_t END = DATA_B + BANK_SIZE;  // 0xCC000
 static_assert(END == 0xCC000u, "animation region must end at the pages reservation");
 static constexpr uint32_t MAGIC = 0x414E494Du, MARKER = 0x434F4D54u;
 static constexpr uint16_t FLAG_LOOP = 1;
+// Playback hint stored with the animation: skip the scene-change and periodic full
+// refreshes and always use a partial window after the first frame. Removes the inversion
+// flash on full-screen animations at the cost of slower ghost accumulation.
+static constexpr uint16_t FLAG_FAST_PARTIAL = 2;
 // Frame count, kind values, blob header size, delay bounds and the 0xD000 per-bank
 // capacity are the codec contract's constants; these aliases keep this file readable.
 static constexpr uint32_t BLOB_HEADER = BLOB_HEADER_BYTES;
@@ -186,7 +190,7 @@ template<class Flash> class Storage {
     if (!healthy_) return STORAGE;
     if (uploading_ || frameOpen_) return BUSY;
     if (!declaredCount || declaredCount > MAX_FRAMES) return LIMIT;
-    if (uploadFlags & ~FLAG_LOOP) return MALFORMED;
+    if (uploadFlags & ~(FLAG_LOOP | FLAG_FAST_PARTIAL)) return MALFORMED;
     if (revision() == UINT32_MAX || generation() == UINT32_MAX) return FULL;
     uploading_ = true;
     // Never reuse the bank the active metadata references.
@@ -484,7 +488,7 @@ template<class Flash> class Storage {
     if (get32(img + M_MAGIC) != MAGIC || img[M_VERSION] != 1 || img[M_RESERVED] != 0) return false;
     unsigned frames = get16(img + M_FRAMECOUNT);
     if (frames > MAX_FRAMES) return false;
-    if (get16(img + M_FLAGS) & ~FLAG_LOOP) return false;
+    if (get16(img + M_FLAGS) & ~(FLAG_LOOP | FLAG_FAST_PARTIAL)) return false;
     uint32_t bytes = get32(img + M_DATABYTES);
     if (bytes > BANK_SIZE) return false;
     uint32_t crcOff = M_ENTRIES + M_ENTRY * frames;

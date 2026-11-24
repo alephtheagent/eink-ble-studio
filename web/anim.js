@@ -313,7 +313,7 @@ export async function withAnim(transport, fn) {
       }
     }
 
-    async function send(frames, encoded, { start = 0, verify = false, loop = true, progress = () => {}, onPhase = () => {}, cancelled = () => false } = {}) {
+    async function send(frames, encoded, { start = 0, verify = false, loop = true, fastPartial = false, progress = () => {}, onPhase = () => {}, cancelled = () => false } = {}) {
       const blobs = encoded.blobs;
       if (!frames.length) throw new Error(t('anim.empty'));
       if (frames.length > GIF_MAX_FRAMES) throw new Error(t('anim.tooManyFrames', { count: frames.length, max: GIF_MAX_FRAMES }));
@@ -328,8 +328,9 @@ export async function withAnim(transport, fn) {
       let staged = false;
       try {
         onPhase('begin');
-        // BEGIN flags: bit 0 = loop, every other bit must be zero.
-        const begun = await request(packetBegin(rev, frames.length, loop ? 1 : 0, crc));
+        // BEGIN flags: bit 0 = loop, bit 1 = fast partial (no periodic/scene full
+        // refreshes), every other bit must be zero.
+        const begun = await request(packetBegin(rev, frames.length, (loop ? 1 : 0) | (fastPartial ? 2 : 0), crc));
         if (begun.index !== 0) throw new Error(t('anim.unexpectedAck', { label: 'BEGIN', expected: 0, got: begun.index }));
         staged = true;
         for (let i = 0; i < frames.length; i++) {
@@ -612,6 +613,7 @@ export function createAnimation({ transport, getSettings, useFrame } = {}) {
           start: play ? 0 : null,
           verify: !!$('anim-verify')?.checked,
           loop: !!$('anim-loop')?.checked,
+          fastPartial: !!$('anim-fast-partial')?.checked,
           cancelled: () => cancelRequested,
           onPhase: phase => {
             if (phase === 'verify') setStatus('anim.verifying', { count: info.count });

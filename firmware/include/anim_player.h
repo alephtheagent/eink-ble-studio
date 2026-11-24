@@ -312,8 +312,9 @@ template<class Store> class Player {
     // Cadence counts PRESENTED frames from the start of playback; the first frame is
     // always a full refresh, so with N=10 the full refreshes are frames 1, 10, 20, ... and
     // there are at most 9 partial refreshes in a row.
-    const bool loopBoundary = loopRefresh_ && presented_ && (loops_ % loopRefresh_ == 0);
-    const bool scene = uint32_t(bbox_.area) * 100u >= PANEL_PIXELS * threshold_;
+    const bool fastPartial = (store_->flags() & FLAG_FAST_PARTIAL) != 0;
+    const bool loopBoundary = !fastPartial && loopRefresh_ && presented_ && (loops_ % loopRefresh_ == 0);
+    const bool scene = !fastPartial && uint32_t(bbox_.area) * 100u >= PANEL_PIXELS * threshold_;
     if (partial_ && presented_ && kind != KIND_FULL && !loopBoundary && !scene) {
       panel_.present(bbox_.x, bbox_.y, bbox_.w, bbox_.h, frame_);
     } else {

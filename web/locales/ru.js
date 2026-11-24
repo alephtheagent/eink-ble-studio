@@ -179,7 +179,7 @@ export default {
   'anim.counter': 'Кадр {index} / {total}', 'anim.counterEmpty': 'Кадров нет',
   'anim.play': 'Пуск', 'anim.pause': 'Пауза', 'anim.stop': 'Стоп', 'anim.loop': 'Повторять предпросмотр',
   'anim.throttleLegend': 'Кадры и задержки', 'anim.keepEvery': 'Брать каждый N-й кадр',
-  'anim.minDelay': 'Минимальная задержка', 'anim.verify': 'Проверять обратным чтением кадров',
+  'anim.minDelay': 'Минимальная задержка', 'anim.verify': 'Проверять обратным чтением кадров', 'anim.fastPartial': 'Быстрое частичное обновление (без мерцания)',
   'anim.statsLegend': 'Оценка передачи', 'anim.statFrames': 'Кадров', 'anim.statBytes': 'Закодировано байт',
   'anim.statRatio': 'Сжатие', 'anim.statTime': 'Оценка времени передачи',
   'anim.timeTitle': 'Оценка по пределу записи и 30 мс на каждую подтверждаемую операцию; индикатор хода показывает реальное время.',

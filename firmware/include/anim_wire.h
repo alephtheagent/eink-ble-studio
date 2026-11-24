@@ -100,7 +100,7 @@ template<class Store> class Endpoint {
         if (mode_ || frameOpen_ || framePendingOpen_) { error_ = BUSY; return; }
         if (expected != store_.revision()) { error_ = CONFLICT; return; }
         if (!declared || declared > MAX_FRAMES) { error_ = MALFORMED; return; }
-        if (beginFlags & ~FLAG_LOOP) { error_ = MALFORMED; return; }
+        if (beginFlags & ~(FLAG_LOOP | FLAG_FAST_PARTIAL)) { error_ = MALFORMED; return; }
         conn_ = conn;
         uploadRevision_ = expected;
         uploadCount_ = declared;

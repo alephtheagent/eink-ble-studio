@@ -282,7 +282,7 @@ static void testBounds() {
   // count 0 and count > 64.
   assert(store.beginUpload(0, 0, 0) == LIMIT);
   assert(store.beginUpload(65, 0, 0) == LIMIT);
-  assert(store.beginUpload(1, 2, 0) == MALFORMED);  // undefined flag bit
+  assert(store.beginUpload(1, 4, 0) == MALFORMED);  // undefined flag bit
   assert(store.beginUpload(1, 0, 0) == OK);
   // Frames are rejected until the bank erase is finished.
   assert(store.beginFrame(KIND_FULL, eink::FRAME_BYTES, 0, 500) == BUSY);
@@ -650,7 +650,7 @@ static void testWireMalformed() {
   // BEGIN with a reserved bit set in flags.
   uint8_t begin[13] = {OP_BEGIN};
   eink::put16(begin + 5, 1);
-  eink::put16(begin + 7, 0x0002);
+  eink::put16(begin + 7, 0x0004);
   endpoint.command(begin, sizeof begin, 0, 1);
   endpoint.status(status);
   assert(status[2] == MALFORMED);  // rejected in the callback, no flash work queued
@@ -1563,6 +1563,22 @@ static void testPlayerBBox() {
   assert(uint32_t(box.area) * 100u >= Player<Store>::PANEL_PIXELS * 60u);
   assert(panel.full == 1 && panel.partial == 0);
   std::puts("player: single-pixel, corner and whole-panel bounding boxes; scene threshold");
+
+  // FLAG_FAST_PARTIAL suppresses the scene threshold and the loop cadence: the same
+  // whole-panel change must use a partial window instead of flashing the panel.
+  player.stop();
+  assert(upload(store, frames, FLAG_LOOP | FLAG_FAST_PARTIAL, true) == OK);
+  Player<Store> fast(panel);
+  fast.partialPresentation(true);
+  fast.configure(1000, 60);
+  assert(fast.start(store, 0, 0));
+  panel.reset();
+  assert(fast.tick(0));
+  assert(panel.full == 1 && panel.partial == 0);  // the first frame is always full
+  panel.reset();
+  for (uint32_t t = 500; t <= 2000; t += 500) assert(fast.tick(t));
+  assert(panel.full == 0 && panel.partial == 4);
+  std::puts("player: FLAG_FAST_PARTIAL removes scene and cadence full refreshes");
 }
 
 static void testPlayerPaddingBitsIgnored() {

@@ -74,6 +74,7 @@
 <label><span data-i18n="anim.keepEvery">Keep every Nth frame</span> <select id="anim-keep"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></label>
 <label><span data-i18n="anim.minDelay">Minimum delay</span> <input id="anim-min-delay" type="number" min="100" max="60000" step="10" value="100"> ms</label>
 <label class="check"><input id="anim-verify" type="checkbox"> <span data-i18n="anim.verify">Verify by reading frames back</span></label>
+<label class="check"><input id="anim-fast-partial" type="checkbox"> <span data-i18n="anim.fastPartial">Fast partial refresh (no flashing)</span></label>
 </fieldset>
 <fieldset><legend data-i18n="anim.statsLegend">Transfer estimate</legend>
 <dl class="anim-stats"><dt data-i18n="anim.statFrames">Frames</dt><dd id="anim-frame-count">—</dd><dt data-i18n="anim.statBytes">Encoded bytes</dt><dd id="anim-encoded-bytes">—</dd><dt data-i18n="anim.statRatio">Compression</dt><dd id="anim-ratio">—</dd><dt data-i18n="anim.statTime">Estimated transfer</dt><dd id="anim-ble-time" title="Estimated from the write ceiling and 30 ms per acknowledged operation; the progress bar shows real time." data-i18n-title="anim.timeTitle">—</dd></dl>
