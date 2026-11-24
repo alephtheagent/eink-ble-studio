@@ -421,8 +421,12 @@ export function initOta(options = {}) {
     try {
       // This call must run directly in the click handler, before any await:
       // Web Bluetooth requires transient user activation for every chooser.
+      // Chrome rejects requestDevice() when a services filter names a blocklisted
+      // UUID, and the DFU service 0xFE59 is on that list, so the chooser cannot be
+      // narrowed by service. List every nearby device and grant both DFU services up
+      // front; the transport then picks the one the bootloader actually exposes.
       const device = await requestDevice({
-        filters: [{ services: [LEGACY_DFU_SERVICE] }, { services: [DFU_SERVICE] }],
+        acceptAllDevices: true,
         optionalServices: [LEGACY_DFU_SERVICE, DFU_SERVICE],
       });
       if (state.cancelled) return;

@@ -328,7 +328,7 @@ test('confirmation gates chooser and DFU; confirmed click chooses a fresh Secure
     assert.equal(chooserCalls.length, 1, 'chooser must start directly from the confirmed click activation');
     const legacyService = '00001530-1212-efde-1523-785feabcd123';
     assert.deepEqual(chooserCalls[0], {
-      filters: [{ services: [legacyService] }, { services: [0xfe59] }],
+      acceptAllDevices: true,
       optionalServices: [legacyService, 0xfe59],
     });
     await waitFor(() => dfu.calls.length > 0, 1000);

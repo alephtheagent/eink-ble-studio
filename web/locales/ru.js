@@ -71,7 +71,7 @@ export default {
   'firmware.cancellationRequested': 'Запрошена отмена. Закройте окно выбора устройства, если оно открыто; устройство может остаться в загрузчике и потребовать повторного обновления.',
   'firmware.noPackageToFlash': 'Нет DFU-пакета для записи.', 'firmware.confirmRisk': 'Перед записью подтвердите, что понимаете риск отсутствия резервного образа.',
   'firmware.devicePickerUnavailable': 'Выбор устройства Web Bluetooth недоступен.',
-  'firmware.chooseBootloader': 'Выберите DFU-загрузчик {transport} в окне браузера…',
+  'firmware.chooseBootloader': 'Выберите DFU-загрузчик {transport} в окне браузера. Список показывает все ближайшие BLE-устройства: нужен загрузчик с именем вроде «Adafruit Bootloader» или «DfuTarg».',
   'firmware.flashing': 'Запись через {transport}… не закрывайте вкладку и оставайтесь рядом с устройством.',
   'firmware.finished': 'Обновление прошивки завершено. Устройство перезапустится; подключитесь снова, чтобы отправлять кадры.',
   'firmware.failed': 'Ошибка DFU{code}: {error}',
