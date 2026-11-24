@@ -285,9 +285,19 @@ export function initOta(options = {}) {
       const url = assetUrl(asset);
       if (!url) throw new OtaError('NO_PACKAGE', t('firmware.noDownloadUrl'));
       setStatus(() => t('firmware.downloading', { name: asset.name, size: formatSize(asset.size) }));
-      let response;
-      try { response = await fetcher(url); }
-      catch (error) { throw new OtaError('DOWNLOAD_FAILED', t('firmware.downloadFailedCors', { error: error?.message || error })); }
+      // A GitHub release asset redirects to release-assets.githubusercontent.com, which
+      // sends no Access-Control-Allow-Origin, so the browser cannot read it. Because of
+      // that the Pages workflow publishes the same package next to the site; try that
+      // first and keep the release URL as a fallback for other deployments.
+      const href = globalThis.location?.href || '';
+      const base = /^https?:/.test(href) ? href : 'https://alephtheagent.github.io/eink-ble-studio/';
+      const localUrl = new URL(`firmware/latest-dfu.zip?v=${encodeURIComponent(release.tag)}`, base).href;
+      let response = null;
+      try { response = await fetcher(localUrl); } catch { response = null; }
+      if (!response?.ok) {
+        try { response = await fetcher(url); }
+        catch (error) { throw new OtaError('DOWNLOAD_FAILED', t('firmware.downloadFailedCors', { error: error?.message || error })); }
+      }
       if (!response?.ok) throw new OtaError('DOWNLOAD_FAILED', t('firmware.downloadFailedHttp', { status: response?.status ?? t('firmware.httpUnknown') }));
       const bytes = new Uint8Array(await response.arrayBuffer());
       state.package = await extractPackage(bytes);

@@ -305,7 +305,7 @@ test('confirmation gates chooser and DFU; confirmed click chooses a fresh Secure
     await flush();
     assert.match(els(dom).version(), /v2\.1\.0/);
     assert.equal($('fw-flash').disabled, true);
-    assert.ok(calls.some(u => /-dfu\.zip$/.test(u)), 'refresh validates and caches the selected package');
+    assert.ok(calls.some(u => /firmware\/latest-dfu\.zip\?v=/.test(u)), 'refresh caches the same-origin package');
 
     $('fw-flash').click();
     await flush();
@@ -336,6 +336,27 @@ test('confirmation gates chooser and DFU; confirmed click chooses a fresh Secure
     const args = dfu.calls[0][0];
     assert.equal(args.device, freshDfuDevice, 'the connected editor device must not be reused');
     assert.equal(args.package, ota.state.package);
+  } finally { dom.window.close(); }
+});
+
+test('falls back to the release asset when the same-origin package is missing', async () => {
+  const dom = makeDom();
+  try {
+    const base = releaseFetch({ latest: fixture('release-latest.json') });
+    const calls = [];
+    const fetch = async url => {
+      const u = String(url);
+      calls.push(u);
+      // The Pages copy is absent (older deployment): the release asset must be tried next.
+      if (/firmware\/latest-dfu\.zip/.test(u)) return { ok: false, status: 404 };
+      return base.fetch(u);
+    };
+    const ota = await init(dom, { fetch, transport: makeTransport(makeDevice()), requestDevice: async () => makeDevice() });
+    ota.setConnected?.(true);
+    await ota.refresh();
+    await flush();
+    assert.ok(calls.some(u => /firmware\/latest-dfu\.zip/.test(u)), 'same-origin copy is tried first: ' + JSON.stringify(calls));
+    assert.ok(calls.some(u => /-dfu\.zip$/.test(u)), 'release asset is the fallback');
   } finally { dom.window.close(); }
 });
 
