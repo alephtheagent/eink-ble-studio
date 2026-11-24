@@ -193,6 +193,7 @@ export function initOta(options = {}) {
     support: $('fw-support'),
     warning: $('fw-warning'),
     size: $('fw-size'),
+    uf2: $('fw-uf2'),
   };
 
   const state = {
@@ -302,6 +303,12 @@ export function initOta(options = {}) {
       const bytes = new Uint8Array(await response.arrayBuffer());
       state.package = await extractPackage(bytes);
       state.zipBytes = bytes;
+      // The USB bootloader is the only path Chromium allows for this board, so the
+      // same-origin UF2 sits next to the package and is offered right away.
+      if (el.uf2) {
+        el.uf2.href = new URL(`firmware/latest.uf2?v=${encodeURIComponent(release.tag)}`, base).href;
+        el.uf2.hidden = false;
+      }
       setStatus(() => t('firmware.releaseReady', { tag: release.tag, transport: transportName(state.package), name: asset.name, size: formatSize(asset.size) }));
       return release;
     } catch (error) {

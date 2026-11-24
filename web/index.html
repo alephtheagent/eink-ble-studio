@@ -96,9 +96,11 @@
 <div class="toolbar"><button id="fw-check" type="button" data-i18n="firmware.updateLatest">Update to latest</button><button id="fw-enter-dfu" type="button" disabled data-i18n="firmware.enterDfu">Enter DFU mode</button></div>
 </fieldset>
 <fieldset><legend data-i18n="firmware.flash">Flash</legend>
-<label class="check"><input id="fw-confirm" type="checkbox"> <span data-i18n="firmware.noFallbackCheck">I understand that this firmware has no fallback bank.</span></label>
-<div class="toolbar"><button id="fw-flash" type="button" disabled data-i18n="firmware.flashAction">Flash firmware</button><button id="fw-cancel" type="button" disabled data-i18n="firmware.cancel">Cancel</button></div>
-<label for="fw-progress" data-i18n="firmware.dfuProgress">DFU progress</label><progress id="fw-progress" max="100" value="0"></progress>
+<p data-i18n="firmware.blocklistNotice">Chromium blocklists the Adafruit BLE DFU service, so a browser cannot flash this bootloader over Bluetooth. Use the USB path: reboot the display into its UF2 bootloader, then copy the file below onto the drive that appears.</p>
+<div class="toolbar"><a id="fw-uf2" class="button" href="firmware/latest.uf2" download hidden data-i18n="firmware.downloadUf2">Download UF2</a></div>
+<label class="check" hidden><input id="fw-confirm" type="checkbox"> <span data-i18n="firmware.noFallbackCheck">I understand that this firmware has no fallback bank.</span></label>
+<div class="toolbar" hidden><button id="fw-flash" type="button" disabled data-i18n="firmware.flashAction">Flash firmware</button><button id="fw-cancel" type="button" disabled data-i18n="firmware.cancel">Cancel</button></div>
+<label for="fw-progress" hidden data-i18n="firmware.dfuProgress">DFU progress</label><progress id="fw-progress" max="100" value="0" hidden></progress>
 </fieldset>
 <p data-i18n="pages.backup">Page storage preservation across firmware updates is not established. Receive pages and save a project backup before updating.</p>
 <p id="fw-status" role="status" aria-live="polite">Check for the latest firmware release to begin. Entering DFU mode restarts the display into its bootloader.</p>

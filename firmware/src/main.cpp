@@ -680,7 +680,10 @@ void loop() {
   xSemaphoreGive(protocolMutex);
   if (action == eink::ACTION_ENTER_DFU) {
     stopPlayback(false);  // the device resets
-    enterOTADfu();
+    // UF2 (0x57), not OTA (0xA8): Chromium blocklists the Adafruit legacy DFU
+    // service 00001530-1212-efde-1523-785feabcd123, so a browser can never flash
+    // over BLE. The USB mass-storage bootloader is the path that works.
+    enterUf2Dfu();
   } else if (action == eink::ACTION_RESET_WELCOME) {
     stopPlayback(false);  // welcome is redrawn on the next boot
     bool ok = bootStore.erase();

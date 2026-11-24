@@ -5,7 +5,7 @@
   "binary_bytes": 177564,
   "image_end_exclusive": "0x5159c",
   "layout_margin_bytes": 387684,
-  "embedded_build_id": "0x862766ac",
+  "embedded_build_id": "0x2b22ba72",
   "reserved_animation": {
     "start": "0xb0000",
     "end_exclusive": "0xcc000"
@@ -185,10 +185,10 @@
   "authorize_contract": "PASS: linked ARM v1/v2 callback/receiver and core PREP/EXEC/capabilities to SVC boundary; injected SVC returns verify deferred action success/failure",
   "scope": "Linked ARM protocol/authorization with injected SVC outcomes, plus GPIO/SPI memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
   "sha256": {
-    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "2e82c0fee8a8dc5d2429d93e3ca778c9f0085bdc5f2456f33b186868e1401754",
-    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "e2348a353b00d7fc4f382608f68440f1d3edd7594e4345cb262e8461d8f189ac",
-    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "6e41ef2365e3e652ead7bc4ff01e5a831e36d9382ef206e32e5f470f62ee0fef",
-    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "b116ae5757145038847806177e8d343454480613357e9df76a22d084d37d8233",
-    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "eccfa9591090cefbe50fab7005b459a2938e161cc9de6077f09dbc2ab2462a89"
+    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "29e20f7a052073f32890cd667279abcc74ce2c5bf1dc53fa775f96150a8703f7",
+    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "1ae7ee8110afae49fcb47150bbc4b65ad11d4989ec2c31afee09f3af48a832ab",
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "596495d557cdb428d698a5ee85b5689cd7cf45142046f1924f6f41b74c3c8476",
+    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "7674f5726e35d2ab1ec5c0f6cfc528b750101a594e2eabf8ea5ef5859ca5350a",
+    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "3f6a9ba4ccfb5f0578735ab0751269a463a37bacb372d75ee6b6771fb93fb214"
   }
 }

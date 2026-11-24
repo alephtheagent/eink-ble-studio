@@ -44,6 +44,7 @@ export default {
   'firmware.packageSizeUnknown': 'Размер пакета: неизвестен.', 'firmware.packageSize': 'Размер пакета: {size}',
   'firmware.installedUnknown': 'Установленная версия: неизвестна (прошивка её не сообщает).',
   'firmware.updateLatest': 'Обновить до последней версии', 'firmware.enterDfu': 'Перейти в режим DFU',
+  'firmware.downloadUf2': 'Скачать UF2', 'firmware.blocklistNotice': 'Chromium блокирует BLE-DFU сервис Adafruit, поэтому прошить по воздуху из браузера нельзя. Путь через USB: перезагрузите дисплей в UF2-загрузчик и скопируйте файл ниже на появившийся диск.',
   'firmware.noFallbackCheck': 'Я понимаю, что в этой прошивке нет резервного образа.',
   'firmware.flashAction': 'Записать прошивку', 'firmware.cancel': 'Отмена', 'firmware.dfuProgress': 'Ход DFU',
   'firmware.checkFirst': 'Проверьте наличие последней версии прошивки. Переход в режим DFU перезапустит дисплей в загрузчик.',

@@ -46,6 +46,11 @@ jobs:
           if [ -z "$asset" ]; then echo '::error::latest release has no -dfu.zip asset'; exit 1; fi
           curl -sSL -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/octet-stream' "$asset" -o web/firmware/latest-dfu.zip
           test -s web/firmware/latest-dfu.zip
+          uf2=$(curl -sS -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/vnd.github+json' "$api" \
+            | python3 -c "import json,sys; d=json.load(sys.stdin); print(next((a['url'] for a in d.get('assets', []) if a['name'].endswith('.uf2')), ''))")
+          if [ -z "$uf2" ]; then echo '::error::latest release has no .uf2 asset'; exit 1; fi
+          curl -sSL -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/octet-stream' "$uf2" -o web/firmware/latest.uf2
+          test -s web/firmware/latest.uf2
           python3 - <<'PY'
           import json, zipfile, urllib.request, os
           path = 'web/firmware/latest-dfu.zip'
