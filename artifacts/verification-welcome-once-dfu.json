@@ -1,20 +1,29 @@
 {
   "origin": "0x26000",
-  "limit_exclusive": "0xec000",
+  "limit_exclusive": "0xb0000",
   "family": "0xada52840",
-  "binary_bytes": 146936,
-  "image_end_exclusive": "0x49df8",
-  "layout_margin_bytes": 664072,
-  "embedded_build_id": "0xb2d92516",
+  "binary_bytes": 177564,
+  "image_end_exclusive": "0x5159c",
+  "layout_margin_bytes": 387684,
+  "embedded_build_id": "0x53801713",
+  "reserved_animation": {
+    "start": "0xb0000",
+    "end_exclusive": "0xcc000"
+  },
+  "reserved_pages": {
+    "start": "0xcc000",
+    "end_exclusive": "0xec000"
+  },
   "state_sector": {
     "address": "0xec000",
-    "size_bytes": 4096,
-    "excluded_from_application": true
+    "size_bytes": 4096
   },
-  "uf2_bytes": 293888,
-  "blocks": 574,
+  "filesystem_start": "0xed000",
+  "preservation": "Payload addresses exclude reservations; bootloader erase behavior is not verified. Back up pages and animations before updates.",
+  "uf2_bytes": 355328,
+  "blocks": 694,
   "initial_sp": "0x20040000",
-  "reset_vector": "0x365dd",
+  "reset_vector": "0x3dbc5",
   "arm_smoke": [
     {
       "initial_out": 0,
@@ -176,10 +185,10 @@
   "authorize_contract": "PASS: linked ARM v1/v2 callback/receiver and core PREP/EXEC/capabilities to SVC boundary; injected SVC returns verify deferred action success/failure",
   "scope": "Linked ARM protocol/authorization with injected SVC outcomes, plus GPIO/SPI memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
   "sha256": {
-    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "579dea764838fec94371bc98dd6078ffb6951c2aeacd3c09227365cbffbaa671",
-    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "723bd1e1bdcbcc7cfae7edecd00ee55035091b88770e8227ac814c49ba2ab8a6",
-    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "f3d876344ac52ad452b501e71e72d0a9d2b4444a0ac7e1b6e807b538fead6093",
-    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "1fe79b5b41272557a4443de7a9a98a36877c97e01bd5d3ef5ad65f1d9f935881",
-    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "2a5aea289d3f78c8eaa21dc3b9b31c39b22c51b0c6b6c16014593b5eb25192fa"
+    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "9b47e13c922267581a4cbe24f8f9040715982f1318e7eaff5d844e4643c9dafe",
+    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "596cf7a119ff04b14f8a522d9b9fba5eed22ee9d2c698ddcbba175f1ce92f965",
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "e767a2b38fa9ccc741bf41b108dbfb99b61031adc1d5b43867b929c81c772fef",
+    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "c36fafc2e47b6fd4f7cc897c463ede38df9db7f8d35cb6c5383983f7f246108b",
+    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "fc8f7f91be3a5fe09f9553919e610e102cd29e6a7773d571e3ac9e94728b6898"
   }
 }

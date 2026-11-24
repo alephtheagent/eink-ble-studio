@@ -1,0 +1,6 @@
+Processing repin_bw (platform: platformio/nordicnrf52@11.0.0; board: promicro_nrf52840_s140v6; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Removing .pio/build/repin_bw
+Done cleaning
+========================= [SUCCESS] Took 1.80 seconds =========================

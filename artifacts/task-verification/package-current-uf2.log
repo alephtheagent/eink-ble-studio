@@ -1,0 +1,269 @@
+{"linked_actions": {"reset_status": "01000001000000000000a00f0000000000000000", "enter_dfu_status": "01000002000000000000a00f0000000000000000", "dfu_while_receiving_status": "010102001f0000000000a00fbe938b3a00000000", "action_armed_before_svc": false}}
+{"linked_deferred_action": {"successful_att_authorization_arms": true, "failed_att_authorization_clears": [2, 2, 0, 0], "failed_status_publication_att_error": 270, "failed_status_publication_clears": [2, 2, 0, 0]}}
+{"linked_v2": [{"write_ceiling": 20, "codec": 0, "wire_bytes": 4000, "status": "0202000009000000a00fa00fbe938b3a00000000"}, {"write_ceiling": 125, "codec": 0, "wire_bytes": 4000, "status": "0202000009000000a00fa00fbe938b3a00000000"}, {"write_ceiling": 244, "codec": 0, "wire_bytes": 4000, "status": "0202000009000000a00fa00fbe938b3a00000000"}, {"write_ceiling": 20, "codec": 1, "wire_bytes": 64, "status": "020200010900000040004000be938b3a00000000"}, {"write_ceiling": 125, "codec": 1, "wire_bytes": 64, "status": "020200010900000040004000be938b3a00000000"}, {"write_ceiling": 244, "codec": 1, "wire_bytes": 64, "status": "020200010900000040004000be938b3a00000000"}]}
+{
+  "elf": "artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.elf",
+  "START_authorize_SVC": {
+    "svc": 176,
+    "type": 2,
+    "status": 0,
+    "update": 1,
+    "offset": 0,
+    "length": 11,
+    "data": "0107000000a00ffda24d01"
+  },
+  "DATA_packets": 308,
+  "frame_bytes": 4000,
+  "final_status": "0102000007000000a00fa00ffda24d0100000000",
+  "CRC32": "0x14da2fd",
+  "scope": "Linked callback/receiver to SVC boundary with injected authorization outcomes; no SoftDevice, RF or hardware execution"
+}
+ARM callback contract + full MTU23 frame + action success/failure sequencing PASS
+{
+  "guard_opcodes": [
+    4,
+    5,
+    6
+  ],
+  "capabilities": [
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 23,
+      "safeWrite": 20
+    },
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 128,
+      "safeWrite": 125
+    },
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 247,
+      "safeWrite": 244
+    },
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 517,
+      "safeWrite": 244
+    },
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 0,
+      "safeWrite": 20
+    },
+    {
+      "present": false,
+      "connected": false,
+      "mtu_input": 247,
+      "safeWrite": 20
+    },
+    {
+      "present": true,
+      "connected": false,
+      "mtu_input": 247,
+      "safeWrite": 20
+    },
+    {
+      "present": true,
+      "connected": true,
+      "mtu_input": 23,
+      "safeWrite": 20
+    }
+  ],
+  "scope": "Linked ARM core guard/callback to SVC; no SoftDevice, RF, allocation or display simulation"
+}
+{
+  "origin": "0x26000",
+  "limit_exclusive": "0xcc000",
+  "family": "0xada52840",
+  "binary_bytes": 154960,
+  "image_end_exclusive": "0x4bd50",
+  "layout_margin_bytes": 524976,
+  "embedded_build_id": "0x34d22eb3",
+  "reserved_pages": {
+    "start": "0xcc000",
+    "end_exclusive": "0xec000"
+  },
+  "state_sector": {
+    "address": "0xec000",
+    "size_bytes": 4096
+  },
+  "filesystem_start": "0xed000",
+  "preservation": "Payload addresses exclude reservations; bootloader erase behavior is not verified. Back up pages before updates.",
+  "uf2_bytes": 310272,
+  "blocks": 606,
+  "initial_sp": "0x20040000",
+  "reset_vector": "0x38499",
+  "arm_smoke": [
+    {
+      "initial_out": 0,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 0,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 8192,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    },
+    {
+      "initial_out": 0,
+      "initial_cnf": 3,
+      "vcc_writes": [
+        [
+          "0x50000508",
+          "0x2000"
+        ],
+        [
+          "0x50000734",
+          "0x3"
+        ],
+        [
+          "0x5000050c",
+          "0x8000"
+        ],
+        [
+          "0x5000050c",
+          "0x200"
+        ]
+      ],
+      "SPIM3_sck_mosi_miso": [
+        38,
+        9,
+        22
+      ]
+    }
+  ],
+  "linked_action_smoke": [
+    {
+      "linked_actions": {
+        "reset_status": "01000001000000000000a00f0000000000000000",
+        "enter_dfu_status": "01000002000000000000a00f0000000000000000",
+        "dfu_while_receiving_status": "010102001f0000000000a00fbe938b3a00000000",
+        "action_armed_before_svc": false
+      }
+    },
+    {
+      "linked_deferred_action": {
+        "successful_att_authorization_arms": true,
+        "failed_att_authorization_clears": [
+          2,
+          2,
+          0,
+          0
+        ],
+        "failed_status_publication_att_error": 270,
+        "failed_status_publication_clears": [
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "welcome": {
+    "source": "assets/approved-welcome.png",
+    "source_size": [
+      122,
+      250
+    ],
+    "preview": "assets/approved-welcome-preview.png",
+    "preview_size": [
+      610,
+      1250
+    ],
+    "preview_scale": 5,
+    "source_pixels_compared": 30500,
+    "preview_pixels_compared": 762500,
+    "elf_symbol": "eink_welcome_bitmap",
+    "frame_bytes": 4000,
+    "frame_sha256": "dc6e05e5f09d7df9b32d3952472577744d534723f11f60ed1204370180169733",
+    "layout": "MSB-first, black=1, stride=16, zero padding",
+    "match": true
+  },
+  "authorize_contract": "PASS: linked ARM v1/v2 callback/receiver and core PREP/EXEC/capabilities to SVC boundary; injected SVC returns verify deferred action success/failure",
+  "scope": "Linked ARM protocol/authorization with injected SVC outcomes, plus GPIO/SPI memory-backed MMIO; not hardware, RF, display timing or electrical verification.",
+  "sha256": {
+    "eink-ble-welcome-once-dfu-bw-s140v6.elf": "8a7de15bae18685e47e7b9ba692553fefb0f931c98ac69c42c99dc5d74b47f1d",
+    "eink-ble-welcome-once-dfu-bw-s140v6.hex": "9b6e15dd9dc79aad19af4fe71cd52264f605078d310e9e54adf98becd81725d0",
+    "eink-ble-welcome-once-dfu-bw-s140v6.bin": "f39613585a37e9178ca841f6535a077d548baee02139035a082e1a9434fad5b2",
+    "eink-ble-welcome-once-dfu-bw-s140v6.uf2": "aacbab1623ec8ec9a1adae39ae1da1b74ea31ba1ffe69caa29bb4ffc67c3fe9d",
+    "eink-ble-welcome-once-dfu-bw-s140v6.zip": "fa787cd1fb0a84e2560d612f077891b417fd7b0d4da84ee5a052cdc19563b285"
+  }
+}

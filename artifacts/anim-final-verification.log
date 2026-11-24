@@ -1,0 +1,235 @@
+
+=== SECTION 1 === npm test   (command: npm test)
+
+(node:589961) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ editor surface: approved PNG→native pixels→download, menus, keyboard, pointer, filters and local file (1670.255285ms)
+ℹ tests 129
+ℹ suites 0
+ℹ pass 129
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16501.568424
+C++: shared vectors, protocol bounds/CRC/duplicates/recovery, v1/v2 reset/DFU actions and status PASS
+C++ boot state: record validation, first/repeat boot, changed build, corruption/read failure, reset-state and persistence retry PASS
+operation 0: 167 interruption points including torn program/erase
+operation 1: 69 interruption points including torn program/erase
+operation 2: 101 interruption points including torn program/erase
+operation 3: 199 interruption points including torn program/erase
+invalid newest metadata and corrupted newest frame recover previous bank
+full, conflict, update with spare, delete and reuse passed
+pending display copy rejects new reads and uploads without corrupting its frame
+animation codec: 3 crc, 7 frame, 7 blob, 3 animation, 8 packbits, 8 packbits-frame, 12 reject vectors passed
+storage: COW commit, reload, blob headers, delta decode round-trip
+storage: revision advances only on commit/delete, delete and reuse pass
+wire: stale BEGIN revision is a conflict and starts no work
+storage: count>64, blob past bank end, encLen>4000, bad flags all rejected
+storage: 623 interruption points, old animation always mountable
+storage: bad metadata CRC, bad marker and bad blob header fall back or fail closed
+storage: damaged metadata is reported, never silently reformatted
+storage/player: empty animation cannot start playback
+wire: INFO/BEGIN/FRAME/DATA/FRAME_COMMIT/COMMIT/READ happy path
+wire: malformed lengths, missing BEGIN, bad flags, ABORT
+wire: offset errors, frame index, reserved byte, BUSY, codec stream and limit
+wire: decoded-frame CRC mismatch rejects the frame and commits nothing
+wire: PLAY/STOP handshake, INFO playing index, DELETE and revision conflict
+wire: a second connection cannot interleave commands
+wire: a 15 s stalled upload is discarded and the durable animation survives
+wire: DELETE stops playback and requests the panel back
+wire: frame 0 must be a full frame
+wire: disconnect during a staged frame discards the upload, durable animation intact
+wire: disconnect while COMMIT is pending lets the durable write finish
+player: single-pixel, corner and whole-panel bounding boxes; scene threshold
+player: the six padding bits never contribute to the bounding box
+player: full refresh every N presented frames (first, 10th, 20th)
+player: 59% stays partial, 60% and 61% force a full refresh
+player: identical consecutive frames skip the refresh and keep the timing
+player: the first frame after every start() is a full refresh
+player: the last column (x=121) is reported exactly
+player: in-place decode matches the two-buffer reference on 6 change shapes
+player: priming from index 2 presents the same frame as playing from 0
+player: deadline scheduling, no drift, overrun re-anchor
+player: out-of-range index, loop wrap, stop/pause
+player: one-shot animation stops after the last frame
+player: persistence is throttled to once per 10 s
+player: a corrupt blob stops playback with an error and does not spin
+codec: 7 blob vectors decode identically via decodeBlob and StreamDecoder
+codec: 7 frame CRCs and 3 shared CRC vectors match
+codec: 3 animation CRC sequences match the incremental accumulator
+codec: 12 reject vectors fail at the declared stage and code
+codec: 8 packbits vectors encode and decode byte-identically
+all animation firmware tests passed
+
+ℹ tests 129
+ℹ pass 129
+ℹ fail 0
+RESULT: PASS (exit 0)
+
+=== SECTION 2 === python3 tests/run_cpp.py   (command: python3 tests/run_cpp.py)
+
+C++: shared vectors, protocol bounds/CRC/duplicates/recovery, v1/v2 reset/DFU actions and status PASS
+C++ boot state: record validation, first/repeat boot, changed build, corruption/read failure, reset-state and persistence retry PASS
+operation 0: 167 interruption points including torn program/erase
+operation 1: 69 interruption points including torn program/erase
+operation 2: 101 interruption points including torn program/erase
+operation 3: 199 interruption points including torn program/erase
+invalid newest metadata and corrupted newest frame recover previous bank
+full, conflict, update with spare, delete and reuse passed
+pending display copy rejects new reads and uploads without corrupting its frame
+animation codec: 3 crc, 7 frame, 7 blob, 3 animation, 8 packbits, 8 packbits-frame, 12 reject vectors passed
+storage: COW commit, reload, blob headers, delta decode round-trip
+storage: revision advances only on commit/delete, delete and reuse pass
+wire: stale BEGIN revision is a conflict and starts no work
+storage: count>64, blob past bank end, encLen>4000, bad flags all rejected
+storage: 623 interruption points, old animation always mountable
+storage: bad metadata CRC, bad marker and bad blob header fall back or fail closed
+storage: damaged metadata is reported, never silently reformatted
+storage/player: empty animation cannot start playback
+wire: INFO/BEGIN/FRAME/DATA/FRAME_COMMIT/COMMIT/READ happy path
+wire: malformed lengths, missing BEGIN, bad flags, ABORT
+wire: offset errors, frame index, reserved byte, BUSY, codec stream and limit
+wire: decoded-frame CRC mismatch rejects the frame and commits nothing
+wire: PLAY/STOP handshake, INFO playing index, DELETE and revision conflict
+wire: a second connection cannot interleave commands
+wire: a 15 s stalled upload is discarded and the durable animation survives
+wire: DELETE stops playback and requests the panel back
+wire: frame 0 must be a full frame
+wire: disconnect during a staged frame discards the upload, durable animation intact
+wire: disconnect while COMMIT is pending lets the durable write finish
+player: single-pixel, corner and whole-panel bounding boxes; scene threshold
+player: the six padding bits never contribute to the bounding box
+player: full refresh every N presented frames (first, 10th, 20th)
+player: 59% stays partial, 60% and 61% force a full refresh
+player: identical consecutive frames skip the refresh and keep the timing
+player: the first frame after every start() is a full refresh
+player: the last column (x=121) is reported exactly
+player: in-place decode matches the two-buffer reference on 6 change shapes
+player: priming from index 2 presents the same frame as playing from 0
+player: deadline scheduling, no drift, overrun re-anchor
+player: out-of-range index, loop wrap, stop/pause
+player: one-shot animation stops after the last frame
+player: persistence is throttled to once per 10 s
+player: a corrupt blob stops playback with an error and does not spin
+codec: 7 blob vectors decode identically via decodeBlob and StreamDecoder
+codec: 7 frame CRCs and 3 shared CRC vectors match
+codec: 3 animation CRC sequences match the incremental accumulator
+codec: 12 reject vectors fail at the declared stage and code
+codec: 8 packbits vectors encode and decode byte-identically
+all animation firmware tests passed
+RESULT: PASS (exit 0)
+
+=== SECTION 3 === pio build size   (command: pio run -d firmware -e repin_bw, run by this script; size lines)
+
+Linking .pio/build/repin_bw/firmware.elf
+Checking size .pio/build/repin_bw/firmware.elf
+RAM:   [==        ]  16.6% (used 39532 bytes from 237568 bytes)
+Flash: [===       ]  30.4% (used 171732 bytes from 565248 bytes)
+========================= [SUCCESS] Took 86.33 seconds =========================
+--- linker region actually in use ---
+7:  FLASH (rx) : ORIGIN = 0x26000, LENGTH = 0xB0000 - 0x26000
+--- firmware agent build log (same tree, for comparison) ---
+RAM:   [==        ]  16.6% (used 39532 bytes from 237568 bytes)
+Flash: [===       ]  30.4% (used 171732 bytes from 565248 bytes)
+======================== [SUCCESS] Took 105.88 seconds ========================
+RESULT: PASS (exit 0)
+
+=== SECTION 4 === tools/package_firmware.py   (command: PYTHONPATH=tools python3 tools/package_firmware.py)
+
+{
+  "origin": "0x26000",
+  "limit_exclusive": "0xb0000",
+  "binary_bytes": 171732,
+  "image_end_exclusive": "0x4fed4",
+  "layout_margin_bytes": 393516,
+  "reserved_animation": {
+    "start": "0xb0000",
+    "end_exclusive": "0xcc000"
+  },
+  "reserved_pages": {
+    "start": "0xcc000",
+    "end_exclusive": "0xec000"
+  },
+  "state_sector": {
+    "address": "0xec000",
+    "size_bytes": 4096
+  },
+  "filesystem_start": "0xed000",
+  "blocks": 671,
+  "initial_sp": "0x20040000",
+  "reset_vector": "0x3c535"
+}
+RESULT: PASS (exit 0)
+
+=== SECTION 5 === tools/dfu_package.py   (command: /usr/bin/python3.14 tools/dfu_package.py artifacts/eink-ble-welcome-once-dfu-bw-s140v6.hex --application-version 66048 --output artifacts/eink-ble-welcome-once-dfu-bw-s140v6.dfu.zip --result artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.json; then the documented byte-identical -dfu.zip copy)
+
+{
+  "application_version": 66048,
+  "dfu_version": 0.5,
+  "device_type": "0x52",
+  "sd_req": [
+    "0xb6"
+  ],
+  "hex_bounds": {
+    "min": "0x26000",
+    "max_exclusive": "0x4fed4"
+  },
+  "application_bin_bytes": 171732,
+  "firmware_sha256": "1ba541843e472ecaad3d17b0967048d506002a38910d45bfc73d373b9e89e6a2",
+  "sha256": "5d0ecfb325e0a0ff96ce47f8f4b9ba8a5d1a232d2ff3a2f552a8dceccf8c963e",
+  "zip_bytes": 172692
+}
+RESULT: PASS (exit 0)
+
+=== SECTION 6 === wire end-to-end   (command: node --test tests/anim-wire-e2e.test.js)
+
+✔ the site upload stream is accepted by the firmware endpoint, ack by ack (105.301752ms)
+✔ every stored frame reads back through READ byte for byte (306.286001ms)
+✔ DATA with whole-blob (header-included) offsets is rejected, proving the harness catches it (109.808724ms)
+✔ PLAY after a successful upload sets the playing flag and acks the start index (115.775341ms)
+✔ PLAY on an empty device is not found (41.86383ms)
+✔ a truncated DATA stream is an offset error, not silent acceptance (36.68261ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4152.447434
+RESULT: PASS (exit 0)
+
+=== SECTION 7 === sha256   (command: sha256sum <4 UI screenshots> <uf2> <dfu.zip> <dfu.zip copy>)
+
+b1ebdffb8fd0d5582accd6627656f864a62ab3c78d9abf626e1a1e0ff43cc26b  artifacts/anim-ui-desktop.png
+0e2ad8de7871bb4865c8356c88e33e810f304989bb1d6dba1e2887bf78129dd9  artifacts/anim-ui-mobile-320.png
+1ee456de332d24aa0229651d0b7de236f124b0dfb18e8cc7c7297ddb4fc240f3  artifacts/anim-ui-mobile-390.png
+a3de54984a466298361d3b499ca1114b76a00895af3c26ee0357e74eac55d10e  artifacts/anim-ui-ru-390.png
+acf0dc820fcff21970e1b474cc147bde498d55c73d864c289ef9b06fe0885323  artifacts/eink-ble-welcome-once-dfu-bw-s140v6.uf2
+5d0ecfb325e0a0ff96ce47f8f4b9ba8a5d1a232d2ff3a2f552a8dceccf8c963e  artifacts/eink-ble-welcome-once-dfu-bw-s140v6.dfu.zip
+5d0ecfb325e0a0ff96ce47f8f4b9ba8a5d1a232d2ff3a2f552a8dceccf8c963e  artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip
+RESULT: PASS (exit 0)
+
+=== SECTION 8 === summary
+
+1 npm test ................. exit 0, ℹ tests 129, ℹ pass 129, ℹ fail 0
+2 tests/run_cpp.py ......... exit 0
+3 pio build/linker size .... exit 0, region 0x26000..0xB0000 (0x8A000), Flash: [===       ]  30.4% (used 171732 bytes from 565248 bytes)
+4 package_firmware.py ...... exit 0
+5 dfu_package.py ........... exit 0
+6 anim-wire-e2e.test.js .... exit 0, ℹ pass 6 ℹ fail 0 
+7 sha256 ................... exit 0
+
+Notes on the hashes above:
+- The four UI screenshots are static inputs produced by the site agent's smoke run.
+- Every PlatformIO build embeds a fresh 32-bit build ID, so the .elf/.hex/.uf2/.bin
+  bytes (and therefore their sha256) change on every rebuild even with identical
+  source. The UF2/DFU hashes in section 7 belong to the image packaged in this run.
+- adafruit-nrfutil embeds a timestamp in the DFU zip, so the .dfu.zip sha256 is not
+  reproducible across runs from the same HEX. The verified fields that are stable
+  are application_version 66048, DFU 0.5, device_type 0x52, sd_req 0xb6, the HEX
+  bounds and firmware_sha256 over the .bin payload.
+- Nothing was flashed, published, tagged or released; this log is local evidence only.
+
+OVERALL: PASS (all 7 sections exited 0)

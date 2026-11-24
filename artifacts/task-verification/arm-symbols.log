@@ -1,0 +1,1156 @@
+00045388 T abort
+200071f4 B actionArmed
+200071f8 B actionAt
+00039234 T ada_callback_init
+000391a8 T ada_callback_invoke
+000390dc T ada_callback_queue
+00039058 T adafruit_callback_task
+00043a00 T __adddf3
+000439e8 T __aeabi_atexit
+000473f8 T __aeabi_cdcmpeq
+000473f8 T __aeabi_cdcmple
+000473e8 T __aeabi_cdrcmple
+00047498 T __aeabi_d2iz
+00043a00 T __aeabi_dadd
+00047408 T __aeabi_dcmpeq
+00047444 T __aeabi_dcmpge
+00047458 T __aeabi_dcmpgt
+00047430 T __aeabi_dcmple
+0004741c T __aeabi_dcmplt
+0004746c T __aeabi_dcmpun
+0004718c T __aeabi_ddiv
+00046f38 T __aeabi_dmul
+000439f4 T __aeabi_drsub
+000439fc T __aeabi_dsub
+00043cbc T __aeabi_f2d
+00043c98 T __aeabi_i2d
+00044090 W __aeabi_idiv0
+00043d10 T __aeabi_l2d
+00044090 W __aeabi_ldiv0
+00043c78 T __aeabi_ui2d
+00043d00 T __aeabi_ul2d
+00043d6c T __aeabi_uldivmod
+20006f24 b _app_driver
+20006f28 b _app_driver_count
+00026200 t __arm_set_fast_math
+000441b4 T __ascii_mbtowc
+00045290 T __ascii_wctomb
+00044094 T __assert_func
+000464a4 T _Balloc
+0004650c T _Bfree
+2000b844 B Bluefruit
+2000ca3c B bootloaderVersion
+2000ce74 B __bss_end__
+20006370 B __bss_start__
+000384de W BusFault_Handler
+20006120 d _cache
+2000a828 b _cache_buffer
+2000bfd8 b callbackDeferred
+2000bfe0 b callbacksInt
+0004424e T _calloc_r
+00047651 t _cap_get
+00047652 t _cap_get_set
+200071fc B capsCharacteristic
+2000ca2c b _cb_qdepth
+2000ca30 b _cb_queue
+2000ca34 b _cb_task
+000384ea W CCM_AAR_IRQHandler
+000270ec T cdcd_control_xfer_cb
+00026f5c T cdcd_init
+2000654c b _cdcd_itf
+00026ff8 T cdcd_open
+00026fcc T cdcd_reset
+000271b0 T cdcd_xfer_cb
+2000c000 b channelMap
+000461c8 T _cleanup_r
+000474e8 T _close
+00046e7c T _close_r
+0004736c T __cmpdf2
+20007254 B command2Characteristic
+200072ac B commandCharacteristic
+20006370 b completed.9929
+000384ea W COMP_LPCOMP_IRQHandler
+000384ea W CRYPTOCELL_IRQHandler
+00040408 T CRYS_COMMON_CmpLsbUnsignedCounters
+00040498 T CRYS_COMMON_CmpLsWordsUnsignedCounters
+000411c8 T CRYS_COMMON_ConvertLswMswWordsToMsbLsbBytes
+0004111c T CRYS_COMMON_ConvertMsbLsbBytesToLswMswWords
+000405b0 T CRYS_COMMON_GetBytesCounterEffectiveSizeInBits
+00040608 T CRYS_COMMON_GetWordsCounterEffectiveSizeInBits
+00041104 T CRYS_COMMON_ReverseMemcpy
+00040c28 T CRYS_ECDH_SVDP_DH
+00040a20 T CRYS_ECPKI_ExportPublKey
+00040b2c T CRYS_ECPKI_GenKeyPair
+00040d0c T CRYS_ECPKI_GetEcDomain
+0003f908 T CRYS_RND_GenerateVector
+0003fda8 T CRYS_RND_GenerateVectorInRange
+0003f604 t CRYS_RND_GenerateVectorInRange.part.0
+0003fce0 T CRYS_RndInit
+0003fc24 T CRYS_RND_Instantiation
+000495c0 t CSWTCH.6
+2000707c b _ctrl_xfer
+0004b767 T _ctype_
+00044638 T __cvt
+000440d0 T __cxa_atexit
+00035e24 T __cxa_pure_virtual
+000469be T __d2b
+20006370 D __data_end__
+20006000 D __data_start__
+200070d0 b _dcd
+0002a744 W dcd_edpt0_status_complete
+0002b0c4 T dcd_edpt_clear_stall
+0002adb8 W dcd_edpt_close
+0002ad24 T dcd_edpt_close_all
+0002ac08 T dcd_edpt_open
+0002b074 T dcd_edpt_stall
+0002ae80 T dcd_edpt_xfer
+0002998c T dcd_event_handler
+0002abd4 T dcd_init
+0002abd8 T dcd_int_enable
+0002b0f8 T dcd_int_handler
+0002abe4 T dcd_set_address
+000384e4 W DebugMon_Handler
+000384ea T Default_Handler
+00035e40 T delay
+20006004 D desc_ms_os_20
+20007304 B diagnostics
+0003949c T digitalRead
+000394e0 T digitalToggle
+00039464 T digitalWrite
+20007308 B display
+0004718c T __divdf3
+00026210 t __do_global_dtors_aux
+2000636c d __do_global_dtors_aux_fini_array_entry
+000414b8 T DoubleMdf2Mdf
+20006000 D __dso_handle
+000454b0 T _dtoa_r
+00040898 T _DX_ECPKI_BuildPublKey
+000384ea W ECB_IRQHandler
+00049734 T ecDomainsFuncP
+00041444 T EcWrstDhDeriveSharedSecret
+000413e4 T EcWrstFullCheckPublKey
+000438bc T EcWrstGenKeyPair
+00041228 T EcWrstInitPubKey
+0002aa84 t edpt_dma_start
+0004b9d4 t __EH_FRAME_BEGIN__
+20006118 D eink_build_id
+000478ac T eink_welcome_bitmap
+00038494 t __empty
+2000ce74 B __end__
+00039354 T enterOTADfu
+0003934c T enterSerialDfu
+0004736c T __eqdf2
+000440ec T __errno
+2000ce70 B errno
+00037a80 T eTaskConfirmSleepModeStatus
+0004b9e0 R __etext
+0004b9e0 R __exidx_end
+0004b9d8 T __exidx_start
+00047558 T _exit
+000440f8 T exit
+000446fa T __exponent
+00043cbc T __extendsfdf2
+000279c4 t fail_scsi_op.constprop.8
+00032600 t fal_erase
+0003268c t fal_program
+000325d8 t fal_read
+000325c8 t fal_verify
+0004612c T _fflush_r
+000425b4 T FinalizeAes
+00047568 T _fini
+00044120 T fiprintf
+00047498 T __fixdfsi
+000cc000 T __flash_arduino_end
+00026000 T __flash_arduino_start
+00032888 T flash_cache_flush
+000328c8 T flash_cache_read
+000327f4 T flash_cache_write
+000327f0 T flash_nrf5x_erase
+0003277c T flash_nrf5x_event_cb
+000327a4 T flash_nrf5x_flush
+000327e0 T flash_nrf5x_read
+000327b0 T flash_nrf5x_write
+20006138 d _flash_op_result
+00043d10 T __floatdidf
+00043c98 T __floatsidf
+00043d00 T __floatundidf
+00043c78 T __floatunsidf
+00044120 T fprintf
+000384ea W FPU_IRQHandler
+00026234 t frame_dummy
+20006350 d __frame_dummy_init_array_entry
+0004b9d4 t __FRAME_END__
+000441a4 T free
+0004426c T _free_r
+000474f8 T _fstat
+00046e9c T _fstat_r
+00048ffc t __func__.10687
+00049274 t __func__.6617
+00049284 t __func__.6682
+00049294 t __func__.7016
+000492a4 t __func__.7031
+000492b4 t __func__.7126
+000492c4 t __func__.7222
+000492d0 t __func__.7248
+000462d8 T _fwalk_reent
+000491b8 T g_ADigitalPinMap
+0004735c T __gedf2
+00047508 T _getpid
+00046dcc T _getpid_r
+00040170 t getTrngSource
+0004b714 T _global_impure_ptr
+200061e0 D __global_locale
+0002f5a0 t _GLOBAL__sub_I_eink_welcome_bitmap
+0003f164 t _GLOBAL__sub_I_InternalFS
+0003f1c0 t _GLOBAL__sub_I_nRFCrypto
+00026624 t _GLOBAL__sub_I_Serial
+00034f88 t _GLOBAL__sub_I__Z25usb_softdevice_pre_enablev
+0002fa78 t _GLOBAL__sub_I__ZN8SPIClassC2EP13NRF_SPIM_Typehhh
+00035da0 T GPIOTE_IRQHandler
+0004735c T __gtdf2
+000384da W HardFault_Handler
+2000ce74 B __HeapBase
+2003f800 B __HeapLimit
+000465b0 T __hi0bits
+00027448 T hidd_control_xfer_cb
+00027338 T hidd_init
+200068a4 b _hidd_itf
+00027358 T hidd_open
+00027348 T hidd_reset
+0002767c T hidd_xfer_cb
+0004664c T __i2b
+000384ea W I2S_IRQHandler
+20006180 d impure_data
+2000617c D _impure_ptr
+0004755c T _init
+000392cc T init
+000422e8 t InitAes.part.0
+2000636c d __init_array_end
+2000634c d __init_array_start
+2000ca40 B InternalFS
+00047518 T _isatty
+00046ec0 T _isatty_r
+00026000 T __isr_vector
+00047528 T _kill
+00046da8 T _kill_r
+00047364 T __ledf2
+00039554 T ledOff
+00039528 T ledOn
+0003a3b4 t lfs_cache_prog
+0003a598 t lfs_cache_prog.constprop.28
+0003a0d0 t lfs_cache_read.isra.10.constprop.31
+0003f044 T lfs_crc
+0003a194 t lfs_ctz_find.constprop.27
+0003d538 T lfs_deorphan
+0003e688 t lfs_deorphan.part.25
+0003b888 t lfs_dir_alloc
+0003e070 t lfs_dir_append
+0003c170 T lfs_dir_close
+0003d554 t lfs_dir_commit
+0003a298 t lfs_dir_fetch
+0003aad8 t lfs_dir_find
+0003c014 T lfs_dir_open
+0003c198 T lfs_dir_read
+0003e274 t lfs_dir_remove
+0003eca8 T lfs_file_close
+0003cf1c t lfs_file_flush.part.23
+0003ea4c T lfs_file_open
+0003d124 T lfs_file_read
+0003afc0 t lfs_file_relocate
+0003d204 T lfs_file_seek
+0003d254 T lfs_file_size
+0003ebb4 T lfs_file_sync
+0003d250 T lfs_file_tell
+0003c44c T lfs_file_write
+0003e3f0 T lfs_format
+0003e98c T lfs_mkdir
+0003d2f4 T lfs_mount
+0003a8f0 t lfs_moved.part.13
+0003a6a4 t lfs_parent.part.14
+0003ae4c t lfs_pred
+0003edc8 T lfs_remove
+0003d268 T lfs_stat
+0003d500 T lfs_unmount
+00044144 T __libc_init_array
+000400a0 T LLF_RND_AdaptiveProportionTest
+00040d88 T LLF_RND_DescBypass
+0003fe44 T LLF_RND_GetFastestRosc
+0003fe08 T LLF_RND_GetRoscSampleCnt
+000403d4 T LLF_RND_GetTrngSource
+00040048 t LLF_RND_RepetitionCounterTest.part.0
+0003fe9c T LLF_RND_RndCprngt
+000403ec T LLF_RND_RunTrngStartupTest
+0003fe64 T LLF_RND_TurnOffTrng
+0003fdd4 T LLF_RND_WaitRngInterrupt
+000465ee T __lo0bits
+00046314 T _localeconv_r
+0004418c T __locale_ctype_ptr_l
+0002e208 T loop
+00047538 T _lseek
+00046ee0 T _lseek_r
+00046828 T __lshift
+00047364 T __ltdf2
+0003853c T main
+00026250 T _mainCRTStartup
+00044194 T malloc
+2000cbd4 B __malloc_free_list
+000464a0 T __malloc_lock
+00044308 T _malloc_r
+2000cbd8 B __malloc_sbrk_start
+000464a2 T __malloc_unlock
+00046f04 T _malloc_usable_size_r
+2000c3ac b m_cb
+000468d0 T __mcmp
+00046904 T __mdiff
+00046400 T memchr
+000441d8 T memcmp
+000441f6 T memcpy
+0004420c T memmove
+000384dc W MemoryManagement_Handler
+0004423e T memset
+000278b0 T midid_control_xfer_cb
+00027714 T midid_init
+2000cbdc B _midid_itf
+00027798 T midid_open
+00027770 T midid_reset
+000278b4 T midid_xfer_cb
+00035e28 T millis
+2000c3a0 b m_pofwarn_handler
+0004b8d8 T __mprec_bigtens
+0004b900 T __mprec_tens
+200069bc b _mscd_buf
+00027c4c T mscd_control_xfer_cb
+00027b98 T mscd_init
+20006bbc b _mscd_itf
+00027bb8 T mscd_open
+00027ba8 T mscd_reset
+00027d8c T mscd_xfer_cb
+2000c3a4 b m_sleepevt_handler
+00046f38 T __muldf3
+0004653a T __multadd
+0004665e T __multiply
+2000c3a8 b m_usbevt_handler
+000384ea W MWU_IRQHandler
+0004736c T __nedf2
+000384ea W NFCT_IRQHandler
+000384d8 W NMI_Handler
+2000cae4 B nRFCrypto
+2000ce48 B nrf_nvic_state
+000385f0 T nrfx_power_init
+2000ce44 B nrfx_power_irq_enabled
+00038648 T nrfx_power_uninit
+000386c4 T nrfx_power_usbevt_disable
+000386b4 T nrfx_power_usbevt_enable
+00038690 T nrfx_power_usbevt_init
+000386d4 T nrfx_power_usbevt_uninit
+000387d8 T nrfx_spim_init
+00038a68 T nrfx_spim_uninit
+00038b2c T nrfx_spim_xfer
+20006374 b object.9934
+00028718 t _open_vc_itf
+00028958 t _open_vs_itf
+0004b9c8 t p05.7359
+20008324 B pageCommand
+2000837c B pageData
+200083d4 B pageDisconnected
+200083d5 B pageDisplaying
+200083d8 B pageFlash
+200083dc B pageFlashEvent
+200083e0 B pageFlashOwner
+200083e4 B pageFlashResult
+2000611c D pageOwner
+2000863c B pages
+200083e8 B pageStatus
+20008440 B pageStore
+20008638 B pageWorking
+000384ea W PDM_IRQHandler
+00038434 T PendSV_Handler
+0003935c T pinMode
+00041ab0 T PkaAddJcbJcb2Jcb
+0004175c T PkaAddJcbJcb2Mdf
+00042aa4 T PkaClearBlockOfRegs
+00042c50 T PkaCopyDataFromPkaReg
+00042ca8 T PkaCopyDataIntoPkaReg
+000435c8 T PkaDoubleMdf2Jcb
+000421bc T PkaEcWrstScalarMult
+00042bfc T PkaFinishAndMutexUnlock
+000428b0 T PkaGet2MsBits
+00042818 T PkaGetRegEffectiveSizeInBits
+00042a28 T PkaInitAndMutexLock
+00042918 T PkaInitPka
+000437f0 T PkaJcb2Afn
+00041d40 T PkaScalarMultSca
+00042e44 T PkiCalcJacobiSymbol
+0004301c T PkiIsModSquareRootExists
+00043d9c T __popcountsi2
+0004678c T __pow5mult
+000386ec T POWER_CLOCK_IRQHandler
+2000634c d __preinit_array_end
+2000634c d __preinit_array_start
+00044be0 T _printf_common
+00044760 W _printf_float
+00044ccc T _printf_i
+0004239c T ProcessAes
+00042d78 T ProcessBypass
+00027aa8 t proc_read10_cmd.constprop.4
+00027a10 t proc_write10_cmd.constprop.6
+20009690 B protocol
+2000a748 B protocolMutex
+00036e00 t prvAddNewTaskToReadyList
+00037684 t prvIdleTask
+000380e8 t prvTaskExitError
+00037c34 t prvTimerTask
+2000ce54 B pSaSiGenVecMutex
+2000ce64 B pSaSiRndCryptoMutex
+00035ed4 T pvPortMalloc
+00037c1c T pvTaskIncrementMutexHeldCount
+000384ea W PWM0_IRQHandler
+000384ea W PWM1_IRQHandler
+000384ea W PWM2_IRQHandler
+000384ea W PWM3_IRQHandler
+2000c008 B pxCurrentTCB
+2000c10c b pxCurrentTimerList
+2000c00c b pxDelayedTaskList
+2000c010 b pxOverflowDelayedTaskList
+2000c110 b pxOverflowTimerList
+000380f0 T pxPortInitialiseStack
+2000c014 b pxReadyTasksLists
+000384ea W QDEC_IRQHandler
+000384ea W QSPI_IRQHandler
+00045396 t quorem
+000384ea W RADIO_IRQHandler
+00046d98 T raise
+00046d48 T _raise_r
+00047548 T _read
+00046f14 T _read_r
+00046a5c T _realloc_r
+00049714 T regTemps
+00038498 T Reset_Handler
+00039280 t reset_mcu
+2000ca38 b _reset_reason
+000384ea W RNG_IRQHandler
+00040d24 T RNG_PLAT_SetUserRngParameters
+00049490 t rtable.6300
+000384ea W RTC0_IRQHandler
+00038198 T RTC1_IRQHandler
+000384ea W RTC2_IRQHandler
+000384ea W SAADC_IRQHandler
+00040734 T SaSi_AesBlock
+000407b0 T SaSi_AesFinish
+0004063c T SaSi_AesInit
+00040704 T SaSi_AesSetIv
+000406bc T SaSi_AesSetKey
+2000ce5c B sasiAsymCryptoMutex
+00043990 T SaSi_ECPKI_GetSecp160k1DomainP
+00043998 T SaSi_ECPKI_GetSecp160r1DomainP
+000439a0 T SaSi_ECPKI_GetSecp160r2DomainP
+000439a8 T SaSi_ECPKI_GetSecp192k1DomainP
+000439b0 T SaSi_ECPKI_GetSecp192r1DomainP
+000439b8 T SaSi_ECPKI_GetSecp224k1DomainP
+000439c0 T SaSi_ECPKI_GetSecp224r1DomainP
+000439c8 T SaSi_ECPKI_GetSecp256k1DomainP
+000439d0 T SaSi_ECPKI_GetSecp256r1DomainP
+000439d8 T SaSi_ECPKI_GetSecp384r1DomainP
+000439e0 T SaSi_ECPKI_GetSecp521r1DomainP
+2000ce60 B sasiGenVecMutex
+00041048 T SaSi_HalClearInterruptBit
+00041040 T SaSi_HalInit
+00041054 T SaSi_HalMaskInterrupt
+00041044 T SaSi_HalTerminate
+00041060 T SaSi_HalWaitInterrupt
+00040df8 T SaSi_LibInit
+00040f44 W SaSi_PalAbort
+00040f68 T SaSi_PalDmaTerminate
+00040e60 T SaSi_PalInit
+00040f6c T SaSi_PalMemCmp
+00040f9c T SaSi_PalMemCopy
+00040fa0 T SaSi_PalMemMove
+00040fa4 T SaSi_PalMemSet
+00040fa8 T SaSi_PalMemSetZero
+00040fb0 T SaSi_PalMutexCreate
+00040fcc T SaSi_PalMutexDestroy
+00040fe8 T SaSi_PalMutexLock
+0004101c T SaSi_PalMutexUnlock
+00041088 T SaSi_PalPowerSaveModeSelect
+00040eec T SaSi_PalTerminate
+00040de0 T SaSi_PalTrngParameterGet
+2000ce68 B sasiPowerMutex
+2000ce58 B sasiRndCryptoMutex
+0003f3d4 t SaSi_RndDf
+0003f7c8 t SaSi_RndInstantiateOrReseed.part.0.constprop.0
+0003f35c t SaSi_RndUpdate
+2000ce6c B sasiSymCryptoMutex
+000385c4 T _sbrk
+00044ef0 T _sbrk_r
+00046e4e T __sclose
+00038190 t sd_app_evt_wait
+0003460c t sd_ble_cfg_set
+00034608 t sd_ble_enable
+00034610 t sd_ble_evt_get
+00032950 t sd_ble_gap_adv_set_configure
+00032954 t sd_ble_gap_adv_start
+000338d4 t sd_ble_gap_appearance_set
+00033958 t sd_ble_gap_auth_key_reply
+00035640 t sd_ble_gap_conn_param_update
+00033260 t sd_ble_gap_data_length_update
+00034604 t sd_ble_gap_device_name_get
+00034600 t sd_ble_gap_device_name_set
+00033258 t sd_ble_gap_disconnect
+00033960 t sd_ble_gap_encrypt
+0003395c t sd_ble_gap_lesc_dhkey_reply
+0003325c t sd_ble_gap_phy_update
+000338d8 t sd_ble_gap_ppcp_set
+000359a4 t sd_ble_gap_scan_start
+00033964 t sd_ble_gap_sec_info_reply
+00033954 t sd_ble_gap_sec_params_reply
+00032958 t sd_ble_gap_tx_power_set
+00033598 t sd_ble_gattc_char_value_by_uuid_read
+00035728 t sd_ble_gattc_hv_confirm
+00035720 t sd_ble_gattc_read
+00035724 t sd_ble_gattc_write
+00032d60 t sd_ble_gatts_characteristic_add
+00032d64 t sd_ble_gatts_descriptor_add
+00033268 t sd_ble_gatts_exchange_mtu_reply
+0002bd20 t sd_ble_gatts_rw_authorize_reply
+00032d6c t sd_ble_gatts_rw_authorize_reply
+0003359c t sd_ble_gatts_rw_authorize_reply
+00034438 t sd_ble_gatts_service_add
+00035090 t sd_ble_gatts_sys_attr_get
+00033264 t sd_ble_gatts_sys_attr_set
+0003508c t sd_ble_gatts_sys_attr_set
+00032d68 t sd_ble_gatts_value_set
+00034618 t sd_ble_opt_set
+00034614 t sd_ble_user_mem_reply
+000344b4 t sd_ble_uuid_decode
+000344b0 t sd_ble_uuid_vs_add
+0002a990 t sd_clock_hfclk_is_running
+0002a98c t sd_clock_hfclk_release
+0002a988 t sd_clock_hfclk_request
+00033950 t sd_ecb_block_encrypt
+000345f8 t sd_evt_get
+000325c0 t sd_flash_page_erase
+0002bd1c t sd_flash_write
+000325bc t sd_flash_write
+000345ec t sd_power_usbdetected_enable
+000345e8 t sd_power_usbpwrrdy_enable
+000345f4 t sd_power_usbregstatus_get
+000345f0 t sd_power_usbremoved_enable
+0003927c t sd_softdevice_disable
+000345fc t sd_softdevice_enable
+0002a994 t sd_softdevice_is_enabled
+000325c4 t sd_softdevice_is_enabled
+00038194 t sd_softdevice_is_enabled
+2000b828 b _sem
+2000638c B Serial
+2000a74c B service
+0002eccc T setup
+0004b878 T __sf_fake_stderr
+0004b898 T __sf_fake_stdin
+0004b8b8 T __sf_fake_stdout
+00046020 T __sflush_r
+000461d4 T __sfmoreglue
+00046260 T __sfp
+000443bc t __sfputc_r
+000443ea T __sfputs_r
+00046200 T __sinit
+00044f10 T siprintf
+00046378 T __smakebuf_r
+2000a814 B SPI
+000384ea W SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+000384ea W SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+00038cd8 T SPIM2_SPIS2_SPI2_IRQHandler
+00038d50 T SPIM3_IRQHandler
+00044f10 T sprintf
+00046dd0 T __sread
+00046e2a T __sseek
+00049764 t ssi_ecpki_domain_secp160k1
+00049a40 t ssi_ecpki_domain_secp160r1
+00049d1c t ssi_ecpki_domain_secp160r2
+00049ff8 t ssi_ecpki_domain_secp192k1
+0004a2d4 t ssi_ecpki_domain_secp192r1
+0004a5b0 t ssi_ecpki_domain_secp224k1
+0004a88c t ssi_ecpki_domain_secp224r1
+0004ab68 t ssi_ecpki_domain_secp256k1
+0004ae44 t ssi_ecpki_domain_secp256r1
+0004b120 t ssi_ecpki_domain_secp384r1
+0004b3fc t ssi_ecpki_domain_secp521r1
+00046aa8 T __ssputs_r
+20040000 A __stack
+2003f800 A __StackLimit
+00000800 A __StackSize
+20040000 T __StackTop
+00026250 T _start
+0003fef4 t startTrngHW
+2000a764 B status2Characteristic
+2000a7bc B statusCharacteristic
+00046180 t std
+00044f50 T strcat
+00044f6e T strchr
+00044f88 T strcmp
+00044f9c T strcpy
+00044fac T strcspn
+00044fd0 T strlen
+00044fe0 T strncpy
+0004500a T strrchr
+00045032 T strspn
+0004514c T strtoul
+00045056 t _strtoul_l.isra.0
+000439fc T __subdf3
+00038414 T SVC_Handler
+00046b5c T _svfiprintf_r
+00046b5c T _svfprintf_r
+000451ec T __swbuf_r
+00046330 T __swhatbuf_r
+000384ea W SWI0_EGU0_IRQHandler
+000384ea W SWI1_EGU1_IRQHandler
+00034eec T SWI2_EGU2_IRQHandler
+000384ea W SWI3_EGU3_IRQHandler
+000384ea W SWI4_EGU4_IRQHandler
+000384ea W SWI5_EGU5_IRQHandler
+00046df2 T __swrite
+000452ac T __swsetup_r
+20006140 D SystemCoreClock
+00038dd0 T SystemInit
+000384e8 W SysTick_Handler
+000384ea W TEMP_IRQHandler
+000384ea W TIMER0_IRQHandler
+000384ea W TIMER1_IRQHandler
+000384ea W TIMER2_IRQHandler
+000384ea W TIMER3_IRQHandler
+000384ea W TIMER4_IRQHandler
+200063a8 B TinyUSBDevice
+000262d0 W TinyUSB_Device_FlushCDC
+000262c4 W TinyUSB_Device_Init
+2000611e D transferConnection
+00026600 W tud_cdc_line_state_cb
+00026d64 T tud_cdc_n_available
+00026d18 T tud_cdc_n_connected
+00026d44 T tud_cdc_n_get_line_coding
+00026df8 T tud_cdc_n_peek
+00026d7c T tud_cdc_n_read
+00026e0c T tud_cdc_n_write
+00026f44 T tud_cdc_n_write_available
+00026eb8 T tud_cdc_n_write_flush
+0002a748 T tud_control_status
+0002a778 T tud_control_xfer
+00026c8c W tud_descriptor_bos_cb
+000268ac T tud_descriptor_configuration_cb
+000268a4 T tud_descriptor_device_cb
+000268b8 T tud_descriptor_string_cb
+00029844 W tud_event_hook_cb
+00026994 T tud_hid_descriptor_report_cb
+000269a4 T tud_hid_get_report_cb
+000269d0 T tud_hid_set_report_cb
+00029878 T tud_init
+00029868 T tud_inited
+00029848 T tud_mounted
+00026af8 T tud_msc_capacity_cb
+000269fc W tud_msc_get_maxlun_cb
+00026a0c T tud_msc_inquiry_cb
+00026bcc W tud_msc_is_writable_cb
+00026b5c T tud_msc_read10_cb
+00026b1c T tud_msc_scsi_cb
+00027b7c T tud_msc_set_sense
+00026b30 W tud_msc_start_stop_cb
+00026ab0 T tud_msc_test_unit_ready_cb
+00026b88 T tud_msc_write10_cb
+00026bb4 W tud_msc_write10_complete_cb
+00029858 T tud_suspended
+00029dc0 T tud_task_ext
+00026c94 W tud_vendor_control_xfer_cb
+00028460 T tud_vendor_n_write_flush
+0002bce4 T tu_edpt_bind_driver
+0002bbec T tu_edpt_claim
+0002bc44 T tu_edpt_release
+0002bc80 T tu_edpt_validate
+000297bc T tu_fifo_clear
+00029490 T tu_fifo_config
+00029508 T tu_fifo_count
+00029528 T tu_fifo_empty
+00029630 T tu_fifo_peek
+0002955c T tu_fifo_read_n
+00029538 T tu_fifo_remaining
+000297fc T tu_fifo_set_overwritable
+000296a4 T tu_fifo_write_n
+0002b840 T tusb_hal_nrf_power_event
+000384ea W UARTE0_UART0_IRQHandler
+000384ea W UARTE1_IRQHandler
+20006f2c b _ubsd_mutexdef
+2000c114 b ucStaticTimerQueueStorage.9495
+00043dc4 T __udivmoddi4
+0004746c T __unorddf2
+000287b0 t _update_streaming_parameters
+000384e0 W UsageFault_Handler
+0002a838 T usbd_control_reset
+0002a84c T usbd_control_set_complete_callback
+0002a858 T usbd_control_set_request
+0002a878 T usbd_control_xfer_cb
+20007090 b _usbd_ctrl_buf
+00029bd4 T usbd_defer_func
+20006f7c b _usbd_dev
+00047654 t _usbd_driver
+00029d24 T usbd_edpt_busy
+00029c80 T usbd_edpt_claim
+00029d80 T usbd_edpt_clear_stall
+0002a6e0 T usbd_edpt_close
+00029c38 T usbd_edpt_open
+00029ca0 T usbd_edpt_release
+00029d40 T usbd_edpt_stall
+0002a6c4 T usbd_edpt_stalled
+00029cc0 T usbd_edpt_xfer
+00026c48 T USBD_IRQHandler
+20006fb4 b _usbd_mutex
+00029b20 T usbd_open_edpt_pair
+20006fb8 b _usbd_q
+200060b8 D _usbd_qdef
+20006fbc b _usbd_qdef_buf
+20006114 d _usbd_rhport
+2000cbd0 b use_count
+2000c398 b uxCriticalNesting
+2000c078 b uxCurrentNumberOfTasks
+2000c07c b uxDeletedTasksWaitingCleanUp
+000395f4 T uxListRemove
+2000c080 b uxPendedTicks
+00036cb4 T uxQueueMessagesWaiting
+2000c084 b uxSchedulerSuspended
+2000c088 b uxTaskNumber
+2000c08c b uxTopReadyPriority
+0003901c T vApplicationGetIdleTaskMemory
+00039038 T vApplicationGetTimerTaskMemory
+00038494 W vApplicationIdleHook
+00039018 T vApplicationMallocFailedHook
+00039014 T vApplicationStackOverflowHook
+000284ec T vendord_init
+20006bfc b _vendord_itf
+00028568 T vendord_open
+00028548 T vendord_reset
+00028634 T vendord_xfer_cb
+00044410 T _vfiprintf_r
+00044410 T _vfprintf_r
+00028c34 T videod_control_xfer_cb
+00028ac4 T videod_init
+20006dc8 b _videod_itf
+00028b0c T videod_open
+00028ae8 T videod_reset
+20006dd4 b _videod_streaming_itf
+000293a8 T videod_xfer_cb
+00039580 T vListInitialise
+00039598 T vListInitialiseItem
+000395c0 T vListInsert
+000395a0 T vListInsertEnd
+00038168 T vPortEnterCritical
+0003817c T vPortExitCritical
+00035ef8 T vPortFree
+00038218 T vPortSetupTimerInterrupt
+000383f0 T vPortStartFirstTask
+00038254 T vPortSuppressTicksAndSleep
+00036d10 T vQueueAddToRegistry
+00036cc8 T vQueueDelete
+00036d34 T vQueueWaitForMessageRestricted
+000451d0 T vsniprintf
+00045178 T _vsniprintf_r
+000451d0 T vsnprintf
+00045178 T _vsnprintf_r
+00037600 T vTaskDelay
+000379ec T vTaskInternalSetTimeOutState
+00037a74 T vTaskMissedYield
+00037858 T vTaskPlaceOnEventList
+000378d0 T vTaskPlaceOnEventListRestricted
+00037bb0 T vTaskPriorityDisinheritAfterTimeout
+00037250 T vTaskResume
+000372dc T vTaskStartScheduler
+000373c4 T vTaskStepTick
+000370ec T vTaskSuspend
+000373a8 T vTaskSuspendAll
+000377a4 T vTaskSwitchContext
+000325e4 t wait_for_async_flash_op_completion.part.0
+000384ea W WDT_IRQHandler
+0002c3c8 T __wrap_flash_nrf5x_event_cb
+00035ea8 T __wrap_free
+00035e74 T __wrap_malloc
+00038598 T _write
+00046e58 T _write_r
+2000c314 b xActiveTimerList1
+2000c328 b xActiveTimerList2
+0002a998 t xact_out_dma
+0002aae8 t xact_out_dma_wrapper
+2000c090 b xDelayedTaskList1
+2000c0a4 b xDelayedTaskList2
+2000c0b8 b xIdleTaskHandle
+2000c33c b xLastTime.9448
+2000c0bc b xNextTaskUnblockTime
+2000c0c0 b xNumOfOverflows
+2000c0c4 b xPendingReadyList
+0003811c T xPortStartScheduler
+00035ff8 T xQueueCreateCountingSemaphore
+0003647c T xQueueCreateMutex
+00036410 T xQueueCreateMutexStatic
+00035f74 T xQueueGenericCreate
+00035f14 T xQueueGenericCreateStatic
+0003605c T xQueueGenericSend
+000364ec T xQueueGenericSendFromISR
+000365e0 T xQueueGiveFromISR
+00036638 T xQueueReceive
+2000ce34 B xQueueRegistry
+0003695c T xQueueSemaphoreTake
+2000c0d8 b xSchedulerRunning
+2000c340 b xStaticTimerQueue.9494
+2000c0dc b xSuspendedTaskList
+00037a04 T xTaskCheckForTimeOut
+00036ff8 T xTaskCreate
+00036f24 T xTaskCreateStatic
+00037ab4 T xTaskGetSchedulerState
+000373b8 T xTaskGetTickCount
+000373d4 T xTaskIncrementTick
+00037b58 T xTaskPriorityDisinherit
+00037ad4 T xTaskPriorityInherit
+00037950 T xTaskRemoveFromEventList
+000374f4 T xTaskResumeAll
+2000c0f0 b xTasksWaitingTermination
+2000c104 b xTickCount
+00037fc8 T xTimerCreate
+00037f18 T xTimerCreateTimerTask
+00038078 T xTimerGenericCommand
+000380d0 T xTimerIsTimerActive
+2000c390 b xTimerQueue
+2000c394 b xTimerTaskHandle
+2000c108 b xYieldPending
+00038ff4 T yield
+00035c50 T initVariant()
+0002c8a8 T disconnected(unsigned short, unsigned char)
+0002c97c T publishPages()
+0002be50 T authorizeCaps(unsigned short, BLECharacteristic*, ble_gatts_evt_read_t*)
+0002c494 T publishStatus()
+0002cefc T authorizePages(unsigned short, BLECharacteristic*, ble_gatts_evt_write_t*)
+000352cc T bond_load_cccd(unsigned char, unsigned short, ble_gap_addr_t const*)
+0003515c T bond_load_keys(unsigned char, ble_gap_addr_t*, bond_keys_t*)
+000350f8 T bond_save_cccd(unsigned char, unsigned short, ble_gap_addr_t const*)
+000350d4 T bond_save_keys(unsigned char, unsigned short, bond_keys_t const*)
+0003511c T bond_remove_key(unsigned char, ble_gap_addr_t const*)
+0002c5c4 T authorizeCommand(unsigned short, BLECharacteristic*, ble_gatts_evt_write_t*)
+000346e4 T adafruit_ble_task(void*)
+00034628 T adafruit_soc_task(void*)
+00026c74 T TinyUSB_Port_EnterDFU()
+00026c50 T TinyUSB_Port_InitDevice(unsigned char)
+00026c78 T TinyUSB_Port_GetSerialNumber(unsigned char*)
+0002c408 T diagnose(unsigned char, unsigned short, ble_gatts_evt_write_t const*, unsigned long, bool)
+00035094 T bond_init()
+000385c0 W operator delete(void*)
+2000b82c b guard variable for BLEAdvertising::_start(unsigned short, unsigned short)::gap_adv
+2000c39c b _loopHandle
+20006548 b _webusb_dev
+0003461c t nrf_error_cb(unsigned long, unsigned long, unsigned long)
+00026650 t strcpy_utf16(char const*, unsigned short*, int) [clone .constprop.2]
+2000613c d sbrk_heap_top
+2000653c b _hid_instances
+00026bec t usb_device_task(void*)
+20006144 d _InternalFSConfig
+000354d4 t bond_save_cccd_dfr(unsigned char, unsigned short, ble_gap_addr_t const*)
+000353b0 t bond_save_keys_dfr(unsigned char, unsigned short, bond_keys_t const*)
+00034620 t bluefruit_blinky_cb(void*)
+00026be8 t power_event_handler(nrfx_power_usb_evt_t)
+0003f0f0 t _internal_flash_prog(lfs_config const*, unsigned long, unsigned long, void const*, unsigned long)
+0003f10c t _internal_flash_read(lfs_config const*, unsigned long, unsigned long, void*, unsigned long)
+0003f0b8 t _internal_flash_sync(lfs_config const*)
+0003f0c4 t _internal_flash_erase(lfs_config const*, unsigned long)
+00033968 t _passkey_display_cabllack_dfr(bool (*)(unsigned short, unsigned char const*, bool), unsigned short, unsigned char const*, bool)
+0003398c t _passkey_request_callback_dfr(void (*)(unsigned short, unsigned char*), unsigned short)
+00048908 t font
+00047618 t desc_bos
+20006544 b _msc_dev
+000384ec t loop_task(void*)
+000356a4 T BLECentral::_eventHandler(ble_evt_t*)
+00035660 T BLECentral::begin()
+0003566c T BLECentral::connected()
+00035644 T BLECentral::BLECentral()
+00035644 T BLECentral::BLECentral()
+00035aac T BLEScanner::_eventHandler(ble_evt_t*)
+000359f0 T BLEScanner::checkReportForUuid(ble_gap_evt_adv_report_t const*, BLEUuid)
+000359a8 T BLEScanner::BLEScanner()
+000359a8 T BLEScanner::BLEScanner()
+2000b840 B BLEService::lastService
+000344a4 T BLEService::getPermission(SecureMode_t*, SecureMode_t*)
+0003443c T BLEService::svc_connect_hdl(unsigned short)
+0003443c T BLEService::svc_disconnect_hdl(unsigned short)
+00034440 T BLEService::begin()
+00034478 T BLEService::BLEService(BLEUuid)
+00034478 T BLEService::BLEService(BLEUuid)
+0002f588 W BLEService::~BLEService()
+0002f588 W BLEService::~BLEService()
+0003106c T GxEPD2_EPD::_writeData(unsigned char)
+00031150 T GxEPD2_EPD::_endTransfer()
+0003100c T GxEPD2_EPD::_writeCommand(unsigned char)
+000310b0 T GxEPD2_EPD::_writeDataPGM(unsigned char const*, unsigned short, short)
+00030a1c W GxEPD2_EPD::drawDemoBitmap(unsigned char const*, unsigned char const*, short, short, short, short, short, bool, bool)
+00031120 T GxEPD2_EPD::_startTransfer()
+00030ee4 T GxEPD2_EPD::_waitWhileBusy(char const*, unsigned short)
+00030a18 W GxEPD2_EPD::writeDemoBitmap(unsigned char const*, unsigned char const*, short, short, short, short, short, bool, bool)
+000309a8 W GxEPD2_EPD::writeImageAgain(unsigned char const*, short, short, short, short, bool, bool, bool)
+00030a28 W GxEPD2_EPD::drawNativeColors()
+000309d4 W GxEPD2_EPD::writeImagePartAgain(unsigned char const*, short, short, short, short, short, short, short, short, bool, bool, bool)
+00030a24 W GxEPD2_EPD::selectFastFullUpdate(bool)
+0003099c W GxEPD2_EPD::writeImageToPrevious(unsigned char const*, short, short, short, short, bool, bool, bool)
+000309a0 W GxEPD2_EPD::writeScreenBufferAgain(unsigned char)
+00030970 W GxEPD2_EPD::writeImageForFullRefresh(unsigned char const*, short, short, short, short, bool, bool, bool)
+00030a2c T GxEPD2_EPD::end()
+00030be0 T GxEPD2_EPD::init(unsigned long)
+00030a68 T GxEPD2_EPD::init(unsigned long, bool, unsigned short, bool)
+00030e48 T GxEPD2_EPD::_reset()
+00030a20 W GxEPD2_EPD::setPaged()
+00030e2c T GxEPD2_EPD::selectSPI(SPIClass&, SPISettings)
+00031148 T GxEPD2_EPD::_transfer(unsigned char)
+00030d8c T GxEPD2_EPD::GxEPD2_EPD(short, short, short, short, short, unsigned long, unsigned short, unsigned short, GxEPD2::Panel, bool, bool, bool)
+00030d8c T GxEPD2_EPD::GxEPD2_EPD(short, short, short, short, short, unsigned long, unsigned short, unsigned short, GxEPD2::Panel, bool, bool, bool)
+00033d98 T BLESecurity::_eventHandler(ble_evt_t*)
+00033c30 T BLESecurity::resolveAddress(ble_gap_addr_t const*, ble_gap_irk_t const*)
+000339e0 T BLESecurity::begin()
+00033d7c T BLESecurity::_encrypt(unsigned short, bond_keys_t const*)
+000339a8 T BLESecurity::BLESecurity()
+000339a8 T BLESecurity::BLESecurity()
+000301c8 T Adafruit_GFX::drawBitmap(short, short, unsigned char const*, short, short, unsigned short)
+0002fed8 T Adafruit_GFX::fillScreen(unsigned short)
+0002faac T Adafruit_GFX::startWrite()
+0002fab0 T Adafruit_GFX::writePixel(short, short, unsigned short)
+0002faec T Adafruit_GFX::setRotation(unsigned char)
+0002ff90 T Adafruit_GFX::drawFastHLine(short, short, short, unsigned short)
+0003006c T Adafruit_GFX::drawFastVLine(short, short, short, unsigned short)
+0002fae8 T Adafruit_GFX::invertDisplay(bool)
+0002fe3c T Adafruit_GFX::writeFillRect(short, short, short, short, unsigned short)
+0002fad4 T Adafruit_GFX::writeFastHLine(short, short, short, unsigned short)
+0002fac0 T Adafruit_GFX::writeFastVLine(short, short, short, unsigned short)
+00030854 T Adafruit_GFX::write(unsigned char)
+000302ac T Adafruit_GFX::drawChar(short, short, unsigned char, unsigned short, unsigned short, unsigned char, unsigned char)
+0002fb10 T Adafruit_GFX::drawLine(short, short, short, short, unsigned short)
+0002fc38 T Adafruit_GFX::drawRect(short, short, short, short, unsigned short)
+0002faac T Adafruit_GFX::endWrite()
+0002fbb8 T Adafruit_GFX::fillRect(short, short, short, short, unsigned short)
+0002fd08 T Adafruit_GFX::writeLine(short, short, short, short, unsigned short)
+00030190 T Adafruit_GFX::Adafruit_GFX(short, short)
+00030190 T Adafruit_GFX::Adafruit_GFX(short, short)
+00035930 T BLEDiscovery::_eventHandler(ble_evt_t*)
+00035914 T BLEDiscovery::begin()
+0003592c T BLEDiscovery::begun()
+000358f8 T BLEDiscovery::BLEDiscovery()
+000358f8 T BLEDiscovery::BLEDiscovery()
+00033364 T BLEConnection::disconnect()
+00033344 T BLEConnection::getPeerAddr()
+00033558 T BLEConnection::getPeerName(char*, unsigned short)
+000333b4 T BLEConnection::loadBondKey(bond_keys_t*)
+00033384 T BLEConnection::saveBondKey(bond_keys_t const*)
+000333f8 T BLEConnection::_eventHandler(ble_evt_t*)
+000333e4 T BLEConnection::removeBondKey()
+00033340 T BLEConnection::getConnectionInterval()
+00033328 T BLEConnection::bonded()
+0003333c T BLEConnection::getMtu()
+00033338 T BLEConnection::getRole()
+0003332c T BLEConnection::secured()
+00033378 T BLEConnection::saveCccd()
+00033324 T BLEConnection::connected()
+000332bc T BLEConnection::BLEConnection(unsigned short, ble_gap_evt_connected_t const*, unsigned char, unsigned char)
+000332bc T BLEConnection::BLEConnection(unsigned short, ble_gap_evt_connected_t const*, unsigned char, unsigned char)
+00033290 T BLEConnection::~BLEConnection()
+0003326c T BLEConnection::~BLEConnection()
+0003326c T BLEConnection::~BLEConnection()
+00031a68 T GxEPD2_213_BN::writeImage(unsigned char const*, short, short, short, short, bool, bool, bool)
+0003212c T GxEPD2_213_BN::clearScreen(unsigned char)
+00048ecc T GxEPD2_213_BN::lut_partial
+000317a4 T GxEPD2_213_BN::_writeImage(unsigned char, unsigned char const*, short, short, short, short, bool, bool, bool)
+000315dc T GxEPD2_213_BN::_InitDisplay()
+00031e54 T GxEPD2_213_BN::writeImagePart(unsigned char const*, short, short, short, short, short, short, short, short, bool, bool, bool)
+00031a9c T GxEPD2_213_BN::writeImageAgain(unsigned char const*, short, short, short, short, bool, bool, bool)
+00031b28 t GxEPD2_213_BN::_writeImagePart(unsigned char, unsigned char const*, short, short, short, short, short, short, short, short, bool, bool, bool) [clone .part.2]
+00032314 T GxEPD2_213_BN::writeScreenBuffer(unsigned char)
+00031248 T GxEPD2_213_BN::_setPartialRamArea(unsigned short, unsigned short, unsigned short, unsigned short)
+000316ec T GxEPD2_213_BN::_writeScreenBuffer(unsigned char, unsigned char)
+00031ef0 T GxEPD2_213_BN::writeImagePartAgain(unsigned char const*, short, short, short, short, short, short, short, short, bool, bool, bool)
+00031af4 T GxEPD2_213_BN::writeImageToPrevious(unsigned char const*, short, short, short, short, bool, bool, bool)
+00031fc8 T GxEPD2_213_BN::writeScreenBufferAgain(unsigned char)
+00031a9c T GxEPD2_213_BN::writeImageForFullRefresh(unsigned char const*, short, short, short, short, bool, bool, bool)
+00031490 T GxEPD2_213_BN::refresh(bool)
+000312f8 T GxEPD2_213_BN::refresh(short, short, short, short)
+0003116c T GxEPD2_213_BN::powerOff()
+000311a8 T GxEPD2_213_BN::hibernate()
+00031204 T GxEPD2_213_BN::GxEPD2_213_BN(short, short, short, short)
+00031204 T GxEPD2_213_BN::GxEPD2_213_BN(short, short, short, short)
+0003f1d8 T nRFCrypto_ECC::genKeyPair(nRFCrypto_ECC_PrivateKey&, nRFCrypto_ECC_PublicKey&)
+0003f234 T nRFCrypto_ECC::SVDP_DH(nRFCrypto_ECC_PrivateKey&, nRFCrypto_ECC_PublicKey&, unsigned char*, unsigned long)
+00032ac8 T BLEAdvertising::setInterval(unsigned short, unsigned short)
+00032c7c T BLEAdvertising::_eventHandler(ble_evt_t*)
+00032ac4 T BLEAdvertising::setFastTimeout(unsigned short)
+00032ad0 T BLEAdvertising::restartOnDisconnect(bool)
+00032ba4 T BLEAdvertising::start(unsigned short)
+00032ad8 T BLEAdvertising::_start(unsigned short, unsigned short)
+00032a88 T BLEAdvertising::BLEAdvertising()
+00032a88 T BLEAdvertising::BLEAdvertising()
+000358f4 T BLEClientService::connHandle()
+0003f358 T nRFCrypto_Random::getContext()
+0003f31c T nRFCrypto_Random::begin()
+0003f314 T nRFCrypto_Random::nRFCrypto_Random()
+0003f314 T nRFCrypto_Random::nRFCrypto_Random()
+00034edc T AdafruitBluefruit::Connection(unsigned short)
+00034ea0 T AdafruitBluefruit::disconnect(unsigned short)
+00034e50 T AdafruitBluefruit::getTxPower()
+00034f34 T AdafruitBluefruit::_stopConnLed()
+00034f0c T AdafruitBluefruit::_startConnLed()
+00034ab0 T AdafruitBluefruit::configPrphConn(unsigned short, unsigned short, unsigned char, unsigned char)
+00034aa8 T AdafruitBluefruit::configUuid128Count(unsigned char)
+00034e58 T AdafruitBluefruit::setConnLedInterval(unsigned long)
+00034ad8 T AdafruitBluefruit::begin(unsigned char, unsigned char)
+00034e28 T AdafruitBluefruit::getName(char*, unsigned short)
+00034e00 T AdafruitBluefruit::setName(char const*)
+00034ecc T AdafruitBluefruit::getMaxMtu(unsigned char)
+000349f8 T AdafruitBluefruit::AdafruitBluefruit()
+000349f8 T AdafruitBluefruit::AdafruitBluefruit()
+0003965c T Adafruit_LittleFS::begin(lfs_config*)
+00039738 T Adafruit_LittleFS::mkdir(char const*)
+00039700 T Adafruit_LittleFS::exists(char const*)
+000396a0 T Adafruit_LittleFS::format()
+000397ec T Adafruit_LittleFS::remove(char const*)
+0003962c T Adafruit_LittleFS::Adafruit_LittleFS(lfs_config*)
+0003962c T Adafruit_LittleFS::Adafruit_LittleFS(lfs_config*)
+00039620 T Adafruit_LittleFS::~Adafruit_LittleFS()
+0003961c T Adafruit_LittleFS::~Adafruit_LittleFS()
+0003961c T Adafruit_LittleFS::~Adafruit_LittleFS()
+200063a4 B Adafruit_USBD_CDC::_instance_count
+00026378 T Adafruit_USBD_CDC::availableForWrite()
+000263d0 T Adafruit_USBD_CDC::getInterfaceDescriptor(unsigned char, unsigned char*, unsigned short)
+00026310 T Adafruit_USBD_CDC::peek()
+0002633c T Adafruit_USBD_CDC::read()
+0002659c T Adafruit_USBD_CDC::begin(unsigned long)
+0002636c T Adafruit_USBD_CDC::flush()
+00026530 T Adafruit_USBD_CDC::write(unsigned char)
+00026388 T Adafruit_USBD_CDC::write(unsigned char const*, unsigned int)
+000262f0 T Adafruit_USBD_CDC::available()
+000265d8 T Adafruit_USBD_CDC::operator bool()
+00033198 T BLECharacteristic::setFixedLen(unsigned short)
+00032fc8 T BLECharacteristic::_eventHandler(ble_evt_t*)
+000331bc T BLECharacteristic::setPermission(SecureMode_t, SecureMode_t)
+0003318c T BLECharacteristic::setProperties(unsigned char)
+000331c8 T BLECharacteristic::setReadAuthorizeCallback(void (*)(unsigned short, BLECharacteristic*, ble_gatts_evt_read_t*), bool)
+000331f0 T BLECharacteristic::setWriteAuthorizeCallback(void (*)(unsigned short, BLECharacteristic*, ble_gatts_evt_write_t*), bool)
+00032da4 T BLECharacteristic::begin()
+00033224 T BLECharacteristic::write(void const*, unsigned short)
+00033218 T BLECharacteristic::handles()
+00033194 T BLECharacteristic::setMaxLen(unsigned short)
+00033118 T BLECharacteristic::BLECharacteristic(BLEUuid)
+00033118 T BLECharacteristic::BLECharacteristic(BLEUuid)
+00032d88 T BLECharacteristic::~BLECharacteristic()
+00032d70 T BLECharacteristic::~BLECharacteristic()
+00032d70 T BLECharacteristic::~BLECharacteristic()
+0003f198 T Adafruit_nRFCrypto::begin()
+000329d8 T BLEAdvertisingData::addService(BLEService&)
+00032a04 T BLEAdvertisingData::addName()
+0003295c t BLEAdvertisingData::addUuid(BLEUuid*, unsigned char) [clone .constprop.4]
+00032a60 T BLEAdvertisingData::addFlags(unsigned char)
+000329c8 T BLEAdvertisingData::BLEAdvertisingData()
+000329c8 T BLEAdvertisingData::BLEAdvertisingData()
+0003f12c T InternalFileSystem::begin()
+0003f09c W InternalFileSystem::~InternalFileSystem()
+0003f088 W InternalFileSystem::~InternalFileSystem()
+0003f088 W InternalFileSystem::~InternalFileSystem()
+000267ac T Adafruit_USBD_Device::addInterface(Adafruit_USBD_Interface&)
+0002677c T Adafruit_USBD_Device::addStringDescriptor(char const*)
+000267e8 T Adafruit_USBD_Device::begin(unsigned char)
+00026980 T Adafruit_USBD_Interface::setStringDescriptor(char const*)
+00035734 T BLEClientCharacteristic::connHandle()
+0003572c T BLEClientCharacteristic::disconnect()
+0003573c T BLEClientCharacteristic::valueHandle()
+00035740 T BLEClientCharacteristic::_eventHandler(ble_evt_t*)
+0003f2a8 T nRFCrypto_ECC_PublicKey::end()
+0003f294 T nRFCrypto_ECC_PublicKey::begin(CRYS_ECPKI_DomainID_t)
+0003f2b0 T nRFCrypto_ECC_PublicKey::toRaw(unsigned char*, unsigned long)
+0003f2d8 T nRFCrypto_ECC_PublicKey::fromRaw(unsigned char*, unsigned long)
+0003f28c T nRFCrypto_ECC_PublicKey::nRFCrypto_ECC_PublicKey()
+0003f28c T nRFCrypto_ECC_PublicKey::nRFCrypto_ECC_PublicKey()
+0003f278 T nRFCrypto_ECC_PrivateKey::begin(CRYS_ECPKI_DomainID_t)
+0003f270 T nRFCrypto_ECC_PrivateKey::nRFCrypto_ECC_PrivateKey()
+0003f270 T nRFCrypto_ECC_PrivateKey::nRFCrypto_ECC_PrivateKey()
+00039fdc T Adafruit_LittleFS_Namespace::File::openNextFile(unsigned char)
+00039bbc T Adafruit_LittleFS_Namespace::File::open(char const*, unsigned char)
+0003985c T Adafruit_LittleFS_Namespace::File::peek()
+00039e8c T Adafruit_LittleFS_Namespace::File::read(void*, unsigned short)
+00039940 T Adafruit_LittleFS_Namespace::File::read()
+00039ecc T Adafruit_LittleFS_Namespace::File::seek(unsigned long)
+00039f40 T Adafruit_LittleFS_Namespace::File::size()
+00039f78 T Adafruit_LittleFS_Namespace::File::close()
+00039910 T Adafruit_LittleFS_Namespace::File::flush()
+00039d3c T Adafruit_LittleFS_Namespace::File::_open(char const*, unsigned char)
+0003999c T Adafruit_LittleFS_Namespace::File::write(unsigned char)
+0003981c T Adafruit_LittleFS_Namespace::File::write(unsigned char const*, unsigned int)
+00039f08 T Adafruit_LittleFS_Namespace::File::position()
+000398cc T Adafruit_LittleFS_Namespace::File::available()
+00039a28 T Adafruit_LittleFS_Namespace::File::File(char const*, unsigned char, Adafruit_LittleFS&)
+00039a00 T Adafruit_LittleFS_Namespace::File::File(Adafruit_LittleFS&)
+00039a28 T Adafruit_LittleFS_Namespace::File::File(char const*, unsigned char, Adafruit_LittleFS&)
+00039a00 T Adafruit_LittleFS_Namespace::File::File(Adafruit_LittleFS&)
+00039fd0 T Adafruit_LittleFS_Namespace::File::operator bool()
+0002debc W eink::pages::Storage<PageFlash>::put(unsigned long, unsigned long, unsigned long, unsigned long, unsigned char const*, eink::pages::Entry&)
+0002d55c W eink::pages::Storage<PageFlash>::load(unsigned int, eink::pages::Metadata&)
+0002d02c W eink::pages::Storage<PageFlash>::begin()
+0002dcb8 W eink::pages::Storage<PageFlash>::commit(eink::pages::Metadata&)
+0002d750 W eink::pages::Storage<PageFlash>::remove(unsigned long, unsigned long, unsigned long)
+0002d9fc W eink::pages::Storage<PageFlash>::reorder(unsigned long, unsigned long const*, unsigned int)
+0002ca48 W eink::pages::Endpoint<eink::pages::Storage<PageFlash> >::command(unsigned char const*, unsigned int, unsigned short)
+0002bef4 W eink::Protocol::handle(unsigned char const*, unsigned int, unsigned long, unsigned short, unsigned char)
+000269f8 W Print::availableForWrite()
+00035ca4 T Print::print(char const*)
+00035c78 T Print::write(unsigned char const*, unsigned int)
+00035d68 T Print::printf(char const*, ...)
+00035cf8 T Print::println(unsigned long, int)
+00035cc8 T Print::println(char const*)
+00034fe8 T AdaMsg::waitUntilComplete(unsigned long)
+0003504c T AdaMsg::feed(void*, unsigned short)
+00034fbc T AdaMsg::stop()
+00034fa8 T AdaMsg::begin(bool)
+00034fdc T AdaMsg::prepare(void*, unsigned short)
+0003507c T AdaMsg::complete()
+00035048 T AdaMsg::isWaiting()
+00034f94 T AdaMsg::AdaMsg()
+00034f94 T AdaMsg::AdaMsg()
+000338bc T BLEGatt::_addService(BLEService*)
+00033650 T BLEGatt::_eventHandler(ble_evt_t*)
+000335c8 T BLEGatt::readCharByUuid(unsigned short, BLEUuid, void*, unsigned short, unsigned short, unsigned short)
+00033894 T BLEGatt::_addCharacteristic(BLECharacteristic*)
+000335a0 T BLEGatt::BLEGatt()
+000335a0 T BLEGatt::BLEGatt()
+00034548 T BLEUuid::begin()
+000344e4 T BLEUuid::BLEUuid(char const*)
+000344c8 T BLEUuid::BLEUuid(unsigned short)
+000344e4 T BLEUuid::BLEUuid(char const*)
+000344c8 T BLEUuid::BLEUuid(unsigned short)
+000344bc T BLEUuid::~BLEUuid()
+000344b8 T BLEUuid::~BLEUuid()
+000344b8 T BLEUuid::~BLEUuid()
+0002fa48 T SPIClass::endTransaction()
+0002f980 T SPIClass::beginTransaction(SPISettings)
+0002f970 T SPIClass::end()
+0002f8e8 T SPIClass::begin()
+0002fa54 T SPIClass::transfer(unsigned char)
+0003394c T BLEPeriph::_eventHandler(ble_evt_t*)
+00033948 T BLEPeriph::setDisconnectCallback(void (*)(unsigned short, unsigned char))
+000338f8 T BLEPeriph::begin()
+00033910 T BLEPeriph::connected()
+000338dc T BLEPeriph::BLEPeriph()
+000338dc T BLEPeriph::BLEPeriph()
+0002bd24 W GxEPD2_BW<GxEPD2_213_BN, (unsigned short)250>::fillScreen(unsigned short)
+0002bd38 W GxEPD2_BW<GxEPD2_213_BN, (unsigned short)250>::drawPixel(short, short, unsigned short)
+00034524 T BLEUuid::size() const
+000385bc W operator new(unsigned int)
+00026528 T non-virtual thunk to Adafruit_USBD_CDC::getInterfaceDescriptor(unsigned char, unsigned char*, unsigned short)
+0004906c T vtable for BLEService
+00048e70 T vtable for GxEPD2_EPD
+00048e08 T vtable for Adafruit_GFX
+00049054 T vtable for BLEConnection
+00048fa0 T vtable for GxEPD2_213_BN
+00049234 T vtable for Adafruit_LittleFS
+00047584 T vtable for Adafruit_USBD_CDC
+0004903c T vtable for BLECharacteristic
+000494d0 V vtable for InternalFileSystem
+00049080 T vtable for BLEUuid
+000476f0 V vtable for GxEPD2_BW<GxEPD2_213_BN, (unsigned short)250>
+00049250 T vtable for Adafruit_LittleFS_Namespace::File
+2000c3f4 b vApplicationGetIdleTaskMemory::xIdleTaskTCB
+2000c448 b vApplicationGetIdleTaskMemory::uxIdleTaskStack
+2000c5d8 b vApplicationGetTimerTaskMemory::xTimerTaskTCB
+2000c62c b vApplicationGetTimerTaskMemory::uxTimerTaskStack
+2000b830 b BLEAdvertising::_start(unsigned short, unsigned short)::gap_adv

@@ -1,0 +1,57 @@
+{
+  "engine": "firefox (/home/aleph/.cache/ms-playwright/firefox-1572/firefox/firefox)",
+  "results": [
+    {
+      "name": "mobile-320",
+      "width": 320,
+      "height": 740,
+      "frames": "4",
+      "bytes": "5.4 KB",
+      "ratio": "2.92×",
+      "time": "10.1 s",
+      "throttled": "2",
+      "errors": [],
+      "consoleErrors": [],
+      "external": [],
+      "screenshot": "/home/aleph/eink-notebook/artifacts/anim-ui-mobile-320.png"
+    },
+    {
+      "name": "mobile-390",
+      "width": 390,
+      "height": 844,
+      "frames": "4",
+      "bytes": "5.4 KB",
+      "ratio": "2.92×",
+      "time": "10.1 s",
+      "throttled": "2",
+      "errors": [],
+      "consoleErrors": [],
+      "external": [],
+      "screenshot": "/home/aleph/eink-notebook/artifacts/anim-ui-mobile-390.png"
+    },
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 900,
+      "frames": "4",
+      "bytes": "5.4 KB",
+      "ratio": "2.92×",
+      "time": "10.1 s",
+      "throttled": "2",
+      "errors": [],
+      "consoleErrors": [],
+      "external": [],
+      "screenshot": "/home/aleph/eink-notebook/artifacts/anim-ui-desktop.png"
+    },
+    {
+      "name": "ru-390",
+      "width": 390,
+      "title": "Анимация",
+      "counter": "Кадр 1 / 4",
+      "status": "sample.gif: готово кадров — 4.",
+      "errors": [],
+      "consoleErrors": [],
+      "screenshot": "/home/aleph/eink-notebook/artifacts/anim-ui-ru-390.png"
+    }
+  ]
+}

@@ -5,8 +5,12 @@ This map is for the project's nRF52840 S140 6.1.1 configuration, not a verified 
 | Range | Use / evidence |
 |---|---|
 | `0x00000..0x26000` | SoftDevice; application origin is set in `firmware/eink_s140_v6.ld`, and S140 6.1.1 in `firmware/boards/promicro_nrf52840_s140v6.json`. |
-| `0x26000..0xCC000` | Application FLASH, 0xA6000 = 679936 bytes maximum; linker rejects overflow. |
-| `0xCC000..0xCE000` | Two metadata banks. |
+| `0x26000..0xB0000` | Application FLASH, 0x8A000 = 565248 bytes maximum; linker rejects overflow. |
+| `0xB0000..0xB1000` | Animation metadata bank A. |
+| `0xB1000..0xB2000` | Animation metadata bank B. |
+| `0xB2000..0xBF000` | Animation data bank A, 13 sectors = 53248 bytes. |
+| `0xBF000..0xCC000` | Animation data bank B, 13 sectors = 53248 bytes. |
+| `0xCC000..0xCE000` | Two page metadata banks. |
 | `0xCE000..0xEC000` | Thirty 4 KiB frame slots; at most 29 live frames, retaining a COW spare. Each 4000-byte frame occupies one slot. |
 | `0xEC000..0xED000` | Existing welcome record (`firmware/include/boot_state.h`). |
 | `0xED000..0xF4000` | Seven-sector InternalFileSystem: pinned core `libraries/InternalFileSytem/src/InternalFileSystem.cpp`, `LFS_FLASH_ADDR` and `LFS_FLASH_TOTAL_SIZE`. |
@@ -20,5 +24,7 @@ The host-testable `firmware/include/page_storage.h` takes an injectable flash in
 On target, flash operations occur in the application loop after `Bluefruit.begin()`: erase uses the pinned core's SoftDevice-aware `flash_nrf5x_erase`; programming uses `sd_flash_write` and the Bluefruit SoC flash event, with marker as a separate word write. Core `flash_nrf5x_write` is intentionally not used because its page cache can erase/rewrite a whole sector. BLE callbacks never perform flash operations. Per-update erases consume endurance: callers should compare revisions and CRCs and send only changed pages. Storage exhaustion, revision/ID exhaustion, CRC errors and flash failures are reported. The 29-page bound is a consequence of the reserved sector count, not an estimate of the total chip capacity.
 
 The page programmer suspends FreeRTOS scheduling across `sd_flash_write` acceptance and publication of the callback owner, leaving SoftDevice interrupts enabled. If S140 reports BUSY, `FLASH_WAIT_OTHER` routes the previous operation's completion to the core callback before waking the page programmer to retry; only an accepted page write uses `FLASH_PAGE`. The source buffer remains live until the completion event, with no timeout that could release an in-flight buffer. Application flash writes are initiated in the main loop, but the pinned Bluefruit core also has bonding/InternalFS paths, so this routing does not assume that all SDK flash activity originates there. The actual event routing and timing have not been verified on hardware.
+
+The animation reservation `0xB0000..0xCC000` (`0x1C000` = 114688 bytes, 28 sectors) holds two metadata banks and two 13-sector data banks; each metadata bank describes its paired data bank, the newer valid `generation` wins, and an upload always targets the inactive pair, so an interrupted upload leaves either the complete old animation or the complete new one. Its layout, recovery rules and bounds are specified in [protocol-animation.md](protocol-animation.md). It is a separate reservation from pages: neither region is erased by the other's writes, and the application image now ends at `0xB0000`.
 
 Navigation has a GPIO-independent selector in `firmware/include/page_navigation.h`; no physical buttons or encoder pins are assigned. Existing welcome handling is unchanged: normal boot with a valid welcome record does not initialize or refresh the panel. The page protocol and snapshot/resume procedure are documented in [protocol-pages.md](protocol-pages.md).

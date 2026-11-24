@@ -1,0 +1,26 @@
+Removing unused browser at /home/aleph/.cache/ms-playwright/chromium-1194
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip
+Error: Request to https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/home/aleph/eink-notebook/node_modules/playwright-core/lib/server/utils/network.js:90:15)
+    at ClientRequest.wrapper (node:events:639:12)
+    at ClientRequest.emit (node:events:514:20)
+    at TLSSocket.emitRequestTimeout (node:_http_client:1124:9)
+    at TLSSocket.wrapper (node:events:639:12)
+    at TLSSocket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:824:8)
+    at Timeout.onStreamTimeout (node:internal/stream_base_commons:237:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)
+Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-linux.zip
+|                                                                                |   0% of 104.3 MiB
+|■■■■■■■■                                                                        |  10% of 104.3 MiB
+|■■■■■■■■■■■■■■■■                                                                |  20% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 104.3 MiB
+|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 104.3 MiB

@@ -1,0 +1,331 @@
+Processing repin_bw (platform: platformio/nordicnrf52@11.0.0; board: promicro_nrf52840_s140v6; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/nordicnrf52/promicro_nrf52840_s140v6.html
+PLATFORM: Nordic nRF52 (11.0.0) > Pro Micro nice!nano v2 pinout, S140 v6 application only
+HARDWARE: NRF52840 64MHz, 232KB RAM, 664KB Flash
+PACKAGES: 
+ - framework-arduinoadafruitnrf52 @ 1.10601.0+sha.0fd295f1 
+ - framework-cmsis @ 2.50700.210515 (5.7.0) 
+ - tool-adafruit-nrfutil @ 1.503.0 (5.3) 
+ - tool-sreccat @ 1.164.0 (1.64) 
+ - toolchain-gccarmnoneeabi @ 1.70201.0 (7.2.1)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 17 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- GxEPD2 @ 1.6.9
+|-- Adafruit GFX Library @ 1.12.4
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit Internal File System on Bluefruit nRF52 @ 0.11.0
+|-- SPI @ 1.0
+|-- Adafruit Bluefruit nRF52 Libraries @ 0.21.0
+Building in release mode
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/Adafruit_TinyUSB_API.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/Adafruit_USBD_CDC.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/Adafruit_USBD_Device.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/Adafruit_USBD_Interface.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/Adafruit_USBH_Host.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/cdc/Adafruit_USBH_CDC.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/hid/Adafruit_USBD_HID.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/midi/Adafruit_USBD_MIDI.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/msc/Adafruit_USBD_MSC.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/msc/Adafruit_USBH_MSC.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/ports/esp32/Adafruit_TinyUSB_esp32.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/ports/nrf/Adafruit_TinyUSB_nrf.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/ports/rp2040/Adafruit_TinyUSB_rp2040.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/ports/samd/Adafruit_TinyUSB_samd.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/video/Adafruit_USBD_Video.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/arduino/webusb/Adafruit_USBD_WebUSB.cpp.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/audio/audio_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/bth/bth_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/cdc/cdc_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/cdc/cdc_host.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/dfu/dfu_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/dfu/dfu_rt_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/hid/hid_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/hid/hid_host.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/midi/midi_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/msc/msc_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/msc/msc_host.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/net/ecm_rndis_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/net/ncm_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/usbtmc/usbtmc_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/vendor/vendor_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/class/video/video_device.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/common/tusb_fifo.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/device/usbd.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/device/usbd_control.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/host/hub.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/host/usbh.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/analog/max3421/hcd_max3421.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/microchip/samd/dcd_samd.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/nordic/nrf5x/dcd_nrf5x.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/raspberrypi/pio_usb/dcd_pio_usb.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/raspberrypi/pio_usb/hcd_pio_usb.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/raspberrypi/rp2040/dcd_rp2040.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/raspberrypi/rp2040/hcd_rp2040.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/raspberrypi/rp2040/rp2040_usb.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/portable/synopsys/dwc2/dcd_dwc2.c.o
+Compiling .pio/build/repin_bw/lib6b6/Adafruit_TinyUSB_Arduino/tusb.c.o
+Compiling .pio/build/repin_bw/src/main.cpp.o
+Compiling .pio/build/repin_bw/lib0d2/Wire/Wire_nRF52.cpp.o
+Compiling .pio/build/repin_bw/lib9ac/SPI/SPI.cpp.o
+Compiling .pio/build/repin_bw/lib9ac/SPI/SPI_nrf52832.cpp.o
+Compiling .pio/build/repin_bw/lib1ba/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Archiving .pio/build/repin_bw/lib9ac/libSPI.a
+Indexing .pio/build/repin_bw/lib9ac/libSPI.a
+Archiving .pio/build/repin_bw/lib0d2/libWire.a
+Indexing .pio/build/repin_bw/lib0d2/libWire.a
+Compiling .pio/build/repin_bw/lib1ba/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/repin_bw/lib1ba/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/repin_bw/lib1ba/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/repin_bw/lib4aa/Adafruit GFX Library@1.12.4/Adafruit_GFX.cpp.o
+Compiling .pio/build/repin_bw/lib4aa/Adafruit GFX Library@1.12.4/Adafruit_GrayOLED.cpp.o
+Archiving .pio/build/repin_bw/lib1ba/libAdafruit BusIO.a
+Indexing .pio/build/repin_bw/lib1ba/libAdafruit BusIO.a
+Compiling .pio/build/repin_bw/lib4aa/Adafruit GFX Library@1.12.4/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/repin_bw/lib4aa/Adafruit GFX Library@1.12.4/glcdfont.c.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_102.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Archiving .pio/build/repin_bw/lib4aa/libAdafruit GFX Library@1.12.4.a
+Indexing .pio/build/repin_bw/lib4aa/libAdafruit GFX Library@1.12.4.a
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/repin_bw/lib18b/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/repin_bw/lib92b/Adafruit_LittleFS/Adafruit_LittleFS.cpp.o
+Compiling .pio/build/repin_bw/lib92b/Adafruit_LittleFS/Adafruit_LittleFS_File.cpp.o
+Compiling .pio/build/repin_bw/lib92b/Adafruit_LittleFS/littlefs/lfs.c.o
+Compiling .pio/build/repin_bw/lib92b/Adafruit_LittleFS/littlefs/lfs_util.c.o
+Compiling .pio/build/repin_bw/libbe6/InternalFileSytem/InternalFileSystem.cpp.o
+Compiling .pio/build/repin_bw/libbe6/InternalFileSytem/flash/flash_cache.c.o
+Compiling .pio/build/repin_bw/libbe6/InternalFileSytem/flash/flash_nrf5x.c.o
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/Adafruit_nRFCrypto.cpp.o
+Archiving .pio/build/repin_bw/libbe6/libInternalFileSytem.a
+Indexing .pio/build/repin_bw/libbe6/libInternalFileSytem.a
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/ecc/nRFCrypto_ECC.cpp.o
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/ecc/nRFCrypto_ECC_PrivateKey.cpp.o
+Archiving .pio/build/repin_bw/lib18b/libGxEPD2.a
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/ecc/nRFCrypto_ECC_PublicKey.cpp.o
+Indexing .pio/build/repin_bw/lib18b/libGxEPD2.a
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/nRFCrypto_Hash.cpp.o
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/nRFCrypto_Hmac.cpp.o
+Compiling .pio/build/repin_bw/liba93/Adafruit_nRFCrypto/nRFCrypto_Random.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEAdvertising.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLECentral.cpp.o
+Archiving .pio/build/repin_bw/liba93/libAdafruit_nRFCrypto.a
+Indexing .pio/build/repin_bw/liba93/libAdafruit_nRFCrypto.a
+Compiling .pio/build/repin_bw/project-core/BLECharacteristic.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+Archiving .pio/build/repin_bw/lib92b/libAdafruit_LittleFS.a
+Indexing .pio/build/repin_bw/lib92b/libAdafruit_LittleFS.a
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEClientService.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEConnection.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEDiscovery.cpp.o
+Compiling .pio/build/repin_bw/project-core/BLEGatt.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEPeriph.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEScanner.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLESecurity.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEService.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/BLEUuid.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/bluefruit.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEAncs.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientBas.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientCts.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientDis.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientHidAdafruit.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientIas.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/clients/BLEClientUart.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEBas.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEBeacon.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEDfu.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEDis.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEHidAdafruit.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEHidGamepad.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEHidGeneric.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEIas.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEMidi.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/BLEUart.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/services/EddyStone.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/utility/AdaMsg.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/utility/bonding.cpp.o
+Compiling .pio/build/repin_bw/libc8a/Bluefruit52Lib/utility/bootloader_util.c.o
+Compiling .pio/build/repin_bw/FrameworkArduinoVariant/variant.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/HardwarePWM.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/IPAddress.cpp.o
+Archiving .pio/build/repin_bw/libFrameworkArduinoVariant.a
+Indexing .pio/build/repin_bw/libFrameworkArduinoVariant.a
+Compiling .pio/build/repin_bw/FrameworkArduino/Print.cpp.o
+Archiving .pio/build/repin_bw/libc8a/libBluefruit52Lib.a
+Indexing .pio/build/repin_bw/libc8a/libBluefruit52Lib.a
+Compiling .pio/build/repin_bw/FrameworkArduino/RingBuffer.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/Uart.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/WInterrupts.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/abi.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/avr/dtostrf.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/delay.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/croutine.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/event_groups.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/list.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/portable/MemMang/heap_3.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/queue.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/stream_buffer.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/tasks.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/Source/timers.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/portable/CMSIS/nrf52/port_cmsis.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/portable/CMSIS/nrf52/port_cmsis_systick.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/freertos/portable/GCC/nrf52/port.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/hooks.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/itoa.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/linker/gcc_startup_nrf52.S.o
+Compiling .pio/build/repin_bw/FrameworkArduino/linker/gcc_startup_nrf52833.S.o
+Compiling .pio/build/repin_bw/FrameworkArduino/linker/gcc_startup_nrf52840.S.o
+Compiling .pio/build/repin_bw/FrameworkArduino/main.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/new.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_gpiote.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_power.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_pwm.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_qspi.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_spim.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_spis.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_temp.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_timer.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/drivers/src/nrfx_wdt.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/mdk/system_nrf52.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/mdk/system_nrf52833.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/nordic/nrfx/mdk/system_nrf52840.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/pulse.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/pulse_asm.S.o
+Compiling .pio/build/repin_bw/FrameworkArduino/rtos.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/Config/SEGGER_SYSVIEW_Config_FreeRTOS.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/SEGGER/SEGGER_RTT.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/SEGGER/SEGGER_RTT_ASM_ARMv7M.S.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/SEGGER/SEGGER_RTT_printf.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/SEGGER/SEGGER_SYSVIEW.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/sysview/SEGGER_SYSVIEW_FreeRTOS.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/utility/AdaCallback.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/utility/SoftwareTimer.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/utility/adafruit_fifo.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/utility/debug.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/utility/utilities.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring_analog.cpp.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring_analog_nRF52.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring_digital.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring_private.c.o
+Compiling .pio/build/repin_bw/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/repin_bw/libFrameworkArduino.a
+Indexing .pio/build/repin_bw/libFrameworkArduino.a
+Linking .pio/build/repin_bw/firmware.elf
+Checking size .pio/build/repin_bw/firmware.elf
+Building .pio/build/repin_bw/firmware.hex
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  11.9% (used 28276 bytes from 237568 bytes)
+Flash: [==        ]  22.8% (used 154960 bytes from 679936 bytes)
+Building .pio/build/repin_bw/firmware.zip
+Zip created at .pio/build/repin_bw/firmware.zip
+======================== [SUCCESS] Took 107.16 seconds ========================

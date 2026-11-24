@@ -16,7 +16,7 @@ from unicorn.arm_const import UC_ARM_REG_SP, UC_ARM_REG_LR, UC_ARM_REG_R0, UC_AR
 
 from welcome_bitmap import verify_elf
 ROOT = Path(__file__).resolve().parents[1]
-ORIGIN, LIMIT, FAMILY = 0x26000, 0xCC000, 0xADA52840
+ORIGIN, LIMIT, FAMILY = 0x26000, 0xB0000, 0xADA52840
 OUT = Path(os.environ.get('ARTIFACTS_DIR', ROOT / 'artifacts'))
 PREFIX = OUT / 'eink-ble-welcome-once-dfu-bw-s140v6'
 
@@ -126,7 +126,7 @@ def main():
     subprocess.run([sys.executable, str(ROOT / 'tests/core_arm.py'), str(elf_path)], check=True)
     sp, reset = struct.unpack('<II', binary[:8])
     image_end = ORIGIN + len(binary)
-    assert image_end <= LIMIT, 'application image overlaps reserved pages, state, or filesystem'
+    assert image_end <= LIMIT, 'application image overlaps reserved animation, pages, state, or filesystem'
     assert sp == 0x20040000 and reset & 1 and ORIGIN <= reset - 1 < ORIGIN + len(binary)
     count = (len(binary) + 255) // 256
     blocks = []
@@ -156,10 +156,11 @@ def main():
               'binary_bytes': len(binary), 'image_end_exclusive': hex(image_end),
               'layout_margin_bytes': LIMIT - image_end,
               'embedded_build_id': hex(embedded_build_id),
+              'reserved_animation': {'start': '0xb0000', 'end_exclusive': '0xcc000'},
               'reserved_pages': {'start': '0xcc000', 'end_exclusive': '0xec000'},
               'state_sector': {'address': '0xec000', 'size_bytes': 0x1000},
               'filesystem_start': '0xed000',
-              'preservation': 'Payload addresses exclude reservations; bootloader erase behavior is not verified. Back up pages before updates.',
+              'preservation': 'Payload addresses exclude reservations; bootloader erase behavior is not verified. Back up pages and animations before updates.',
               'uf2_bytes': len(uf2), 'blocks': count, 'initial_sp': hex(sp), 'reset_vector': hex(reset),
               'arm_smoke': smoke,
               'linked_action_smoke': authorize_smoke,

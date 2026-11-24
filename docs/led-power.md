@@ -4,4 +4,4 @@ The firmware disables Bluefruit's automatic connection LED driver before `Bluefr
 
 The separate P0.13 HIGH output is the display VCC enable and is unchanged. No GPIO assignment was changed. Reduced LED activity may reduce battery consumption, but the benefit has not been measured. This firmware has not been flashed to a physical board.
 
-The legacy DFU `application_version` remains uint32 value `1`; it is separate from the application SemVer (`1.1.1`).
+The legacy DFU `application_version` is uint32 BCD value `66048` (`0x010200` = 1.2.0); it is derived from, but distinct in encoding from, the application SemVer (`1.2.0`).

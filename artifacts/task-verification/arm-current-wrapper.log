@@ -1,0 +1,32 @@
+   2c3c4:	edb88320 	.word	0xedb88320
+
+0002c3c8 <__wrap_flash_nrf5x_event_cb>:
+   2c3c8:	b570      	push	{r4, r5, r6, lr}
+   2c3ca:	4d0c      	ldr	r5, [pc, #48]	; (2c3fc <__wrap_flash_nrf5x_event_cb+0x34>)
+   2c3cc:	782c      	ldrb	r4, [r5, #0]
+   2c3ce:	b2e4      	uxtb	r4, r4
+   2c3d0:	2c01      	cmp	r4, #1
+   2c3d2:	4606      	mov	r6, r0
+   2c3d4:	d10c      	bne.n	2c3f0 <__wrap_flash_nrf5x_event_cb+0x28>
+   2c3d6:	4a0a      	ldr	r2, [pc, #40]	; (2c400 <__wrap_flash_nrf5x_event_cb+0x38>)
+   2c3d8:	4b0a      	ldr	r3, [pc, #40]	; (2c404 <__wrap_flash_nrf5x_event_cb+0x3c>)
+   2c3da:	6810      	ldr	r0, [r2, #0]
+   2c3dc:	601e      	str	r6, [r3, #0]
+   2c3de:	2400      	movs	r4, #0
+   2c3e0:	4623      	mov	r3, r4
+--
+   2c3f0:	f006 f9c4 	bl	3277c <flash_nrf5x_event_cb>
+   2c3f4:	2c00      	cmp	r4, #0
+   2c3f6:	d1ee      	bne.n	2c3d6 <__wrap_flash_nrf5x_event_cb+0xe>
+   2c3f8:	bd70      	pop	{r4, r5, r6, pc}
+   2c3fa:	bf00      	nop
+   2c3fc:	200083e0 	.word	0x200083e0
+   2c400:	200083dc 	.word	0x200083dc
+--
+   346c8:	f7f7 f8ba 	bl	2b840 <tusb_hal_nrf_power_event>
+   346cc:	e7b9      	b.n	34642 <_Z17adafruit_soc_taskPv+0x1a>
+   346ce:	f7f7 fe7b 	bl	2c3c8 <__wrap_flash_nrf5x_event_cb>
+   346d2:	e7b6      	b.n	34642 <_Z17adafruit_soc_taskPv+0x1a>
+   346d4:	2302      	movs	r3, #2
+   346d6:	e7f6      	b.n	346c6 <_Z17adafruit_soc_taskPv+0x9e>
+   346d8:	2002      	movs	r0, #2

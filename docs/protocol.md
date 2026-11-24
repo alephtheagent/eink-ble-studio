@@ -67,10 +67,19 @@ Firmware USB serial (115200) emits `BLE t=<millis> stage=N conn=N op=N offset=N 
 
 For a failed physical attempt report the full browser error/console cause, last progress offset, firmware BLE lines and any GxEPD2 `Busy Timeout!` output. A `write` timeout and `read ack` timeout are different observations; neither establishes a radio, power, OS or panel fault by itself.
 
+## Animation
+
+Looping stored animations use a separate service `7b1e0010-6ba2-4f25-8ac7-1d54e91a1000`
+(command `0011`, status `0012`, data `0013`) and the flash region `0xB0000..0xCC000`;
+the application image must end below `0xB0000`. The complete contract, including the
+codec, storage layout and compatibility rules, is
+[protocol-animation.md](protocol-animation.md). Playback never rejects legacy v1/v2,
+pages or DFU commands: those commands stop playback and take the panel.
+
 ## Security and persistence
 
 No application authentication, BLE pairing requirement, encryption requirement or signing is implemented. A nearby BLE client can discover this service and replace the screen. CRC detects corruption, **not malicious modification**. Do not advertise this as a secure/private display protocol. Web Bluetooth's chooser controls the browser's access only; it does not authenticate a central to the board. Disconnect/timeout and strict bounds reduce correctness risks, not RF denial of service.
 
-The legacy v1/v2 single-frame transfer does not save the received frame to flash. The separate [pages protocol](protocol-pages.md) stores pages in the reserved region `0xCC000..0xEC000`, with COW and recovery; see the complete [storage map](storage.md). Back up pages before UF2 or OTA updates: retention by the installed bootloader is not established.
+The legacy v1/v2 single-frame transfer does not save the received frame to flash. The separate [pages protocol](protocol-pages.md) stores pages in the reserved region `0xCC000..0xEC000`, and the [animation protocol](protocol-animation.md) stores looping frame sequences in `0xB0000..0xCC000`; both use copy-on-write with recovery, and the application image must end below `0xB0000`. See the complete [storage map](storage.md). Back up pages and animations before UF2 or OTA updates: retention by the installed bootloader is not established. Animation playback never rejects legacy v1/v2, pages or DFU commands; those commands stop playback and take the panel.
 
 The approved welcome is drawn and the panel hibernated before advertising only when the 4 KiB state page at `0xEC000` is erased, corrupt, or has a different firmware build ID. A valid magic/build-ID/CRC record skips SPI and panel initialization entirely; uploaded images remain physically visible across resets. Each PlatformIO build invocation generates a fresh 32-bit build ID, including incremental builds (a random collision is possible). Record erase/write is checked; failure is logged and welcome is retried on the next boot. A frame transfer initializes the panel, refreshes it and hibernates it. A reset during refresh may leave an incomplete image. UICR NFC configuration is separate. DONE means the display driver returned, not optical verification.

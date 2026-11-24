@@ -4,6 +4,7 @@ import { createTextEditor } from './text.js';
 import { initOta } from './ota.js';
 import { createPixelEditor } from './editor.js';
 import { createPages } from './pages.js';
+import { createAnimation, isGif } from './anim.js';
 import { t, subscribeLanguage, initI18n } from './i18n.js';
 const $ = id => document.getElementById(id);
 let statusKey = 'device.notConnected', statusVars = {};
@@ -11,7 +12,7 @@ function setStatus(key, vars = {}) { statusKey=key; statusVars=vars; status.text
 const preview = $('preview'), native = $('native'), status = $('status');
 subscribeLanguage(() => setStatus(statusKey,statusVars));
 let source = null, rotation = 0, frame = new Uint8Array(FRAME_BYTES), connected = false, sending = false;
-let textEditor, pixelEditor, pages, whiteBackground = false, ota = null;
+let textEditor, pixelEditor, pages, animation, whiteBackground = false, ota = null;
 subscribeLanguage(() => { if (!source) $('image-name').textContent=t('image.noneSelected'); });
 const imageFields = ['mode', 'zoom', 'x', 'y', 'tileSize', 'brightness', 'contrast', 'threshold', 'dither', 'invert'];
 function imageState() { return { source, rotation, whiteBackground, values: Object.fromEntries(imageFields.map(id => [id, id === 'invert' ? $(id).checked : $(id).value])) }; }
@@ -62,6 +63,13 @@ document.addEventListener('keydown', event => {
 });
 $('file').addEventListener('change', async event => {
   const file = event.target.files[0]; if (!file) return;
+  // A GIF is an animation: it goes to the animation panel and never replaces
+  // the static image, so the PNG path below stays byte-identical.
+  if (isGif(file)) {
+    try { await animation.importFile(file); } catch { /* the panel shows a localized error */ }
+    finally { event.target.value = ''; }
+    return;
+  }
   const url = URL.createObjectURL(file);
   try {
     await loadImage(url, file.name);
@@ -91,7 +99,7 @@ preview.addEventListener('wheel', e => { e.preventDefault(); const factor = e.de
 function download(blob, name) { const url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 $('png').addEventListener('click', () => native.toBlob(blob => { if (blob) download(blob, 'eink-122x250.png'); else setStatus('error.createPng'); }, 'image/png'));
 $('frame').addEventListener('click', () => download(new Blob([frame], { type: 'application/octet-stream' }), 'eink-122x250.bin'));
-function buttons() { $('connect').disabled = connected || sending || !navigator.bluetooth; $('send').disabled = !connected || sending; $('disconnect').disabled = !connected || sending; ota?.setConnected(connected); }
+function buttons() { $('connect').disabled = connected || sending || !navigator.bluetooth; $('send').disabled = !connected || sending; $('disconnect').disabled = !connected || sending; ota?.setConnected(connected); animation?.setConnected(connected); }
 function openFirmware() { const panel = $('firmware'); if (!panel) return; panel.hidden = false; panel.open = true; panel.scrollIntoView?.({ block: 'nearest' }); }
 const transport = new BleTransport({ onProgress: (n, total) => { $('progress').max = total; $('progress').value = n; setStatus('device.sending',{sent:n,total}); }, onStatus: s => { if (s.disconnected) { connected = false; setStatus('device.disconnectedReconnect'); buttons(); } else if (s.state === 2 || s.state === 3) setStatus('device.acceptedRefreshing'); } });
 $('connect').addEventListener('click', async () => { sending = true; buttons(); try { const s = await transport.connect(); connected = true; setStatus('device.connected',{state:['device.stateIdle','device.stateReceiving','device.stateQueued','device.stateRefreshing','device.stateDone','device.stateError'][s.state] || 'device.stateUnknown'}); } catch (e) { transport.disconnect(); setStatus('device.connectionFailed',{error:e.message}); } finally { sending = false; buttons(); } });
@@ -103,5 +111,25 @@ $('fw-open').addEventListener('click', openFirmware);
 textEditor = createTextEditor({ preview, render, getImage: () => ({ ...imageState(), name: $('image-name').textContent }), setImage: restoreImage, clearImage: () => { source = null; whiteBackground = true; $('image-name').textContent = t('image.noneSelected'); } });
 pixelEditor = createPixelEditor({ preview, render, textEditor });
 pages = createPages({ transport, render, getFrame: () => frame.slice(), capture: () => ({ image: { ...imageState(), name: $('image-name').textContent, source: source ? { width: source.width, height: source.height, data: Array.from(source.data) } : null }, text: textEditor.exportState(), drawing: pixelEditor.exportState() }), restore: state => { const image = state.image; restoreImage({ ...image, source: image.source ? new ImageData(Uint8ClampedArray.from(image.source.data), image.source.width, image.source.height) : null }); textEditor.importState(state.text); pixelEditor.importState(state.drawing); render(); } });
+// Animation frames run through the same renderGray/packBits calls render() uses,
+// with the live control values, so identical pixels and settings produce
+// identical 4000-byte frames (proved in tests/anim-gif.test.js).
+animation = createAnimation({
+  transport,
+  getSettings: () => ({
+    geometry: geometry(),
+    pack: { threshold: number('threshold', 128), brightness: number('brightness', 0), contrast: number('contrast', 0), dither: $('dither').value, invert: $('invert').checked }
+  }),
+  // "Use this frame" mirrors one converted frame into the static previews. The
+  // source image, layers and control values stay untouched, so the next render()
+  // simply restores the editor's own frame.
+  useFrame: ({ bits, index }) => {
+    const pixels = unpackBits(bits), image = native.getContext('2d').createImageData(WIDTH, HEIGHT);
+    for (let i = 0; i < pixels.length; i++) { const j = i * 4; image.data[j] = image.data[j + 1] = image.data[j + 2] = pixels[i]; image.data[j + 3] = 255; }
+    native.getContext('2d').putImageData(image, 0, 0);
+    preview.getContext('2d').putImageData(image, 0, 0);
+    setStatus('anim.frameUsed', { index: index + 1 });
+  }
+});
 initI18n({ selector: '#language-select' });
 buttons(); render();

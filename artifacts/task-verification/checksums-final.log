@@ -1,0 +1,8 @@
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.elf: OK
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.hex: OK
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.bin: OK
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.uf2: OK
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6.zip: OK
+artifacts/task-verification/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip: OK
+artifacts/task-verification/verification-welcome-once-dfu.json: OK
+artifacts/task-verification/dfu-verification.json: OK

@@ -9,13 +9,14 @@ name: Firmware
   workflow_dispatch:
     inputs:
       version:
-        description: Application version (uint32)
+        description: Application version (uint32, BCD; 66048 = 0x010200 = 1.2.0)
         required: true
-        default: '1'
+        default: '66048'
         type: string
   pull_request:
     paths:
       - 'firmware/**'
+      - 'web/**'
       - 'tools/**'
       - 'tests/**'
       - 'assets/**'
@@ -59,7 +60,7 @@ jobs:
         run: PYTHONPATH=tools python3 tools/package_firmware.py
       - name: Package and verify Nordic DFU
         env:
-          APPLICATION_VERSION: ${{ inputs.version || '1' }}
+          APPLICATION_VERSION: ${{ inputs.version || '66048' }}
         run: |
           python3 tools/dfu_package.py artifacts/eink-ble-welcome-once-dfu-bw-s140v6.hex --application-version "$APPLICATION_VERSION" --output artifacts/eink-ble-welcome-once-dfu-bw-s140v6.dfu.zip
           cp artifacts/eink-ble-welcome-once-dfu-bw-s140v6.dfu.zip artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip

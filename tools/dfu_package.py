@@ -14,7 +14,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 NRFUTIL = os.environ.get('NRFUTIL') or shutil.which('nrfutil') or Path.home() / '.local/bin/nrfutil'
 NRF_SITE = Path.home() / '.platformio/packages/tool-adafruit-nrfutil/site-packages'
-ORIGIN, LIMIT, DEVICE_TYPE, SD_REQ = 0x26000, 0xCC000, 0x0052, 0x00B6
+ORIGIN, LIMIT, DEVICE_TYPE, SD_REQ = 0x26000, 0xB0000, 0x0052, 0x00B6
 
 
 def fail(message):
@@ -124,7 +124,7 @@ def main():
               'device_type': hex(DEVICE_TYPE),
               'sd_req': [hex(SD_REQ)], 'hex_bounds': {'min': hex(low), 'max_exclusive': hex(high)},
               'application_bin_bytes': len(binary), 'firmware_sha256': hashlib.sha256(binary).hexdigest(),
-              'preservation': 'HEX/DFU payload excludes pages, welcome and filesystem; bootloader erase behavior is not verified. Back up pages before updates.',
+              'preservation': 'HEX/DFU payload excludes animations, pages, welcome and filesystem; bootloader erase behavior is not verified. Back up pages and animations before updates.',
               'signature': 'none: DFU 0.5 legacy init packet (CRC16 metadata only)',
               'files': files, 'zip_bytes': output.stat().st_size}
     args.result.parent.mkdir(parents=True, exist_ok=True)

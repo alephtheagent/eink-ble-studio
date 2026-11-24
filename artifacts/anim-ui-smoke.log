@@ -1,0 +1,22 @@
+serving /home/aleph/eink-notebook/web at http://127.0.0.1:33845/
+chromium unavailable (browserType.launch: Executable doesn't exist at /home/aleph/.cache/ms-playwright/chromium_headless_shell-1194/chrome-linux/headless_shell); trying an installed Firefox
+engine: firefox (/home/aleph/.cache/ms-playwright/firefox-1572/firefox/firefox)
+mobile-320: first screen ok (scrollWidth 320 <= 320, connect disabled=true)
+mobile-320: stats 4 frames, 5.4 KB, 2.92×, 10.1 s; Estimate assumes 20-byte writes (17 bytes of payload per DATA) and one status read per command at 30 ms, 335 acknowledged operations. Ceiling source: fallback MTU 23.
+mobile-320: playback advanced to "Frame 3 / 4" and paused
+mobile-320: keep every 2nd -> 2 frames, 4.6 KB, 8.5 s
+mobile-320: wrote /home/aleph/eink-notebook/artifacts/anim-ui-mobile-320.png (208339 bytes)
+mobile-390: first screen ok (scrollWidth 390 <= 390, connect disabled=true)
+mobile-390: stats 4 frames, 5.4 KB, 2.92×, 10.1 s; Estimate assumes 20-byte writes (17 bytes of payload per DATA) and one status read per command at 30 ms, 335 acknowledged operations. Ceiling source: fallback MTU 23.
+mobile-390: playback advanced to "Frame 3 / 4" and paused
+mobile-390: keep every 2nd -> 2 frames, 4.6 KB, 8.5 s
+mobile-390: wrote /home/aleph/eink-notebook/artifacts/anim-ui-mobile-390.png (208328 bytes)
+desktop: first screen ok (scrollWidth 1280 <= 1280, connect disabled=true)
+desktop: stats 4 frames, 5.4 KB, 2.92×, 10.1 s; Estimate assumes 20-byte writes (17 bytes of payload per DATA) and one status read per command at 30 ms, 335 acknowledged operations. Ceiling source: fallback MTU 23.
+desktop: playback advanced to "Frame 2 / 4" and paused
+desktop: keep every 2nd -> 2 frames, 4.6 KB, 8.5 s
+desktop: wrote /home/aleph/eink-notebook/artifacts/anim-ui-desktop.png (262146 bytes)
+ru-390: resume control "Продолжить"
+ru-390: Анимация / Пуск / Кадров / Кадр 1 / 4; wrote /home/aleph/eink-notebook/artifacts/anim-ui-ru-390.png (253214 bytes)
+screenshots: /home/aleph/eink-notebook/artifacts/anim-ui-mobile-320.png (208339 B), /home/aleph/eink-notebook/artifacts/anim-ui-mobile-390.png (208328 B), /home/aleph/eink-notebook/artifacts/anim-ui-desktop.png (262146 B), /home/aleph/eink-notebook/artifacts/anim-ui-ru-390.png (253214 B)
+PASS

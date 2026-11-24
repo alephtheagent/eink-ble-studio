@@ -1,0 +1,23 @@
+Collecting pyelftools
+  Using cached pyelftools-0.33-py3-none-any.whl.metadata (1.0 kB)
+Collecting unicorn
+  Using cached unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting adafruit-nrfutil
+  Using cached adafruit_nrfutil-0.5.3.post16-py3-none-any.whl
+Collecting pyserial>=2.7 (from adafruit-nrfutil)
+  Using cached pyserial-3.5-py2.py3-none-any.whl.metadata (1.6 kB)
+Collecting click>=5.1 (from adafruit-nrfutil)
+  Using cached click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting ecdsa>=0.13 (from adafruit-nrfutil)
+  Using cached ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+Collecting six>=1.9.0 (from ecdsa>=0.13->adafruit-nrfutil)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Using cached pyelftools-0.33-py3-none-any.whl (201 kB)
+Using cached unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+Using cached click-8.5.1-py3-none-any.whl (126 kB)
+Using cached ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+Using cached pyserial-3.5-py2.py3-none-any.whl (90 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: pyserial, unicorn, six, pyelftools, click, ecdsa, adafruit-nrfutil
+
+Successfully installed adafruit-nrfutil-0.5.3.post16 click-8.5.1 ecdsa-0.19.2 pyelftools-0.33 pyserial-3.5 six-1.17.0 unicorn-2.1.4
