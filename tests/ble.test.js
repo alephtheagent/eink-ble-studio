@@ -22,7 +22,7 @@ const v2Fake=expected=>{
  const service={async getCharacteristic(uuid){return ({[UUIDS.command]:command,[UUIDS.status]:status,[UUIDS.capabilities]:capabilities,[UUIDS.command2]:command2,[UUIDS.status2]:status2})[uuid];}};
  const device={gatt:{connected:false,async connect(){this.connected=true;return {async getPrimaryService(){return service;}};},disconnect(){this.connected=false;}},addEventListener(){},removeEventListener(){}};
  const bluetooth={async requestDevice(){return device;}};
- return {state,bluetooth};
+ return {state,bluetooth,device};
 };
 test('v2 GATT negotiation and both codecs deliver exact frames',async()=>{
  for(const frame of [approved,new Uint8Array(4000)]){
@@ -184,4 +184,13 @@ test('pending timed-out GATT write prevents reconnecting the same device',async(
  await assert.rejects(c.send(approved,22));
  await assert.rejects(c.connect());
  pending.resolve();
+});
+test('device chooser grants access to the animation service',async()=>{
+ const f=v2Fake(approved);let options=null;
+ f.bluetooth.requestDevice=async opts=>{options=opts;return f.device;};
+ const client=new BleTransport({bluetooth:f.bluetooth});
+ await client.connect();
+ assert.deepEqual(options.filters,[{services:[UUIDS.service]}]);
+ assert.ok(Array.isArray(options.optionalServices),'optionalServices must be present');
+ assert.ok(options.optionalServices.includes(UUIDS.anim),'animation service must be in optionalServices');
 });

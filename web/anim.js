@@ -113,7 +113,7 @@ export function formatDuration(ms) {
 // The animation panel is its own GATT service; the editor's 7b1e0001 service
 // only supplies the capability characteristic used for the transfer estimate.
 export const ANIM_UUIDS = Object.freeze({
-  service: '7b1e0010-6ba2-4f25-8ac7-1d54e91a1000',
+  service: UUIDS.anim,
   command: '7b1e0011-6ba2-4f25-8ac7-1d54e91a1000',
   status: '7b1e0012-6ba2-4f25-8ac7-1d54e91a1000',
   data: '7b1e0013-6ba2-4f25-8ac7-1d54e91a1000'

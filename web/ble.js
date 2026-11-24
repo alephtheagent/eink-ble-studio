@@ -1,6 +1,6 @@
 import { FRAME_BYTES, crc32 } from './image.js';
 import { t } from './i18n.js';
-export const UUIDS = Object.freeze({ service: '7b1e0001-6ba2-4f25-8ac7-1d54e91a1000', command: '7b1e0002-6ba2-4f25-8ac7-1d54e91a1000', status: '7b1e0003-6ba2-4f25-8ac7-1d54e91a1000', command2: '7b1e0004-6ba2-4f25-8ac7-1d54e91a1000', status2: '7b1e0005-6ba2-4f25-8ac7-1d54e91a1000', capabilities: '7b1e0006-6ba2-4f25-8ac7-1d54e91a1000' });
+export const UUIDS = Object.freeze({ service: '7b1e0001-6ba2-4f25-8ac7-1d54e91a1000', command: '7b1e0002-6ba2-4f25-8ac7-1d54e91a1000', status: '7b1e0003-6ba2-4f25-8ac7-1d54e91a1000', command2: '7b1e0004-6ba2-4f25-8ac7-1d54e91a1000', status2: '7b1e0005-6ba2-4f25-8ac7-1d54e91a1000', capabilities: '7b1e0006-6ba2-4f25-8ac7-1d54e91a1000', anim: '7b1e0010-6ba2-4f25-8ac7-1d54e91a1000' });
 const packet = (opcode, id, length) => { const b = new Uint8Array(length); const v = new DataView(b.buffer); b[0] = opcode; v.setUint32(1, id, true); return [b, v]; };
 export function packetStart(id, crc) { const [b, v] = packet(1, id, 11); v.setUint16(5, FRAME_BYTES, true); v.setUint32(7, crc, true); return b; }
 export function packetData(id, offset, bytes) { if (bytes.length < 1 || bytes.length > 13 || offset < 0 || offset + bytes.length > FRAME_BYTES) throw new Error(t('ble.invalidDataPacket')); const [b, v] = packet(2, id, 7 + bytes.length); v.setUint16(5, offset, true); b.set(bytes, 7); return b; }
@@ -146,7 +146,10 @@ export class BleTransport {
     if (!this.bluetooth) throw new Error(t('ble.bluetoothUnavailable'));
     // The chooser is user-controlled and deliberately has no GATT timeout.
     let device;
-    try { device = await Promise.race([this.bluetooth.requestDevice({ filters: [{ services: [UUIDS.service] }] }), context.cancellation]); }
+    // The animation panel lives in its own service (7b1e0010), so the chooser
+    // must grant access to it up front; Web Bluetooth rejects getPrimaryService
+    // for a service that was not requested in optionalServices.
+    try { device = await Promise.race([this.bluetooth.requestDevice({ filters: [{ services: [UUIDS.service] }], optionalServices: [UUIDS.anim] }), context.cancellation]); }
     catch (cause) { throw new Error(t('ble.requestDeviceFailed', { error: cause.message || cause }), { cause }); }
     if (context.cancelled) throw new Error(t('ble.requestDeviceDisconnected'));
     if (this.pendingOperations.get(device)?.size) throw new Error(t('ble.pendingOperation'));
