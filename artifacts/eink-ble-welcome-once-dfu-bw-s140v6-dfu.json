@@ -1,7 +1,7 @@
 {
   "package": "/home/aleph/eink-notebook/artifacts/eink-ble-welcome-once-dfu-bw-s140v6-dfu.zip",
-  "sha256": "81108e7c833236a179f14648e81aa1e69826cff0010c720cf53bfb1bc0a42ee0",
-  "application_version": 66050,
+  "sha256": "43f211a0ceeb981463ec12c47a8706ce7724225ea524e529c467558bb1a5bb96",
+  "application_version": 66051,
   "dfu_version": 0.5,
   "device_type": "0x52",
   "sd_req": [
@@ -9,25 +9,25 @@
   ],
   "hex_bounds": {
     "min": "0x26000",
-    "max_exclusive": "0x5159c"
+    "max_exclusive": "0x515cc"
   },
-  "application_bin_bytes": 177564,
-  "firmware_sha256": "596495d557cdb428d698a5ee85b5689cd7cf45142046f1924f6f41b74c3c8476",
+  "application_bin_bytes": 177612,
+  "firmware_sha256": "4efebb9bdebb7438fef0dab1758b4bfb1e54797ff41e4e59c61c2148045c1a1c",
   "preservation": "HEX/DFU payload excludes animations, pages, welcome and filesystem; bootloader erase behavior is not verified. Back up pages and animations before updates.",
   "signature": "none: DFU 0.5 legacy init packet (CRC16 metadata only)",
   "files": {
     "manifest.json": {
       "bytes": 513,
-      "sha256": "de7dc8d19db85ed6982e363ecc92cd6a12a6d16c815ffd56a1fa9b60c9e1a033"
+      "sha256": "d54a949378f8e3b564d3b512b2edac3a29b6f3bbe3f08ca12cba5e9149263ed2"
     },
     "eink-ble-welcome-once-dfu-bw-s140v6.bin": {
-      "bytes": 177564,
-      "sha256": "596495d557cdb428d698a5ee85b5689cd7cf45142046f1924f6f41b74c3c8476"
+      "bytes": 177612,
+      "sha256": "4efebb9bdebb7438fef0dab1758b4bfb1e54797ff41e4e59c61c2148045c1a1c"
     },
     "eink-ble-welcome-once-dfu-bw-s140v6.dat": {
       "bytes": 14,
-      "sha256": "d379c14cff7dfd667ac8063381cf82578dce747986fc168623bae98e790392c6"
+      "sha256": "7f5ea32dd256f3196e9029029ff2e38fc945d17db688594668648bea0fce651e"
     }
   },
-  "zip_bytes": 178523
+  "zip_bytes": 178571
 }

@@ -315,7 +315,11 @@ template<class Store> class Player {
     const bool fastPartial = (store_->flags() & FLAG_FAST_PARTIAL) != 0;
     const bool loopBoundary = !fastPartial && loopRefresh_ && presented_ && (loops_ % loopRefresh_ == 0);
     const bool scene = !fastPartial && uint32_t(bbox_.area) * 100u >= PANEL_PIXELS * threshold_;
-    if (partial_ && presented_ && kind != KIND_FULL && !loopBoundary && !scene) {
+    // A full-kind blob normally forces a full refresh, but with FLAG_FAST_PARTIAL the
+    // decoded pixels are already in frame_, so the changed box can still go through a
+    // partial window. That is what removes the flash on GIF frames the encoder could
+    // not compress as a delta.
+    if (partial_ && presented_ && !loopBoundary && !scene && (fastPartial || kind != KIND_FULL)) {
       panel_.present(bbox_.x, bbox_.y, bbox_.w, bbox_.h, frame_);
     } else {
       panel_.presentFull(frame_);

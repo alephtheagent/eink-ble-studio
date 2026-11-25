@@ -1579,6 +1579,30 @@ static void testPlayerBBox() {
   for (uint32_t t = 500; t <= 2000; t += 500) assert(fast.tick(t));
   assert(panel.full == 0 && panel.partial == 4);
   std::puts("player: FLAG_FAST_PARTIAL removes scene and cadence full refreshes");
+
+  // A frame the encoder stored as a full blob must also use the partial path when the
+  // flag is set: the decoded pixels are already available, only the flash was avoided.
+  {
+    std::vector<Frame> noisy;
+    noisy.push_back(blank());
+    Frame random{};
+    uint32_t seed = 12345;
+    for (auto& byte : random) { seed = seed * 1664525u + 1013904223u; byte = uint8_t(seed >> 24); }
+    noisy.push_back(random);
+    assert(upload(store, noisy, FLAG_FAST_PARTIAL, true) == OK);
+    assert(store.frameKind(1) == KIND_FULL);  // incompressible delta falls back to full
+    Player<Store> p2(panel);
+    p2.partialPresentation(true);
+    p2.configure(1000, 60);
+    assert(p2.start(store, 0, 0));
+    panel.reset();
+    assert(p2.tick(0));
+    assert(panel.full == 1 && panel.partial == 0);
+    panel.reset();
+    assert(p2.tick(500));
+    assert(panel.full == 0 && panel.partial == 1);
+    std::puts("player: FLAG_FAST_PARTIAL presents full-kind frames partially");
+  }
 }
 
 static void testPlayerPaddingBitsIgnored() {
